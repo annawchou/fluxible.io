@@ -1,0 +1,22 @@
+{
+  "routes" :
+  [
+    {
+      "method" : "get",
+      "route" : "*"
+    },
+    {
+      "method" : "post",
+      "route" : "*"
+    },
+    {
+      "method" : "put",
+      "route" : "*"
+    },
+    {
+      "method" : "delete",
+      "route" : "*"
+    }
+  ],
+  "capacity" : 2
+}
