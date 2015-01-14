@@ -6,22 +6,25 @@ module.exports = function (grunt) {
     grunt.initConfig({
         clean: ['build'],
         compass: {
-            dist: {
+            options: {
+                sassDir: 'assets/scss',
+                cssDir: 'build/css',
+                imagesDir: 'build/images',
+                environment: 'production',
+                httpPath: '/',
+                outputStyle: 'compressed',
+                noLineComments: true,
+                httpGeneratedImagesPath: '/public/images/'
+            },
+            dev: {
                 options: {
-                    sassDir: 'assets/scss',
-                    cssDir: 'build/css',
-                    imagesDir: 'build/images',
-                    environment: 'production',
-                    httpPath: '/',
-                    outputStyle: 'compressed',
-                    noLineComments: true,
-                    httpGeneratedImagesPath: '/public/images/',
                     watch: true
                 }
-            }
+            },
+            prod: {}
         },
         concurrent: {
-            dev: ['compass:dist', 'nodemon:app', 'webpack:dev'],
+            dev: ['compass:dev', 'nodemon:app', 'webpack:dev'],
             options: {
                 logConcurrentOutput: true
             }
@@ -131,5 +134,5 @@ module.exports = function (grunt) {
     // tasks
     grunt.registerTask('default', 'dev');
     grunt.registerTask('dev', ['clean', 'jshint', 'concurrent:dev']);
-    grunt.registerTask('build', ['compass', 'webpack:prod']);
+    grunt.registerTask('build', ['compass:prod', 'webpack:prod']);
 };
