@@ -1,33 +1,38 @@
 'use strict';
 
+var webpack = require('webpack');
+
 module.exports = function (grunt) {
     grunt.initConfig({
+        clean: ['build'],
+        compass: {
+            dist: {
+                options: {
+                    sassDir: 'assets/scss',
+                    cssDir: 'build/css',
+                    imagesDir: 'build/images',
+                    environment: 'production',
+                    httpPath: '/',
+                    outputStyle: 'compressed',
+                    noLineComments: true,
+                    httpGeneratedImagesPath: '/public/images/',
+                    watch: true
+                }
+            }
+        },
+        concurrent: {
+            dev: ['compass:dist', 'nodemon:app', 'webpack:dev'],
+            options: {
+                logConcurrentOutput: true
+            }
+        },
         jshint: {
             all: [
-                'Gruntfile.js',
+                '*.js',
                 '{actions,components,services,stores}/**/*.js'
             ],
             options: {
                 jshintrc: true
-            }
-        },
-        webpack: {
-            app: {
-                resolve: {
-                    extensions: ['', '.js', '.jsx']
-                },
-                entry: './client.js',
-                output: {
-                    path: './build/js',
-                    filename: 'client.js'
-                },
-                module: {
-                    loaders: [
-                        { test: /\.css$/, loader: 'style!css' },
-                        { test: /\.jsx$/, loader: 'jsx-loader' }
-                    ]
-                },
-                watch: true
             }
         },
         nodemon: {
@@ -38,18 +43,93 @@ module.exports = function (grunt) {
                     ext: 'js,jsx'
                 }
             }
+        },
+        webpack: {
+            dev: {
+                resolve: {
+                    extensions: ['', '.js', '.jsx']
+                },
+                entry: './client.js',
+                output: {
+                    path: './build/js',
+                    publicPath: '/public/js/',
+                    filename: '[name].js',
+                    chunkFilename: '[name].[chunkhash].js'
+                },
+                module: {
+                    loaders: [
+                        { test: /\.css$/, loader: 'style!css' },
+                        { test: /\.jsx$/, loader: 'jsx-loader' },
+                        { test: /\.json$/, loader: 'json-loader'}
+                    ]
+                },
+                plugins: [
+                    new webpack.optimize.CommonsChunkPlugin('common.js', undefined, 2),
+                    new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons'))
+                ],
+                stats: {
+                    colors: true
+                },
+                devtool: 'source-map',
+                watch: true,
+                keepalive: true
+            },
+            prod: {
+                resolve: {
+                    extensions: ['', '.js', '.jsx']
+                },
+                entry: './client.js',
+                output: {
+                    path: __dirname + '/../build/js',
+                    publicPath: 'https://s.yimg.com/os/flx/js/',
+                    filename: '[name].[chunkhash].min.js',
+                    chunkFilename: '[name].[chunkhash].min.js'
+                },
+                module: {
+                    loaders: [
+                        { test: /\.css$/, loader: 'style!css' },
+                        { test: /\.jsx$/, loader: 'jsx-loader' },
+                        { test: /\.json$/, loader: 'json-loader'}
+                    ]
+                },
+                plugins: [
+                    new webpack.DefinePlugin({
+                        'process.env': {
+                            NODE_ENV: JSON.stringify('production')
+                        }
+                    }),
+
+                    // These are performance optimizations for your bundles
+                    new webpack.optimize.UglifyJsPlugin({
+                        compress: {
+                            warnings: false
+                        }
+                    }),
+                    new webpack.optimize.OccurenceOrderPlugin(),
+                    new webpack.optimize.DedupePlugin(),
+                    new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', undefined, 2),
+
+                    // This ensures requires for `react` and `react/addons` normalize to the same requirement
+                    new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons'))
+                ],
+
+                // removes verbosity from builds
+                progress: false
+            }
         }
     });
 
+    // libs
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-webpack');
 
-    grunt.registerTask('default', 'Log some stuff.', function() {
-        grunt.log.error('Please specify a target.');
-    });
-
-    grunt.registerTask('dev', ['jshint', 'webpack:app', 'nodemon:app']);
-    grunt.registerTask('build', ['webpack:app']);
+    // tasks
+    grunt.registerTask('default', 'dev');
+    grunt.registerTask('dev', ['clean', 'jshint', 'concurrent:dev']);
+    grunt.registerTask('build', ['compass', 'webpack:prod']);
 };

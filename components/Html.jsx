@@ -15,7 +15,7 @@ var Component = React.createClass({
                 <title>{this.props.context.getStore(PageStore).getPageTitle()}</title>
                 <meta name="viewport" content="width=device-width, user-scalable=no" />
                 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
-                <link rel="stylesheet" href="/public/styles.css" />
+                <link rel="stylesheet" href="/public/css/styles.css" />
             </head>
             <body>
                 <h1>Fluxible</h1>
@@ -26,7 +26,8 @@ var Component = React.createClass({
                 </footer>
             </body>
             <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-            <script src="/public/js/client.js" defer></script>
+            <script src="/public/js/common.js" defer></script>
+            <script src="/public/js/main.js" defer></script>
             </html>
         );
     }
