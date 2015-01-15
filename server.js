@@ -64,8 +64,7 @@ server.use(function (req, res, next) {
             }))
         }));
 
-        res.write(doctype + html);
-        res.end();
+        res.send(doctype + html);
     });
 });
 
