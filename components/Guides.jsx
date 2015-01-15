@@ -3,16 +3,15 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
-
 var React = require('react');
 var StoreMixin = require('fluxible').StoreMixin;
 var DocsStore = require('../stores/DocsStore');
 
 var Component = React.createClass({
-    mixins: [StoreMixin],
+    mixins: [ StoreMixin ],
     statics: {
         storeListeners: {
-            _onChange: [DocsStore]
+            _onChange: [ DocsStore ]
         }
     },
     getInitialState: function () {
@@ -23,10 +22,11 @@ var Component = React.createClass({
             docs: this.getStore(DocsStore).getAll()
         };
     },
-    _onChange: function() {
+    _onChange: function () {
         this.setState(this._getState());
     },
-    render: function() {
+    render: function () {
+        var main;
         var docs = this.state.docs;
         var docItems = docs.map(function (doc) {
             return (
@@ -35,7 +35,7 @@ var Component = React.createClass({
         }, this);
 
         if (docs.length) {
-            var main = (
+            main = (
                 <section id="main">
                     <ul id="doc-list">
                         {docItems}
@@ -46,6 +46,7 @@ var Component = React.createClass({
 
         return (
             <div>
+                <h1>Guides</h1>
                 {main}
             </div>
         );

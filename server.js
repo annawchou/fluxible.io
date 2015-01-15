@@ -6,12 +6,12 @@ require('node-jsx').install({ extension: '.jsx' });
 var express = require('express');
 var favicon = require('serve-favicon');
 var serialize = require('serialize-javascript');
+var navigateAction = require('flux-router-component').navigateAction;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
 var React = require('react');
 var app = require('./app');
-var showDocs = require('./actions/showDocs');
 var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 
 var server = express();
@@ -40,19 +40,22 @@ server.use(function (req, res, next) {
         }
     });
 
-    context.executeAction(showDocs, {}, function (err) {
+    context.getActionContext().executeAction(navigateAction, {
+        url: req.url
+    }, function (err) {
         if (err) {
             if (err.status && err.status === 404) {
-                return next();
+                next();
+            } else {
+                next(err);
             }
-            else {
-                return next(err);
-            }
+            return;
         }
 
         var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
 
         var AppComponent = app.getAppComponent();
+        var doctype = '<!DOCTYPE html>';
         var html = React.renderToStaticMarkup(HtmlComponent({
             state: exposed,
             context: context.getComponentContext(),
@@ -61,7 +64,7 @@ server.use(function (req, res, next) {
             }))
         }));
 
-        res.send(html);
+        res.send(doctype + html);
     });
 });
 

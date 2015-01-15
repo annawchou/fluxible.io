@@ -7,27 +7,29 @@ var React = require('react');
 var PageStore = require('../stores/PageStore');
 
 var Component = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <html>
-            <head>
-                <meta charSet="utf-8" />
-                <title>{this.props.context.getStore(PageStore).getPageTitle()}</title>
-                <meta name="viewport" content="width=device-width, user-scalable=no" />
-                <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
-                <link rel="stylesheet" href="/public/css/styles.css" />
-            </head>
-            <body>
-                <h1>Fluxible</h1>
-                <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
-                <footer id="info">
-                    <p>Yahoo &copy; 2015</p>
-                    <p><a href="http://fluxible.io">Fluxible</a></p>
-                </footer>
-            </body>
-            <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-            <script src="/public/js/common.js" defer></script>
-            <script src="/public/js/main.js" defer></script>
+                <head>
+                    <meta charSet="utf-8" />
+                    <title>{this.props.context.getStore(PageStore).getPageTitle()}</title>
+                    <meta name="viewport" content="width=device-width, user-scalable=no" />
+                    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
+                    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
+                    <link rel="stylesheet" href="/public/css/theme.css" />
+                    <link rel="stylesheet" href="/public/css/styles.css" />
+                </head>
+                <body>
+                    <div className="content">
+                        <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
+                    </div>
+                    <div className="footer l-box is-center">
+                        Yahoo! &copy; 2015
+                    </div>
+                    <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
+                    <script src="/public/js/common.js" defer></script>
+                    <script src="/public/js/main.js" defer></script>
+                </body>
             </html>
         );
     }
