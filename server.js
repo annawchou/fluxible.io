@@ -61,8 +61,7 @@ server.use(function (req, res, next) {
             }))
         }));
 
-        res.write(html);
-        res.end();
+        res.send(html);
     });
 });
 
