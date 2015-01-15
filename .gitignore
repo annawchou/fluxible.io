@@ -1,4 +1,7 @@
 .sass-cache
+artifacts
 build
+deploy.json
+grasshopper.json
 node_modules
 npm-debug.log
