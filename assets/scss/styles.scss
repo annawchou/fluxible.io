@@ -1,5 +1,8 @@
-h1 {
-    font-weight: bold;
-    font-size: 20px;
-    color: red;
+body {
+    padding-top: 54px;
+}
+.pure-menu {
+    .pure-menu-heading {
+        text-transform: none;
+    }
 }

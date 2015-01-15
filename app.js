@@ -6,16 +6,18 @@
 var React = require('react');
 var FluxibleApp = require('fluxible');
 var fetchrPlugin = require('fluxible-plugin-fetchr');
+var routrPlugin = require('fluxible-plugin-routr');
+var routes = require('./configs/routes');
 
 var app = new FluxibleApp({
-    appComponent: React.createFactory(require('./components/DocsApp.jsx'))
+    appComponent: React.createFactory(require('./components/Application.jsx'))
 });
 
-app.plug(fetchrPlugin({
-    xhrPath: '/api'
-}));
+app.plug(fetchrPlugin({ xhrPath: '/api' }));
+app.plug(routrPlugin({ routes: routes }));
 
 app.registerStore(require('./stores/DocsStore'));
 app.registerStore(require('./stores/PageStore'));
+app.registerStore(require('./stores/ApplicationStore'));
 
 module.exports = app;
