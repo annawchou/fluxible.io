@@ -83,10 +83,13 @@ module.exports = function (grunt) {
                 },
                 entry: './client.js',
                 output: {
-                    path: __dirname + '/../build/js',
-                    publicPath: 'https://s.yimg.com/os/flx/js/',
-                    filename: '[name].[chunkhash].min.js',
-                    chunkFilename: '[name].[chunkhash].min.js'
+                    path: './build/js',
+                    // publicPath: 'https://s.yimg.com/os/flx/js/',
+                    // filename: '[name].[chunkhash].min.js',
+                    // chunkFilename: '[name].[chunkhash].min.js'
+                    publicPath: '/public/js/',
+                    filename: '[name].js',
+                    chunkFilename: '[name].[chunkhash].js'
                 },
                 module: {
                     loaders: [
@@ -110,7 +113,8 @@ module.exports = function (grunt) {
                     }),
                     new webpack.optimize.OccurenceOrderPlugin(),
                     new webpack.optimize.DedupePlugin(),
-                    new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', undefined, 2),
+                    // new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', undefined, 2),
+                    new webpack.optimize.CommonsChunkPlugin('common.js', undefined, 2),
 
                     // This ensures requires for `react` and `react/addons` normalize to the same requirement
                     new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons'))
@@ -134,5 +138,5 @@ module.exports = function (grunt) {
     // tasks
     grunt.registerTask('default', 'dev');
     grunt.registerTask('dev', ['clean', 'jshint', 'concurrent:dev']);
-    grunt.registerTask('build', ['compass:prod', 'webpack:prod']);
+    grunt.registerTask('build', ['clean', 'compass:prod', 'webpack:prod']);
 };
