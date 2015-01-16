@@ -4,51 +4,17 @@
  */
 'use strict';
 var React = require('react');
-var StoreMixin = require('fluxible').StoreMixin;
-var DocsStore = require('../stores/DocsStore');
 
 var Component = React.createClass({
-    mixins: [ StoreMixin ],
-    statics: {
-        storeListeners: {
-            _onChange: [ DocsStore ]
-        }
-    },
-    getInitialState: function () {
-        return this._getState();
-    },
-    _getState: function () {
-        return {
-            docs: this.getStore(DocsStore).getAll()
-        };
-    },
-    _onChange: function () {
-        this.setState(this._getState());
-    },
     render: function () {
-        var main;
-        var docs = this.state.docs;
-        var docItems = docs.map(function (doc) {
-            return (
-                <li>{doc}</li>
-            );
-        }, this);
-
-        if (docs.length) {
-            main = (
-                <section id="main">
-                    <ul id="doc-list">
-                        {docItems}
-                    </ul>
-                </section>
-            );
-        }
 
         return (
-            <div>
-                <h1>Guides</h1>
-                {main}
-            </div>
+            <section id="guides">
+                <div className="content">
+                    <h1>Guides</h1>
+                    <p>Princess Leia I find your lack of faith disturbing lightsaber Tosche Station apprentice. Uncle Owen hyperspace stormtrooper. I'd just as soon kiss a wookiee bantha emperor wretched hive of scum and villainy blast shield. I've got a very bad feeling about this Lando Calrissian Darth Vader. Princess Leia I find your lack of faith disturbing lightsaber Tosche Station apprentice. Uncle Owen hyperspace stormtrooper. I'd just as soon kiss a wookiee bantha emperor wretched hive of scum and villainy blast shield. I've got a very bad feeling about this Lando Calrissian Darth Vader.</p>
+                </div>
+            </section>
         );
     }
 });
