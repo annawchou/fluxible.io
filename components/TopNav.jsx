@@ -18,7 +18,8 @@ var TopNav = React.createClass({
         var links = this.props.links;
         var context = this.props.context;
         var linkHTML = Object.keys(links).map(function (name) {
-            var className, icon;
+            var className;
+            var icon;
             var link = links[name];
 
             if (selected === name) {
