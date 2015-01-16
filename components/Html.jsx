@@ -16,17 +16,15 @@ var Component = React.createClass({
                     <meta name="viewport" content="width=device-width, user-scalable=no" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
+                    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
                     <link rel="stylesheet" href="/public/css/theme.css" />
-                    <link rel="stylesheet" href="/public/css/styles.css" />
                 </head>
                 <body>
-                    <div className="content">
-                        <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
-                    </div>
-                    <div className="footer l-box is-center">
-                        Yahoo! &copy; 2015
-                    </div>
+                    <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
                     <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
+                     <div className="footer l-box is-center">
+                         Yahoo! &copy; 2015
+                     </div>
                     <script src="/public/js/common.js" defer></script>
                     <script src="/public/js/main.js" defer></script>
                 </body>

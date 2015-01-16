@@ -18,16 +18,20 @@ var TopNav = React.createClass({
         var links = this.props.links;
         var context = this.props.context;
         var linkHTML = Object.keys(links).map(function (name) {
-            var className;
+            var className, icon;
             var link = links[name];
 
             if (selected === name) {
                 className = 'pure-menu-selected';
             }
 
+            if ('github' === name) {
+                icon = <i className="fa fa-github"></i>;
+            }
+
             return (
                 <li className={className} key={link.path}>
-                    <NavLink routeName={link.page} context={context} target={link.target}>{link.label}</NavLink>
+                    <NavLink routeName={link.page} context={context} target={link.target}>{icon}  {link.label}</NavLink>
                 </li>
             );
         });
