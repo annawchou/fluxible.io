@@ -5,3 +5,4 @@ deploy.json
 grasshopper.json
 node_modules
 npm-debug.log
+secrets.js

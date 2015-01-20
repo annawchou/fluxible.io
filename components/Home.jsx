@@ -15,10 +15,10 @@ var Component = React.createClass({
                     <div className="splash">
                         <h1 className="splash-head">Fluxible</h1>
                         <p className="splash-subhead">
-                            Build isophorphic Flux applications
+                            Build isomorphic Flux applications
                         </p>
                         <p>
-                            <NavLink className="pure-button pure-button-primary" routeName="guides" context={this.props.context}>Get Started</NavLink>
+                            <NavLink className="pure-button pure-button-primary" routeName="docs" context={this.props.context}>Get Started</NavLink>
                         </p>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
 'use strict';
 var React = require('react');
 var Home = require('./Home.jsx');
-var Guides = require('./Guides.jsx');
+var Docs = require('./Docs.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
 var NavLink = require('flux-router-component').NavLink;
@@ -30,8 +30,8 @@ var Application = React.createClass({
         if ('home' === this.state.currentPageName) {
             page = <Home context={this.props.context} />;
         }
-        else if ('guides' === this.state.currentPageName) {
-            page = <Guides context={this.props.context} />;
+        else if ('docs' === this.state.currentPageName) {
+            page = <Docs context={this.props.context} />;
         }
 
         return (

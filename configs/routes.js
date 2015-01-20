@@ -9,13 +9,13 @@ module.exports = {
             done();
         }
     },
-    guides: {
-        path: '/guides',
+    docs: {
+        path: '/docs',
         method: 'get',
-        page: 'guides',
-        label: 'Guides',
+        page: 'docs',
+        label: 'Docs',
         action: function (context, payload, done) {
-            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | Guides' });
+            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | Docs' });
             done();
         }
     },

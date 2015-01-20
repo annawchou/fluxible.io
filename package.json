@@ -35,12 +35,15 @@
     "express-state": "^1.2.0",
     "flux-router-component": "^0.5.0",
     "fluxible": "^0.1.0",
-    "fluxible-plugin-fetchr": "^0.2.0",
-    "fluxible-plugin-routr": "^0.3.0",
+    "fluxible-plugin-fetchr": "~0.2.1",
+    "fluxible-plugin-routr": "~0.3.0",
+    "marked": "^0.3.2",
     "node-jsx": "^0.12.0",
     "react": "^0.12.0",
+    "request": "^2.51.0",
     "serialize-javascript": "^1.0.0",
-    "serve-favicon": "^2.1.6"
+    "serve-favicon": "^2.1.6",
+    "walk": "~2.3.9"
   },
   "devDependencies": {
     "bundle-loader": "^0.5.0",
