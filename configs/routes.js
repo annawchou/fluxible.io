@@ -1,3 +1,5 @@
+var showDoc = require('../actions/showDoc');
+
 module.exports = {
     home: {
         path: '/',
@@ -15,8 +17,18 @@ module.exports = {
         page: 'docs',
         label: 'Docs',
         action: function (context, payload, done) {
-            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | Docs' });
-            done();
+            var params = { key: 'docs/overview.md' };
+            context.executeAction(showDoc, params, done);
+        }
+    },
+    doc_page: {
+        path: '/docs/:key*',
+        method: 'get',
+        page: 'doc_page',
+        label: 'Doc Page',
+        action: function (context, payload, done) {
+            var params = { key: payload.url.substring(1) + '.md' };
+            context.executeAction(showDoc, params, done);
         }
     },
     github: {

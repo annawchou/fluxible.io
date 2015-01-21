@@ -3,43 +3,33 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
-var React = require('react');
+var React = require('react/addons');
 var NavLink = require('flux-router-component').NavLink;
 
+var cx = React.addons.classSet;
+
 var TopNav = React.createClass({
-    getDefaultProps: function () {
-        return {
-            selected: 'home',
-            links: {}
-        };
-    },
     render: function() {
         var selected = this.props.selected;
-        var links = this.props.links;
         var context = this.props.context;
-        var linkHTML = Object.keys(links).map(function (name) {
-            var className;
-            var icon;
-            var link = links[name];
-
-            if (selected === name) {
-                className = 'pure-menu-selected';
-            }
-
-            if ('github' === name) {
-                icon = <i className="fa fa-github"></i>;
-            }
-
-            return (
-                <li className={className} key={link.path}>
-                    <NavLink routeName={link.page} context={context} target={link.target}>{icon}  {link.label}</NavLink>
-                </li>
-            );
-        });
 
         return (
             <ul>
-                {linkHTML}
+                <li className={cx({'pure-menu-selected': selected === 'home'})}>
+                    <NavLink routeName="home" context={context}>
+                        Home
+                    </NavLink>
+                </li>
+                <li className={cx({'pure-menu-selected': selected === 'docs'})}>
+                    <NavLink routeName="docs" context={context}>
+                        Docs
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink routeName="github" context={context} target="_blank">
+                        <i className="fa fa-github"></i> GitHub
+                    </NavLink>
+                </li>
             </ul>
         );
     }
