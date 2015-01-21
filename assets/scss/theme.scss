@@ -1,3 +1,5 @@
+@import 'syntax';
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -17,6 +19,17 @@ body {
 
 h1, h2, h3, h4, h5, h6, label {
     color: #34495e;
+}
+
+a {
+    color: #4183c4;
+
+    &:link {
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .pure-img-responsive {
@@ -120,17 +133,17 @@ a.pure-button-primary {
     color: #AECFE5;
 }
 
-.pure-menu {
+.home-menu {
     .pure-menu-heading {
         text-transform: none;
     }
 }
 
-.pure-menu li a {
+.home-menu li a {
     padding: 5px 10px;
 }
 
-.pure-menu.pure-menu-open.pure-menu-fixed {
+.home-menu.pure-menu-open.pure-menu-fixed {
     /* Fixed menus normally have a border at the bottom. */
     border-bottom: none;
     /* I need a higher z-index here because of the scroll-over effect. */
@@ -231,7 +244,7 @@ a.pure-button-primary {
 
 /* This is the class used for the footer */
 .footer {
-    background: #eee;
+    border-top: 1px solid #eee;
 }
 
 
@@ -247,7 +260,7 @@ a.pure-button-primary {
     }
 
     /* Increase the link spacing */
-    .pure-menu li a {
+    .home-menu li a {
         padding: 5px 10px;
     }
 

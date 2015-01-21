@@ -16,7 +16,7 @@ var app = new FluxibleApp({
 app.plug(fetchrPlugin({ xhrPath: '/api' }));
 app.plug(routrPlugin({ routes: routes }));
 
-app.registerStore(require('./stores/DocsStore'));
+app.registerStore(require('./stores/DocStore'));
 app.registerStore(require('./stores/PageStore'));
 app.registerStore(require('./stores/ApplicationStore'));
 
