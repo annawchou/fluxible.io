@@ -5,11 +5,17 @@
 'use strict';
 var fs = require('fs');
 var walk = require('walk');
-var request = require('request');
-var secrets = require('../secrets');
+var marked = require('marked');
+var highlight = require('highlight.js');
 
 var content = {};
 var walker = walk.walk('docs');
+
+marked.setOptions({
+    highlight: function (code) {
+        return highlight.highlightAuto(code).value;
+    }
+});
 
 walker.on('file', function (root, fstats, next) {
     var key = root + '/' + fstats.name;
@@ -19,35 +25,15 @@ walker.on('file', function (root, fstats, next) {
             throw new Error('[read file] ' + err);
         }
 
-        var options = {
-            url: 'https://api.github.com/markdown',
-            qs: {
-                client_id: secrets.github.clientId,
-                client_secret: secrets.github.clientSecret
-            },
-            headers: {
-                'User-Agent': 'Fluxible-Website'
-            },
-            json: {
-                text: data.toString()
-            }
-        };
-
         var heading = data.toString().split('\n')[0].replace('#', '').trim();
 
-        request.post(options, function (err, response, body) {
-            if (err) {
-                throw new Error('[gh markdown] ' + err);
-            }
+        content[key] = {
+            key: key,
+            title: heading,
+            content: marked(data.toString())
+        };
 
-            content[key] = {
-                key: key,
-                title: heading,
-                content: body
-            };
-
-            next();
-        });
+        next();
     });
 });
 

@@ -18,7 +18,7 @@ code {
     padding-bottom: 0.2em;
     margin: 0;
     font-size: 13px;
-    background-color: rgba(0,0,0,0.04);
+    background-color: #f7f7f7;
     border-radius: 3px;
 
     &:before,
@@ -28,88 +28,135 @@ code {
     }
 }
 
-
-/* from github.com */
-.pl-c {
-    color: #969896;
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+    font-size: inherit;
 }
 
-.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
-    color: #0086b3;
+
+/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
 }
 
-.pl-e,.pl-en {
-    color: #795da3;
+.hljs-comment,
+.diff .hljs-header,
+.hljs-javadoc {
+  color: #998;
+  font-style: italic;
 }
 
-.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
-    color: #333;
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
 }
 
-.pl-ent {
-    color: #63a35c;
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
 }
 
-.pl-k,.pl-s,.pl-st {
-    color: #a71d5d;
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-phpdoc,
+.hljs-dartdoc,
+.tex .hljs-formula {
+  color: #d14;
 }
 
-.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src {
-    color: #df5000;
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
 }
 
-.pl-mo,.pl-v {
-    color: #1d3e81;
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
 }
 
-.pl-id {
-    color: #b52a1d;
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
 }
 
-.pl-ii {
-    background-color: #b52a1d;
-    color: #f8f8f8;
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rules .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
 }
 
-.pl-sr .pl-cce {
-    color: #63a35c;
-    font-weight: bold;
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body {
+  color: #008080;
 }
 
-.pl-ml {
-    color: #693a17;
+.hljs-regexp {
+  color: #009926;
 }
 
-.pl-mh,.pl-mh .pl-en,.pl-ms {
-    color: #1d3e81;
-    font-weight: bold;
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
 }
 
-.pl-mq {
-    color: #008080;
+.hljs-built_in {
+  color: #0086b3;
 }
 
-.pl-mi {
-    color: #333;
-    font-style: italic;
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
 }
 
-.pl-mb {
-    color: #333;
-    font-weight: bold;
+.hljs-deletion {
+  background: #fdd;
 }
 
-.pl-md,.pl-mdhf {
-    background-color: #ffecec;
-    color: #bd2c00;
+.hljs-addition {
+  background: #dfd;
 }
 
-.pl-mdht,.pl-mi1 {
-    background-color: #eaffea;
-    color: #55a532;
+.diff .hljs-change {
+  background: #0086b3;
 }
 
-.pl-mdr {
-    color: #795da3;
-    font-weight: bold;
+.hljs-chunk {
+  color: #aaa;
 }
