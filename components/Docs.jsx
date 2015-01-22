@@ -36,7 +36,7 @@ var Component = React.createClass({
                 <div className="pure-g">
                     <div className="pure-u-md-1-5">
                         <div className="pure-menu pure-menu-open">
-                            <a className="pure-menu-heading">Fluxible Docs</a>
+                            <a className="pure-menu-heading">Quick Start</a>
                             <ul>
                                 <li>
                                     <NavLink href="/docs" context={context}>
