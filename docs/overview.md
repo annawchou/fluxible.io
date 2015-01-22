@@ -16,14 +16,26 @@ You should already be familiar with the following:
 Going forward we'll assume you know this stuff fairly well.
 
 
-## Meet the Family
+## Where is the code?
 
- - [`fluxible`](#fluxible) - Pluggable container and data flow regulator.
- - [`dispatchr`](#dispatchr) - Payload broadcasting and store helpers.
- - [`fetchr`](#fetchr) - Bridges data requests between client and server.
- - [`fluxible-plugin-fetchr`](#fluxible-plugin-fetchr) - Polymorphic RESTful services.
- - [`routr`](#routr) - Aligns routing at the client and server.
- - [`fluxible-plugin-routr`](#fluxible-plugin-routr) - Polymorphic routing behavior.
+Fluxible is a pluggable React application container that implements the Flux architecture.
+We provide core fluxible-plugins that build on top of our libraries and complement Fluxible.
+Our libraries are standalone and aren't tied to Fluxible.
+
+### Application
+
+- [`fluxible`](#fluxible) - Pluggable container for your react application.
+
+### Plugins
+
+ - [`fluxible-plugin-fetchr`](#fluxible-plugin-fetchr) - Isomorphic RESTful services using fetchr.
+ - [`fluxible-plugin-routr`](#fluxible-plugin-routr) - Isomorphic routing methods using routr.
+
+### Libraries
+
+ - [`dispatchr`](#dispatchr) - Action broadcaster and store manager.
+ - [`fetchr`](#fetchr) - RESTful data service for the client and server.
+ - [`routr`](#routr) - Routing for the client and server.
  - [`flux-router-component`](#flux-router-component) - React components and mixins for routing.
 
 
