@@ -11,9 +11,11 @@
  * Most of these are inherited from Base, but I want to change a few.
  */
 body {
+    font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+    background-color: #f9f9f9;
     padding-top: 50px;
     line-height: 1.7em;
-    color: #7f8c8d;
+    color: #444;
     font-size: 13px;
     overflow: scroll;
 }
@@ -31,6 +33,10 @@ a {
     &:hover {
         text-decoration: underline;
     }
+}
+
+iframe {
+    border: 0;
 }
 
 .pure-img-responsive {
@@ -107,31 +113,43 @@ a.pure-button-primary {
 
 .home-menu ul {
     float: right;
+    position: static;
+    visibility: visible;
 }
 
 .home-menu.pure-menu-open {
-    background: #2d3e50;
+    background: #3B3738;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .home-menu .pure-menu-heading {
-    color: white;
+    color: #00D8FF;
     font-weight: 400;
     font-size: 120%;
+    margin: 0;
+    padding: 0;
+    line-height: 33px;
+
+    img {
+        float: left;
+        margin-right: 10px;
+    }
 }
 
 .home-menu .pure-menu-selected a {
-    color: white;
+    color: #fff;
 }
 
 .home-menu a {
-    color: #6FBEF3;
+    color: #ccc;
+    text-transform: uppercase;
 }
 
 .home-menu li a:hover,
 .home-menu li a:focus {
     background: none;
     border: none;
-    color: #AECFE5;
+    color: #eee;
 }
 
 .home-menu {
@@ -160,6 +178,12 @@ a.pure-button-primary {
 /* We want to give the content area some more padding */
 .content {
     padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-menu .content {
+    padding: 0;
 }
 
 
@@ -260,6 +284,10 @@ a.pure-button-primary {
         font-size: 16px;
     }
 
+    .content {
+        max-width: 768px;
+    }
+
     /* Increase the link spacing */
     .home-menu li a {
         padding: 5px 10px;
@@ -284,4 +312,7 @@ a.pure-button-primary {
  * of the mobile and tablet styles. 78em == 1248px
  */
 @media (min-width: 78em) {
+    .content {
+        max-width: 1248px;
+    }
 }

@@ -13,7 +13,7 @@ var Component = React.createClass({
                 <head>
                     <meta charSet="utf-8" />
                     <title>{this.props.context.getStore(PageStore).getPageTitle()}</title>
-                    <meta name="viewport" content="width=device-width, user-scalable=no" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
                     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
