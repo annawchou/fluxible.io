@@ -1,3 +1,3 @@
-# Routing
+# Plugins
 
 Details coming soon.

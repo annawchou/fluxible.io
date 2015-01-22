@@ -1,3 +1,3 @@
-# Routing
+# Stores
 
 Details coming soon.
