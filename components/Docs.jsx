@@ -38,7 +38,7 @@ var Component = React.createClass({
                         <div className="pure-menu pure-menu-open">
                             <NavLink href="/docs" context={context}>Quick Start</NavLink>
                             <ul>
-                                <li className="pure-menu-heading">Concepts</li>
+                                <li className="pure-menu-heading">Guides</li>
                                 <li>
                                     <NavLink href="/docs/flux-and-fluxible" context={context}>Flux &amp; Fluxible</NavLink>
                                 </li>
@@ -57,7 +57,7 @@ var Component = React.createClass({
                                 <li>
                                     <NavLink href="/docs/fetching-data" context={context}>Fetching Data</NavLink>
                                 </li>
-                                <li className="pure-menu-heading">Guides</li>
+                                <li className="pure-menu-heading">Tutorials</li>
                                 <li>
                                     <NavLink href="/docs/guides/routing" context={context}>Routing</NavLink>
                                 </li>
