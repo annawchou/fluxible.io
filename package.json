@@ -21,10 +21,17 @@
       "product": "General"
     },
     "custodian": {
-      "email": "sbertal@yahoo-inc.com"
+      "email": "fluxible@yahoo-inc.com"
     },
     "lint": "yhint",
-    "profile": "td-app"
+    "profile": "td-app",
+    "secrets": {
+      "kgp": [
+        "./secrets/fluxible.alpha.kgp",
+        "./secrets/fluxible.beta.kgp",
+        "./secrets/fluxible.prod.kgp"
+      ]
+    }
   },
   "dependencies": {
     "body-parser": "^1.6.4",
