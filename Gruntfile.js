@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                 script: './server.js',
                 options: {
                     ignore: ['build/**'],
-                    ext: 'js,jsx'
+                    ext: 'js,jsx,md'
                 }
             }
         },
