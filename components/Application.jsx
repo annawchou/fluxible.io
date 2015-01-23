@@ -27,10 +27,11 @@ var Application = React.createClass({
     },
     render: function () {
         var page;
+
         if ('home' === this.state.currentPageName) {
             page = <Home context={this.props.context} />;
         }
-        else if (this.state.currentPageName.indexOf('doc') > -1) {
+        else if (this.state.currentPageName.indexOf('started') > -1 || this.state.currentPageName.indexOf('guides') > -1) {
             page = <Docs context={this.props.context} />;
         }
 
@@ -41,7 +42,7 @@ var Application = React.createClass({
                         <div className="content">
                             <TopNav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
                             <NavLink className="pure-menu-heading" routeName="home" context={this.props.context}>
-                                <img src="/public/images/hex-logo.png" height="33" width="29" /> Fluxible
+                                Fluxible
                             </NavLink>
                         </div>
                     </div>

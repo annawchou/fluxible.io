@@ -3,6 +3,8 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
+
+var debug = require('debug')('DocsService');
 var fs = require('fs');
 var walk = require('walk');
 var marked = require('marked');
@@ -39,6 +41,7 @@ walker.on('file', function (root, fstats, next) {
 
 walker.on('end', function () {
     // done walking
+    debug(content);
 });
 
 module.exports = {

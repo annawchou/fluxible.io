@@ -33,18 +33,18 @@ var Component = React.createClass({
                         <div className="pure-u-1 pure-u-md-6-24">
                             <div className="doc-menu pure-menu pure-menu-open">
                                 <ul>
-                                    <li><NavLink href="/docs" context={context}>Quick Start</NavLink></li>
+                                    <li><NavLink href="/getting-started.html" context={context}>Getting Started</NavLink></li>
                                     <li className="pure-menu-heading">Guides</li>
-                                    <li><NavLink href="/docs/flux-and-fluxible" context={context}>Flux &amp; Fluxible</NavLink></li>
-                                    <li><NavLink href="/docs/plugins" context={context}>Plugins</NavLink></li>
-                                    <li><NavLink href="/docs/dispatcher" context={context}>Dispatcher</NavLink></li>
-                                    <li><NavLink href="/docs/stores" context={context}>Stores</NavLink></li>
-                                    <li><NavLink href="/docs/actions" context={context}>Actions</NavLink></li>
-                                    <li><NavLink href="/docs/fetching-data" context={context}>Fetching Data</NavLink></li>
+                                    <li><NavLink href="/guides/flux-and-fluxible.html" context={context}>Flux &amp; Fluxible</NavLink></li>
+                                    <li><NavLink href="/guides/plugins.html" context={context}>Plugins</NavLink></li>
+                                    <li><NavLink href="/guides/dispatcher.html" context={context}>Dispatcher</NavLink></li>
+                                    <li><NavLink href="/guides/stores.html" context={context}>Stores</NavLink></li>
+                                    <li><NavLink href="/guides/actions.html" context={context}>Actions</NavLink></li>
+                                    <li><NavLink href="/guides/fetching-data.html" context={context}>Fetching Data</NavLink></li>
                                     <li className="pure-menu-heading">Tutorials</li>
-                                    <li><NavLink href="/docs/guides/routing" context={context}>Routing</NavLink></li>
-                                    <li><NavLink href="/docs/guides/todo-mvc" context={context}>Todo MVC</NavLink></li>
-                                    <li><NavLink href="/docs/guides/chat" context={context}>Chat</NavLink></li>
+                                    <li><NavLink href="/tutorials/routing.html" context={context}>Routing</NavLink></li>
+                                    <li><NavLink href="/tutorials/todo-mvc.html" context={context}>Todo MVC</NavLink></li>
+                                    <li><NavLink href="/tutorials/chat.html" context={context}>Chat</NavLink></li>
                                     <li className="pure-menu-heading">GitHub Links</li>
                                     <li><a href="https://github.com/yahoo/fluxible" target="_blank">fluxible</a></li>
                                     <li><a href="https://github.com/yahoo/dispatchr" target="_blank">dispatchr</a></li>
