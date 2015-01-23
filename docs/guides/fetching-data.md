@@ -12,7 +12,7 @@ Only then, can the server query the database and return the results back to the 
 
 We want to be able to fetch the data on the server and client without extra code.
 
-[Fetchr] is a library that manages an application's services and provides an isomorphic interface for calling the services.
+[Fetchr](https://github.com/yahoo/fetchr) is a library that manages an application's services and provides an isomorphic interface for calling the services.
 Fetchr transparently changes how it calls the services based on environment:
 on the server, calls are made directly to the services, while on the client,
 calls are executed via XHR to a route that proxies to the individual services.
@@ -22,7 +22,7 @@ Fetchr provides an appropriate abstraction so that you can fetch (CRUD) the data
 
 ## Using The Plugin
 
-[fluxible-plugin-fetchr] is how we will use Fetchr in our Fluxible applications.
+[fluxible-plugin-fetchr](https://github.com/yahoo/fluxible-plugin-fetchr) is how we will use Fetchr in our Fluxible applications.
 
 ```js
 var Fluxible = require('fluxible');
