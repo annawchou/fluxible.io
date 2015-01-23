@@ -1,18 +1,12 @@
 # Fetching Data
 
-On the server, we can query the database directly to fetch some data.
+Data is organized into services.
+Services are where you define your CRUD operations for a specific resource.
+A resource is a unique string that identifies the data (e.g. 'user', 'photo', 'comment').
 
-On the client, however, we can NOT directly query the database.
+For example, your application might have a User Service which defines how to create, read, update and delete a user account.
 
-Instead, we have to write extra code to:
- - expose a REST endpoint on the server
- - make an xhr request from the client
-
-Only then, can the server query the database and return the results back to the client for parsing.
-
-We want to be able to fetch the data on the server and client without extra code.
-
-[Fetchr](https://github.com/yahoo/fetchr) is a library that manages an application's services and provides an isomorphic interface for calling the services.
+[Fetchr](https://github.com/yahoo/fetchr) manages an application's services and provides an isomorphic interface for calling the services.
 Fetchr transparently changes how it calls the services based on environment:
 on the server, calls are made directly to the services, while on the client,
 calls are executed via XHR to a route that proxies to the individual services.
@@ -35,42 +29,43 @@ var app = new Fluxible();
 app.plug(pluginInstance);
 ```
 
-## Services
 
-Services are where you define your CRUD operations for a specific resource (i.e. Users, Photos, etc.).
+## Creating Your Services
 
-### Creating Your Services
-
-UserService.js
 ```js
+// UserService.js
 module.exports = {
-    //Name is required
+    // Name is the resource. Required.
     name: 'user',
-    //At least one of the CRUD methods is Required
+    // At least one of the CRUD methods is Required
     read: function(req, resource, params, config, callback) {
         var data = DATABASE.getUser(params.userId);
         callback(null, data);
     },
-    //other methods
-    //create: function(req, resource, params, body, config, callback) {},
-    //update: function(req, resource, params, body, config, callback) {},
-    //delete: function(req, resource, params, config, callback) {}
+    // other methods
+    // create: function(req, resource, params, body, config, callback) {},
+    // update: function(req, resource, params, body, config, callback) {},
+    // delete: function(req, resource, params, config, callback) {}
 }
 ```
 
-### Registering Your Services
+
+## Registering Your Services
 
 ```js
-pluginInstance.registerService(yourService);
+var userService = require('services/UserService.js');
+pluginInstance.registerService(userService);
 ```
 
 Or if you need to do this from your application without direct access to the plugin
 
 ```js
-app.getPlugin('FetchrPlugin').registerService(yourService);
+var userService = require('services/UserService.js');
+app.getPlugin('FetchrPlugin').registerService(userService);
 ```
 
-### Exposing Your Services
+
+## Exposing Your Services
 
 Fetchr also contains an express/connect middleware that can be used as your REST endpoint from the client.
 
@@ -79,9 +74,10 @@ var server = express();
 server.use(pluginInstance.getXhrPath(), pluginInstance.getMiddleware());
 ```
 
-### Accessing Your Services
 
-To maintain the Flux unidirectional data flow, fetchers are only accessible from action creators.
+## Accessing Your Services
+
+To maintain the Flux unidirectional data flow, fetchers are only accessible from action creators via the actionContext.
 
 ```js
 
