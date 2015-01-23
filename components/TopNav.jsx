@@ -21,7 +21,7 @@ var TopNav = React.createClass({
                     </NavLink>
                 </li>
                 <li className={cx({'pure-menu-selected': selected === 'docs'})}>
-                    <NavLink routeName="docs" context={context}>
+                    <NavLink routeName="getting_started" context={context}>
                         Docs
                     </NavLink>
                 </li>
