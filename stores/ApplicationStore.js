@@ -13,6 +13,7 @@ var ApplicationStore = createStore({
         'UPDATE_PAGE_TITLE': 'updatePageTitle'
     },
     initialize: function (dispatcher) {
+        this.currentPageId = null;
         this.currentPageName = null;
         this.currentPage = null;
         this.currentRoute = null;
@@ -20,13 +21,15 @@ var ApplicationStore = createStore({
         this.pageTitle = '';
     },
     handleNavigate: function (route) {
+        var pageId = route.params.key;
         var pageName = route.config.page;
         var page = this.pages[pageName];
 
-        if (pageName === this.getCurrentPageName()) {
+        if (pageName === this.currentPageName && pageId === this.currentPageId) {
             return;
         }
 
+        this.currentPageId = pageId;
         this.currentPageName = pageName;
         this.currentPage = page;
         this.currentRoute = route;
