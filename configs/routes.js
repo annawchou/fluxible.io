@@ -11,23 +11,17 @@ module.exports = {
             done();
         }
     },
-    getting_started: {
-        path: '/getting-started.html',
+    docs: {
+        path: '/:type?/:key.html',
         method: 'get',
-        page: 'started',
-        label: 'started',
+        page: 'docs',
+        label: 'docs',
         action: function (context, payload, done) {
-            var params = { key: 'docs/getting-started.md' };
-            context.executeAction(showDoc, params, done);
-        }
-    },
-    guides: {
-        path: '/:type/:key*.html',
-        method: 'get',
-        page: 'guides',
-        label: 'guides',
-        action: function (context, payload, done) {
-            var params = { key: 'docs/' + payload.params.type + '/' + payload.params.key + '.md' };
+            var params = {
+                key: 'docs/' +
+                    (payload.params.type ? payload.params.type + '/' : '') +
+                    payload.params.key + '.md'
+            };
             context.executeAction(showDoc, params, done);
         }
     },

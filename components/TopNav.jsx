@@ -15,13 +15,8 @@ var TopNav = React.createClass({
 
         return (
             <ul>
-                <li className={cx({'pure-menu-selected': selected === 'home'})}>
-                    <NavLink routeName="home" context={context}>
-                        Home
-                    </NavLink>
-                </li>
                 <li className={cx({'pure-menu-selected': selected === 'docs'})}>
-                    <NavLink routeName="getting_started" context={context}>
+                    <NavLink routeName="docs" navParams={{key: 'overview'}} context={context}>
                         Docs
                     </NavLink>
                 </li>

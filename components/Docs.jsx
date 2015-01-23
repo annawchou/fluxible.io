@@ -33,7 +33,8 @@ var Component = React.createClass({
                         <div className="pure-u-1 pure-u-md-6-24">
                             <div className="doc-menu pure-menu pure-menu-open">
                                 <ul>
-                                    <li><NavLink href="/getting-started.html" context={context}>Getting Started</NavLink></li>
+                                    <li><NavLink href="/overview.html" context={context}>Overview</NavLink></li>
+                                    <li><NavLink href="/quick-start.html" context={context}>Quick Start</NavLink></li>
                                     <li className="pure-menu-heading">Guides</li>
                                     <li><NavLink href="/guides/flux-and-fluxible.html" context={context}>Flux &amp; Fluxible</NavLink></li>
                                     <li><NavLink href="/guides/plugins.html" context={context}>Plugins</NavLink></li>
@@ -45,14 +46,6 @@ var Component = React.createClass({
                                     <li><NavLink href="/tutorials/routing.html" context={context}>Routing</NavLink></li>
                                     <li><NavLink href="/tutorials/todo-mvc.html" context={context}>Todo MVC</NavLink></li>
                                     <li><NavLink href="/tutorials/chat.html" context={context}>Chat</NavLink></li>
-                                    <li className="pure-menu-heading">GitHub Links</li>
-                                    <li><a href="https://github.com/yahoo/fluxible" target="_blank">fluxible</a></li>
-                                    <li><a href="https://github.com/yahoo/dispatchr" target="_blank">dispatchr</a></li>
-                                    <li><a href="https://github.com/yahoo/fetchr" target="_blank">fetchr</a></li>
-                                    <li><a href="https://github.com/yahoo/fluxible-plugin-fetchr" target="_blank">fluxible-plugin-fetchr</a></li>
-                                    <li><a href="https://github.com/yahoo/routr" target="_blank">routr</a></li>
-                                    <li><a href="https://github.com/yahoo/fluxible-plugin-routr" target="_blank">fluxible-plugin-routr</a></li>
-                                    <li><a href="https://github.com/yahoo/flux-router-component" target="_blank">flux-router-component</a></li>
                                 </ul>
                             </div>
                         </div>
