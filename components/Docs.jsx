@@ -16,12 +16,7 @@ var Component = React.createClass({
         }
     },
     getInitialState: function () {
-        var doc = this.getStore(DocStore).getCurrent();
-
-        if (!doc) {
-            doc = {};
-        }
-
+        var doc = this.getStore(DocStore).getCurrent() || {};
         return doc;
     },
     _onChange: function() {
