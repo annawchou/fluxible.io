@@ -31,7 +31,7 @@ var Application = React.createClass({
         if ('home' === this.state.currentPageName) {
             page = <Home context={this.props.context} />;
         }
-        else if (this.state.currentPageName.indexOf('started') > -1 || this.state.currentPageName.indexOf('guides') > -1) {
+        else if ('docs' === this.state.currentPageName) {
             page = <Docs context={this.props.context} />;
         }
 

@@ -18,7 +18,7 @@ var Component = React.createClass({
                             Build isomorphic Flux applications
                         </p>
                         <p>
-                            <NavLink className="pure-button pure-button-primary" routeName="getting_started" context={this.props.context}>Get Started</NavLink>
+                            <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{key: 'overview'}} context={this.props.context}>Get Started</NavLink>
                         </p>
                     </div>
                 </div>
