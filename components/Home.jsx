@@ -24,7 +24,7 @@ var Component = React.createClass({
                 </div>
                 <div className="content">
                     <div className="speakerdeck-container">
-                        <script async className="speakerdeck-embed" data-id="87ecaa3048750132f42542ffc18c6fcf" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+                        <iframe className="speakerdeck-iframe" width="100%" height="410" frameBorder="0" src="//speakerdeck.com/player/87ecaa3048750132f42542ffc18c6fcf?" allowFullScreen="true"></iframe>
                     </div>
                 </div>
             </section>
