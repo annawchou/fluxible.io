@@ -4,14 +4,17 @@
  */
 'use strict';
 
+var path = require('path');
 var debug = require('debug')('DocsService');
 var fs = require('fs');
 var walk = require('walk');
 var marked = require('marked');
 var highlight = require('highlight.js');
 
+var CWD = process.cwd();
+
 var content = {};
-var walker = walk.walk('docs');
+var walker = walk.walk(path.join(CWD, 'docs'));
 
 marked.setOptions({
     highlight: function (code) {
@@ -28,6 +31,9 @@ walker.on('file', function (root, fstats, next) {
         }
 
         var heading = data.toString().split('\n')[0].replace('#', '').trim();
+
+        // need to strip folder path to match URL key
+        key = key.replace(CWD, '');
 
         content[key] = {
             key: key,

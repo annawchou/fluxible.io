@@ -2,6 +2,10 @@
  * Copyright 2014, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
+
+// some environments run the app from a different directory
+process.chdir(__dirname);
+
 require('node-jsx').install({ extension: '.jsx' });
 var express = require('express');
 var favicon = require('serve-favicon');

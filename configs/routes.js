@@ -18,7 +18,7 @@ module.exports = {
         label: 'docs',
         action: function (context, payload, done) {
             var params = {
-                key: 'docs/' +
+                key: '/docs/' +
                     (payload.params.type ? payload.params.type + '/' : '') +
                     payload.params.key + '.md'
             };
