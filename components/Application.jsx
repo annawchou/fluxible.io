@@ -38,8 +38,12 @@ var Application = React.createClass({
             <div>
                 <div className="header">
                     <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-                        <TopNav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
-                        <NavLink className="pure-menu-heading" routeName="home" context={this.props.context}>Fluxible</NavLink>
+                        <div className="content">
+                            <TopNav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
+                            <NavLink className="pure-menu-heading" routeName="home" context={this.props.context}>
+                                <img src="/public/images/hex-logo.png" height="33" width="29" /> Fluxible
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
                 {page}

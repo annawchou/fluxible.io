@@ -9,12 +9,16 @@ module.exports = createStore({
     storeName: 'DocsStore',
     initialize: function () {
         this.docs = {};
-        this.current = undefined;
+        this.current = {};
     },
     handlers: {
         'RECEIVE_DOC_SUCCESS': '_receiveDoc'
     },
     _receiveDoc: function (doc) {
+        if (!doc || !doc.hasOwnProperty('key')) {
+            return;
+        }
+
         this.docs[doc.key] = doc;
         this.current = doc;
         this.emitChange();

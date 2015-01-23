@@ -5,6 +5,15 @@ var webpack = require('webpack');
 module.exports = function (grunt) {
     grunt.initConfig({
         clean: ['build'],
+        copy: {
+            images: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/',
+                    src: ['images/**'], dest: 'build/'
+                }]
+            }
+        },
         compass: {
             options: {
                 sassDir: 'assets/scss',
@@ -137,6 +146,6 @@ module.exports = function (grunt) {
 
     // tasks
     grunt.registerTask('default', 'dev');
-    grunt.registerTask('dev', ['clean', 'jshint', 'concurrent:dev']);
-    grunt.registerTask('build', ['clean', 'compass:prod', 'webpack:prod']);
+    grunt.registerTask('dev', ['clean', 'copy', 'jshint', 'concurrent:dev']);
+    grunt.registerTask('build', ['clean', 'copy', 'compass:prod', 'webpack:prod']);
 };

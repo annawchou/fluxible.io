@@ -19,7 +19,7 @@ module.exports = function (context, payload, done) {
 
     // get content from service
     context.service.read('docs', payload, {}, function (err, data) {
-        if (err) {
+        if (err || !data) {
             context.dispatch('RECEIVE_DOC_FAILURE', payload);
             return done();
         }

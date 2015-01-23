@@ -23,8 +23,9 @@ var Component = React.createClass({
                     </div>
                 </div>
                 <div className="content">
-                    <h1>Home</h1>
-                    <p>Princess Leia I find your lack of faith disturbing lightsaber Tosche Station apprentice. Uncle Owen hyperspace stormtrooper. I'd just as soon kiss a wookiee bantha emperor wretched hive of scum and villainy blast shield. I've got a very bad feeling about this Lando Calrissian Darth Vader. Princess Leia I find your lack of faith disturbing lightsaber Tosche Station apprentice. Uncle Owen hyperspace stormtrooper. I'd just as soon kiss a wookiee bantha emperor wretched hive of scum and villainy blast shield. I've got a very bad feeling about this Lando Calrissian Darth Vader.</p>
+                    <div className="speakerdeck-container">
+                        <script async className="speakerdeck-embed" data-id="87ecaa3048750132f42542ffc18c6fcf" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+                    </div>
                 </div>
             </section>
         );
