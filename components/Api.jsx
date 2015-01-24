@@ -33,19 +33,16 @@ var Component = React.createClass({
                         <div className="pure-u-1 pure-u-md-6-24">
                             <div className="doc-menu pure-menu pure-menu-open">
                                 <ul>
-                                    <li><NavLink href="/overview.html" context={context}>Overview</NavLink></li>
-                                    <li><NavLink href="/quick-start.html" context={context}>Quick Start</NavLink></li>
-                                    <li className="pure-menu-heading">Guides</li>
-                                    <li><NavLink href="/guides/flux-and-fluxible.html" context={context}>Flux &amp; Fluxible</NavLink></li>
-                                    <li><NavLink href="/guides/plugins.html" context={context}>Plugins</NavLink></li>
-                                    <li><NavLink href="/guides/dispatcher.html" context={context}>Dispatcher</NavLink></li>
-                                    <li><NavLink href="/guides/stores.html" context={context}>Stores</NavLink></li>
-                                    <li><NavLink href="/guides/actions.html" context={context}>Actions</NavLink></li>
-                                    <li><NavLink href="/guides/fetching-data.html" context={context}>Fetching Data</NavLink></li>
-                                    <li className="pure-menu-heading">Tutorials</li>
-                                    <li><NavLink href="/tutorials/routing.html" context={context}>Routing</NavLink></li>
-                                    <li><NavLink href="/tutorials/todo-mvc.html" context={context}>Todo MVC</NavLink></li>
-                                    <li><NavLink href="/tutorials/chat.html" context={context}>Chat</NavLink></li>
+                                    <li className="pure-menu-heading">APIs</li>
+                                    <li><NavLink href="/s/api/fluxible.html" context={context}>Fluxible</NavLink></li>
+                                    <li className="pure-menu-heading">Plugins</li>
+                                    <li><NavLink href="/s/api/fluxible-plugin-fetchr.html" context={context}>Fluxible-plugin-Fetchr</NavLink></li>
+                                    <li><NavLink href="/s/api/fluxible-plugin-routr.html" context={context}>Fluxible-plugin-Routr</NavLink></li>
+                                    <li className="pure-menu-heading">Libraries</li>
+                                    <li><NavLink href="/s/api/dispatchr.html" context={context}>Dispatchr</NavLink></li>
+                                    <li><NavLink href="/s/api/fetchr.html" context={context}>Fetchr</NavLink></li>
+                                    <li><NavLink href="/s/api/routr.html" context={context}>Routr</NavLink></li>
+                                    <li><NavLink href="/s/api/flux-router-component.html" context={context}>Flux-router-component</NavLink></li>
                                 </ul>
                             </div>
                         </div>
