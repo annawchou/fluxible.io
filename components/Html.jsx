@@ -22,8 +22,15 @@ var Component = React.createClass({
                 <body>
                     <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
                     <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-                     <div className="footer l-box is-center">
-                         Yahoo! &copy; 2015
+                     <div className="footer l-box pure-g">
+                        <div className="pure-u-1 pure-u-md-1-2">
+                            All code on this site is licensed
+                            under the <a href="https://github.com/yahoo/fluxible.io/blob/master/LICENSE.md">Yahoo BSD License</a>,
+                            unless otherwise stated.
+                        </div>
+                        <div className="pure-u-1 pure-u-md-1-2 copyright">
+                            &copy; 2015 Yahoo! Inc. All rights reserved.
+                        </div>
                      </div>
                     <script src="/public/js/common.js" defer></script>
                     <script src="/public/js/main.js" defer></script>
