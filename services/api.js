@@ -22,7 +22,10 @@ module.exports = {
         var url = 'https://api.github.com/repos/yahoo/';
         url += params.repo;
         url += '/readme';
-        url += '?' + qs.stringify(secret.github);
+        url += '?' + qs.stringify({
+            client_id: secret.github.clientId,
+            client_secret: secret.github.clientSecret
+        });
 
         request
         .get(url)
