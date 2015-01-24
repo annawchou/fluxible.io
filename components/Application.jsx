@@ -7,6 +7,7 @@
 var React = require('react');
 var Home = require('./Home.jsx');
 var Docs = require('./Docs.jsx');
+var Api = require('./Api.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
 var NavLink = require('flux-router-component').NavLink;
@@ -33,6 +34,9 @@ var Application = React.createClass({
         }
         else if ('docs' === this.state.currentPageName) {
             page = <Docs context={this.props.context} />;
+        }
+        else if ('apis' === this.state.currentPageName) {
+            page = <Api context={this.props.context} />;
         }
 
         return (

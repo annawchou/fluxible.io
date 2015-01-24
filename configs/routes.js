@@ -1,4 +1,5 @@
 var showDoc = require('../actions/showDoc');
+var showApi = require('../actions/showApi');
 
 module.exports = {
     home: {
@@ -9,6 +10,15 @@ module.exports = {
         action: function (context, payload, done) {
             context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | Home' });
             done();
+        }
+    },
+    apis: {
+        path: '/s/api/:repo.html',
+        method: 'get',
+        page: 'apis',
+        label: 'API',
+        action: function (context, payload, done) {
+            context.executeAction(showApi, payload.params, done);
         }
     },
     docs: {
