@@ -49,7 +49,12 @@ var Application = React.createClass({
             hideLogo = true;
         }
         else if ('docs' === this.state.currentPageName) {
-            page = <Docs context={this.props.context} content={this.state.currentDoc.content} />;
+            var docsConfig = require('./../configs/docs');
+            page = <Docs menu={docsConfig} context={this.props.context} content={this.state.currentDoc.content} />;
+        }
+        else if ('apis' === this.state.currentPageName) {
+            var apisConfig = require('./../configs/apis');
+            page = <Docs menu={apisConfig} context={this.props.context} content={this.state.currentDoc.content} />;
         }
 
         return (

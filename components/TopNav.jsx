@@ -21,6 +21,11 @@ var TopNav = React.createClass({
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink routeName="apis" navParams={{key: 'fluxible'}} context={context}>
+                        API
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink routeName="github" context={context} target="_blank">
                         <i className="fa fa-github"></i> GitHub
                     </NavLink>

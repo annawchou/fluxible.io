@@ -12,8 +12,23 @@ module.exports = {
         label: 'Home',
         action: function (context, payload, done) {
             var params = {
+                resource: 'docs',
                 key: '/docs/home.md',
                 pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications'
+            };
+            context.executeAction(showDoc, params, done);
+        }
+    },
+    apis: {
+        path: '/api/:key.html',
+        method: 'get',
+        page: 'apis',
+        label: 'API',
+        action: function (context, payload, done) {
+            var params = {
+                resource: 'api',
+                key: 'api/' + payload.params.key,
+                repo: payload.params.key
             };
             context.executeAction(showDoc, params, done);
         }
@@ -25,6 +40,7 @@ module.exports = {
         label: 'docs',
         action: function (context, payload, done) {
             var params = {
+                resource: 'docs',
                 key: '/docs/' +
                     (payload.params.type ? payload.params.type + '/' : '') +
                     payload.params.key + '.md'
