@@ -2,6 +2,10 @@
 
 Fluxible is a pluggable React application container that implements the Flux architecture. We provide core fluxible-plugins that build on top of our libraries and complement Fluxible. These libraries are standalone and are not tied to Fluxible. We assume that you are familiar with [Flux](http://facebook.github.io/flux/docs/overview.html) and [React.js](http://facebook.github.io/react/); if not, please review the concepts first.
 
+<div class="speakerdeck-container nested">
+    <iframe class="speakerdeck-iframe" width="100%" height="350" frameborder="0" src="//speakerdeck.com/player/87ecaa3048750132f42542ffc18c6fcf?" allowFullScreen="true"></iframe>
+</div>
+
 ## Application
 
 - [fluxible](https://github.com/yahoo/fluxible) - Pluggable container for isomorphic Flux applications that provides interfaces that are common throughout the Flux architecture and restricts usage of these APIs to only the parts that need them to enforce the unidirectional flow.
