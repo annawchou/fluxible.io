@@ -7,7 +7,7 @@ module.exports = {
         page: 'home',
         label: 'Home',
         action: function (context, payload, done) {
-            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | Home' });
+            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications' });
             done();
         }
     },
