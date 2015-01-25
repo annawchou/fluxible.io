@@ -18,6 +18,7 @@ var Component = React.createClass({
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
                     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
                     <link rel="stylesheet" href="/public/css/theme.css" />
+                    <script dangerouslySetInnerHTML={{__html: this.props.tracking}}></script>
                 </head>
                 <body>
                     <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
