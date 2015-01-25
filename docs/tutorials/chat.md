@@ -1,3 +1,3 @@
 # Chat
 
-Tutorial coming soon, but check out our [Chat Example](https://github.com/yahoo/flux-examples/tree/master/chat) for now.
+Tutorial coming soon, but check out our [Chat example](https://github.com/yahoo/flux-examples/tree/master/chat) for now.

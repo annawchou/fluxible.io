@@ -1,24 +1,19 @@
 # Fetching Data
 
-Data is organized into services.
-Services are where you define your CRUD operations for a specific resource.
-A resource is a unique string that identifies the data (e.g. 'user', 'photo', 'comment').
+Data is organized into services. Services are where you define your CRUD operations for a specific resource. A resource is a unique string that identifies the data (e.g. 'user', 'photo', 'comment').
 
 For example, your application might have a User Service which defines how to create, read, update and delete a user account.
 
-[Fetchr](https://github.com/yahoo/fetchr) manages an application's services and provides an isomorphic interface for calling the services.
-Fetchr transparently changes how it calls the services based on environment:
-on the server, calls are made directly to the services, while on the client,
-calls are executed via XHR to a route that proxies to the individual services.
-So, the service code that you write is always executed on the server,
-but can be access transparently from actions without any knowledge of whether it's on the server or client.
-Fetchr provides an appropriate abstraction so that you can fetch (CRUD) the data needed in your stores using the same exact syntax on server and client side.
+[Fetchr](https://github.com/yahoo/fetchr) manages an application's services and provides an isomorphic interface for calling the services. Fetchr transparently changes how it calls the services based on environment: on the server, calls are made directly to the services, while on the client, calls are executed via XHR to a route that proxies to the individual services.
+
+The service code that you write is always executed on the server, but can be access transparently from actions without any knowledge of whether it's on the server or client. Fetchr provides an appropriate abstraction so that you can fetch (CRUD) the data needed in your stores using the same exact syntax on server and client side.
 
 ## Using The Plugin
 
 [fluxible-plugin-fetchr](https://github.com/yahoo/fluxible-plugin-fetchr) is how we will use Fetchr in our Fluxible applications.
 
 ```js
+// app.js
 var Fluxible = require('fluxible');
 var fetchrPlugin = require('fluxible-plugin-fetchr');
 var pluginInstance = fetchrPlugin({
@@ -53,11 +48,12 @@ module.exports = {
 ## Registering Your Services
 
 ```js
+// server.js
 var userService = require('services/UserService.js');
 pluginInstance.registerService(userService);
 ```
 
-Or if you need to do this from your application without direct access to the plugin
+Or if you need to do this from your application without direct access to the plugin:
 
 ```js
 var userService = require('services/UserService.js');
@@ -70,6 +66,7 @@ app.getPlugin('FetchrPlugin').registerService(userService);
 Fetchr also contains an express/connect middleware that can be used as your REST endpoint from the client.
 
 ```js
+// server.js
 var server = express();
 server.use(pluginInstance.getXhrPath(), pluginInstance.getMiddleware());
 ```
@@ -77,34 +74,18 @@ server.use(pluginInstance.getXhrPath(), pluginInstance.getMiddleware());
 
 ## Accessing Your Services
 
-To maintain the Flux unidirectional data flow, fetchers are only accessible from action creators via the actionContext.
+To maintain the Flux unidirectional data flow, services are only accessible from action creators via the actionContext.
 
 ```js
-
-/**
- * Calls the user service and sends the info to the store
- *
- * @method loadUser
- * @param {Object} context The context object
- * @param {Object} payload The payload object
- * @param {Function} done Called when action has completed
- * @async
- */
-
+// loaderUser.js
 module.exports = function loadUser(context, payload, done) {
-
     context.service.read('user', {}, {}, function (err, userInfo) {
-
         if (err || !userInfo) {
             context.dispatch('RECEIVE_USER_INFO_FAILURE', err);
         } else {
             context.dispatch('RECEIVE_USER_INFO_SUCCESS', userInfo);
         }
-
-        if (done) {
-            done(err);
-        }
+        done();
     });
 };
-
 ```
