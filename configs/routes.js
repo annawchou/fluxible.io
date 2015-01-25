@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
 var showDoc = require('../actions/showDoc');
 
 module.exports = {
@@ -7,7 +11,9 @@ module.exports = {
         page: 'home',
         label: 'Home',
         action: function (context, payload, done) {
-            context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications' });
+            context.dispatch('UPDATE_PAGE_TITLE', {
+                pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications'
+            });
             done();
         }
     },
