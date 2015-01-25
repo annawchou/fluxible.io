@@ -17,6 +17,7 @@ var csrf = require('csurf');
 var React = require('react');
 var app = require('./app');
 var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
+var tracking = require('./configs/tracking');
 
 var server = express();
 server.set('state namespace', 'App');
@@ -65,7 +66,8 @@ server.use(function (req, res, next) {
             context: context.getComponentContext(),
             markup: React.renderToString(AppComponent({
                 context: context.getComponentContext()
-            }))
+            })),
+            tracking: tracking
         }));
 
         res.send(doctype + html);
