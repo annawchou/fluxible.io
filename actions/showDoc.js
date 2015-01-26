@@ -1,5 +1,5 @@
 /**
- * Copyright 2014, Yahoo! Inc.
+ * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
@@ -12,7 +12,7 @@ module.exports = function (context, payload, done) {
     if (docFromCache) {
         context.dispatch('RECEIVE_DOC_SUCCESS', docFromCache);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: 'Fluxible | Docs - ' + docFromCache.title
+            pageTitle: docFromCache.title + ' | Fluxible'
         });
         return done();
     }
@@ -26,7 +26,7 @@ module.exports = function (context, payload, done) {
 
         context.dispatch('RECEIVE_DOC_SUCCESS', data);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: 'Fluxible | Docs - ' + data.title
+            pageTitle: data.title + ' | Fluxible'
         });
         done();
     });

@@ -1,6 +1,6 @@
 # Dispatcher
 
-Dispatchr's main goal is to facilitate server-side rendering of Flux applications while also working on the client-side to encourage code reuse. In order to isolate stores between requests on the server-side, we have opted to instantiate the Dispatcher and stores classes per request.
+[Dispatchr's](https://github.com/yahoo/dispatchr) main goal is to facilitate server-side rendering of Flux applications while also working on the client-side to encourage code reuse. In order to isolate stores between requests on the server-side, we have opted to instantiate the Dispatcher and stores classes per request.
 
 In addition, action registration is done by stores as a unit rather than individual callbacks. This allows us to lazily instantiate stores as the events that they handle are dispatched. Since instantiation of stores is handled by the Dispatcher, we can keep track of the stores that were used during a request and dehydrate their state to the client when the server has completed its execution.
 

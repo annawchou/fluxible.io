@@ -6,6 +6,14 @@ Within a context, Fluxible creates interfaces providing access to only certain p
  * **Component Context**: interface accessible by React components. Should be passed as prop to top level React component and then propagated to child components that require acess to it.
  * **Store Context**: interface accessible by stores. Passed as first parameter to all stores. See [Dispatchr docs](https://github.com/yahoo/dispatchr#constructor-1).
 
+For example, the following plugins below provide APIs for data fetching and routing:
+
+* [fluxible-plugin-fetchr](https://github.com/yahoo/fluxible-plugin-fetchr) - Provides isomorphic RESTful service access to your Fluxible application using Fetchr.
+* [fluxible-plugin-routr](https://github.com/yahoo/fluxible-plugin-routr) - Provides routing methods to your Fluxible application using Routr.
+
+
+## Creating Plugins
+
 Fluxible Plugins allow you to extend the interface of each context type. Here, we'll give components access to the `getFoo()` function:
 
 ```js
@@ -54,6 +62,7 @@ app.plug({
     rehydrate: function (state) {}
 });
 
+// when we create the context, we can pass in the value for foo
 var context = app.createContext({
     foo: 'bar'
 });
@@ -62,6 +71,3 @@ context.getComponentContext().getFoo(); // returns 'bar'
 // or this.props.context.getFoo() from a React component
 ```
 
-Example plugins:
- * [fluxible-plugin-fetchr](https://github.com/yahoo/fluxible-plugin-fetchr) - Provides isomorphic RESTful service access to your Fluxible application using Fetchr.
- * [fluxible-plugin-routr](https://github.com/yahoo/fluxible-plugin-routr) - Provides routing methods to your Fluxible application using Routr.

@@ -17,6 +17,7 @@ body {
     color: #444;
     font-size: 13px;
     overflow: scroll;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6, label {
@@ -46,10 +47,15 @@ iframe {
     margin-right: auto;
 }
 @media (min-width: 78em) {
-    max-width: 700px;
+    //max-width: 700px;
+    .speakerdeck-container.nested {
+        width: 500px;
+        float: right;
+        margin: 0 0 20px 20px;
+    }
 }
 @media (min-width: 48em) {
-    max-width: 700px;
+    //max-width: 700px;
 }
 
 .pure-img-responsive {
@@ -272,6 +278,7 @@ a.pure-button-primary {
     font-weight: bold;
     color: white;
     font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
 }
 
 /* This is the subheading that appears on the blue section */
@@ -279,6 +286,7 @@ a.pure-button-primary {
     color: white;
     letter-spacing: 0.05em;
     opacity: 0.8;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
 }
 
 
@@ -328,6 +336,7 @@ a.pure-button-primary {
 /* This is the class used for the footer */
 .footer {
     border-top: 1px solid #eee;
+    margin-top: 10px;
 }
 
 
@@ -362,6 +371,14 @@ a.pure-button-primary {
         border: none;
     }
 
+    .footer {
+        font-size: 90%;
+    }
+
+    /* Right align the text on wider screens */
+    .copyright {
+        text-align: right;
+    }
 }
 
 

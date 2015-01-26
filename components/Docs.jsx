@@ -1,5 +1,5 @@
 /**
- * Copyright 2014, Yahoo! Inc.
+ * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
@@ -40,12 +40,12 @@ var Component = React.createClass({
                                 <h3>Guides</h3>
                                 <ul>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'flux-and-fluxible'}} context={context}>Flux &amp; Fluxible</NavLink></li>
-                                    <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'plugins'}} context={context}>Plugins</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'dispatcher'}} context={context}>Dispatcher</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'stores'}} context={context}>Stores</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'actions'}} context={context}>Actions</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'controller-views'}} context={context}>Controller Views</NavLink></li>
-                                    <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'fetching-data'}} context={context}>Fetching Data</NavLink></li>
+                                    <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'fetching-data'}} context={context}>Services / Fetching Data</NavLink></li>
+                                    <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'plugins'}} context={context}>Plugins</NavLink></li>
                                 </ul>
 
                                 <h3>Tutorials</h3>
