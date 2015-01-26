@@ -10,18 +10,19 @@
  * -- BASE STYLES --
  * Most of these are inherited from Base, but I want to change a few.
  */
+
 body {
     font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
     background-color: #fff;
     line-height: 1.7em;
-    color: #444;
+    color: #333;
     font-size: 13px;
     overflow: scroll;
     -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6, label {
-    color: #34495e;
+    color: #333;
 }
 
 a {
@@ -29,6 +30,7 @@ a {
 
     &:link {
         text-decoration: none;
+        outline: none;
     }
     &:hover {
         text-decoration: underline;
@@ -108,7 +110,7 @@ iframe {
 .pure-button {
     background-color: #1f8dd6;
     color: white;
-    padding: 0.5em 2em;
+    padding: 0.4em 1em;
     border-radius: 5px;
 }
 
@@ -116,11 +118,16 @@ a.pure-button-primary {
     background: white;
     color: #1f8dd6;
     border-radius: 5px;
-    font-size: 120%;
+    font-size: 150%;
+    font-weight: 500;
+    border: 2px solid #1871ab;
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .doc-content {
-    padding-left: 20px;
+    padding: 30px 0 0 20px;
 }
 
 
@@ -138,6 +145,7 @@ a.pure-button-primary {
     float: right;
     position: static;
     visibility: visible;
+    font-weight: 500;
 }
 
 .home-menu.pure-menu-open {
@@ -147,8 +155,8 @@ a.pure-button-primary {
 
 .home-menu .pure-menu-heading {
     color: #fff;
-    font-weight: 400;
-    font-size: 120%;
+    font-weight: 500;
+    font-size: 110%;
     margin: 0;
     padding: 0;
     line-height: 33px;
@@ -174,6 +182,7 @@ a.pure-button-primary {
     background: none;
     border: none;
     color: #eee;
+    text-decoration: none;
 }
 
 .home-menu {
@@ -183,7 +192,7 @@ a.pure-button-primary {
 }
 
 .home-menu li a {
-    padding: 5px 10px;
+    padding: 0px;
 }
 
 .home-menu.pure-menu-open.pure-menu-fixed {
@@ -199,10 +208,11 @@ a.pure-button-primary {
  */
 
 .doc-menu {
-    margin: 20px 0 0 0;
+    padding: 30px 30px 0 0;
 
     h3 {
-        border-bottom: 1px solid #e7e7e7;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
         font-size: 90%;
         color: #565D64;
         text-transform: uppercase;
@@ -267,7 +277,7 @@ a.pure-button-primary {
 
 .splash {
     /* absolute center .splash within .splash-container */
-    padding: 50px 20px;
+    padding: 20px 20px 50px 0;
     margin: auto;
     text-align: center;
 }
@@ -275,18 +285,18 @@ a.pure-button-primary {
 /* This is the main heading that appears on the blue section */
 .splash-head {
     font-size: 450%;
-    font-weight: bold;
-    color: white;
-    font-weight: bold;
+    color: #fff;
+    font-weight: 300;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
 }
 
 /* This is the subheading that appears on the blue section */
 .splash-subhead {
-    color: white;
-    letter-spacing: 0.05em;
-    opacity: 0.8;
+    color: #fff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+    padding-bottom: 20px;
+    font-size: 120%;
 }
 
 
@@ -335,7 +345,6 @@ a.pure-button-primary {
 
 /* This is the class used for the footer */
 .footer {
-    border-top: 1px solid #eee;
     margin-top: 10px;
 }
 
@@ -359,6 +368,10 @@ a.pure-button-primary {
     /* Increase the link spacing */
     .home-menu li a {
         padding: 5px 10px;
+        color: #fff;
+        &:hover {
+            opacity: 0.8;
+        }
     }
 
     /* Adjust the splash font sizes */
@@ -372,7 +385,9 @@ a.pure-button-primary {
     }
 
     .footer {
-        font-size: 90%;
+        font-size: 80%;
+        max-width: 960px;
+        margin: 20px auto;
     }
 
     /* Right align the text on wider screens */
@@ -390,6 +405,6 @@ a.pure-button-primary {
 @media (min-width: 78em) {
     .content {
         padding: 0;
-        max-width: 1248px;
+        max-width: 960px;
     }
 }
