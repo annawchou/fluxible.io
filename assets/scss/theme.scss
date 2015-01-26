@@ -196,19 +196,33 @@ a.pure-button-primary {
     margin: 20px 0 0 0;
 
     h3 {
-        border-bottom: 1px solid #565D64;
-        font-size: 100%;
+        border-bottom: 1px solid #e7e7e7;
+        font-size: 90%;
         color: #565D64;
+        text-transform: uppercase;
     }
 
     ul {
         padding-left: 0;
         list-style-position: inside;
+
+        li {
+            list-style: none;
+            
+            a {
+                font-size: 14px;
+                color: #333;
+                &:hover {
+                    text-decoration: none;
+                    color: #1871ab;
+                }
+            }
+        }
     }
 
     .pure-menu-heading {
         padding-left: 10px;
-        font-weight: bold;
+        font-weight: 600;
     }
 }
 
@@ -236,8 +250,8 @@ a.pure-button-primary {
  * This is the blue top section that appears on the page.
  */
 .splash-container {
-    background: url("../images/splash_background.png") #1f8dd6;
-    z-index: 1;
+    background: url("../images/splash_background.png") no-repeat #1f8dd6;
+    background-size: cover;
     overflow: hidden;
     position: relative;
     /* The following styles are required for the "scroll-over" effect */
@@ -325,7 +339,7 @@ a.pure-button-primary {
 @media (min-width: 48em) {
     /* We increase the body font size */
     body {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .content {
