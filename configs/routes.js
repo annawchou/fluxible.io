@@ -18,7 +18,7 @@ module.exports = {
         }
     },
     docs: {
-        path: '/:type(tutorial|guides)?/:key.html',
+        path: '/:type(tutorials|guides)?/:key.html',
         method: 'get',
         page: 'docs',
         label: 'docs',
