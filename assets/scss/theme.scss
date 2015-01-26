@@ -13,7 +13,6 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
     background-color: #fff;
-    padding-top: 50px;
     line-height: 1.7em;
     color: #444;
     font-size: 13px;
@@ -136,17 +135,18 @@ a.pure-button-primary {
 }
 
 .home-menu.pure-menu-open {
-    background: #3B3738;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background: #1871ab;
+//    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .home-menu .pure-menu-heading {
-    color: #00D8FF;
+    color: #fff;
     font-weight: 400;
     font-size: 120%;
     margin: 0;
     padding: 0;
     line-height: 33px;
+    display: inline-block;
 
     img {
         float: left;
@@ -236,9 +236,10 @@ a.pure-button-primary {
  * This is the blue top section that appears on the page.
  */
 .splash-container {
-    background: #1f8dd6;
+    background: url("../images/splash_background.png") #1f8dd6;
     z-index: 1;
     overflow: hidden;
+    position: relative;
     /* The following styles are required for the "scroll-over" effect */
     width: 100%;
     left: 0;

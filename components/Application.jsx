@@ -27,9 +27,19 @@ var Application = React.createClass({
     },
     render: function () {
         var page;
+        var hideLogo = false;
+        var logo = (
+            <NavLink className="pure-menu-heading" routeName="home" context={this.props.context}>
+                Fluxible
+            </NavLink>
+        );
+
+        if (!this.props.hideLogo) {
+        }
 
         if ('home' === this.state.currentPageName) {
             page = <Home context={this.props.context} />;
+            hideLogo = true;
         }
         else if ('docs' === this.state.currentPageName) {
             page = <Docs context={this.props.context} />;
@@ -38,12 +48,10 @@ var Application = React.createClass({
         return (
             <div>
                 <div className="header">
-                    <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+                    <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal">
                         <div className="content">
                             <TopNav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
-                            <NavLink className="pure-menu-heading" routeName="home" context={this.props.context}>
-                                Fluxible
-                            </NavLink>
+                            {hideLogo ? '' : logo}
                         </div>
                     </div>
                 </div>
