@@ -8,6 +8,7 @@ process.chdir(__dirname);
 
 require('node-jsx').install({ extension: '.jsx' });
 var express = require('express');
+var favicon = require('serve-favicon');
 var serialize = require('serialize-javascript');
 var navigateAction = require('flux-router-component').navigateAction;
 var bodyParser = require('body-parser');
@@ -20,6 +21,7 @@ var tracking = require('./configs/tracking');
 
 var server = express();
 server.set('state namespace', 'App');
+server.use(favicon(__dirname + '/assets/images/favicon.ico'));
 server.use('/public', express.static(__dirname + '/build'));
 server.use(cookieParser());
 server.use(bodyParser.json());
