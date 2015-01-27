@@ -17,7 +17,6 @@ var Component = React.createClass({
                         <div className="pure-u-1 pure-u-md-5-24">
                             <div className="doc-menu">
                                 <ul>
-                                    <li><NavLink routeName="docs" navParams={{key: 'overview'}} context={context}>Overview</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{key: 'quick-start'}} context={context}>Quick Start</NavLink></li>
                                 </ul>
 
@@ -40,7 +39,7 @@ var Component = React.createClass({
                             </div>
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
-                            <Doc content={this.props.content} />
+                            <Doc content={this.props.content} context={this.props.context} />
                         </div>
                     </div>
                 </div>
