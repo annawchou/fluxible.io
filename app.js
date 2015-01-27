@@ -13,7 +13,7 @@ var app = new FluxibleApp({
     appComponent: React.createFactory(require('./components/Application.jsx'))
 });
 
-app.plug(fetchrPlugin({ xhrPath: '/api' }));
+app.plug(fetchrPlugin({ xhrPath: '/_api' }));
 app.plug(routrPlugin({ routes: routes }));
 
 app.registerStore(require('./stores/DocStore'));
