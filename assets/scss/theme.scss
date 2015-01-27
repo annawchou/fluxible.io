@@ -172,7 +172,7 @@ a.pure-button-secondary {
     font-size: 120%;
     margin: 0;
     padding: 0;
-    line-height: 33px;
+    line-height: 50px;
     display: inline-block;
 
     img {
@@ -210,6 +210,10 @@ a.pure-button-secondary {
 
 .home-menu li a {
     padding: 0px;
+}
+
+.pure-menu-horizontal li {
+    vertical-align: baseline;
 }
 
 .home-menu.pure-menu-open.pure-menu-fixed {
