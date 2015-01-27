@@ -68,6 +68,15 @@ var Application = React.createClass({
         }
 
         document.title = newState.pageTitle;
+
+        // log pageview
+        if (ga) {
+            ga('set', {
+                page: newState.route.url,
+                title: newState.pageTitle
+            });
+            ga('send', 'pageview');
+        }
     }
 });
 
