@@ -17,7 +17,6 @@ app.plug(fetchrPlugin({ xhrPath: '/api' }));
 app.plug(routrPlugin({ routes: routes }));
 
 app.registerStore(require('./stores/DocStore'));
-app.registerStore(require('./stores/PageStore'));
 app.registerStore(require('./stores/ApplicationStore'));
 
 module.exports = app;

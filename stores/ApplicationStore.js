@@ -45,7 +45,7 @@ var ApplicationStore = createStore({
     getPageTitle: function () {
         return this.pageTitle;
     },
-    getState: function () {
+    dehydrate: function () {
         return {
             currentPageName: this.currentPageName,
             currentPage: this.currentPage,
@@ -53,9 +53,6 @@ var ApplicationStore = createStore({
             route: this.currentRoute,
             pageTitle: this.pageTitle
         };
-    },
-    dehydrate: function () {
-        return this.getState();
     },
     rehydrate: function (state) {
         this.currentPageName = state.currentPageName;
