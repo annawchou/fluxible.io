@@ -1,3 +1,7 @@
+<div class="speakerdeck-container nested">
+    <iframe class="speakerdeck-iframe" width="100%" height="350" frameborder="0" src="//speakerdeck.com/player/87ecaa3048750132f42542ffc18c6fcf?" allowFullScreen="true"></iframe>
+</div>
+
 # Bringing Flux to the Server
 
 The reality of working at Yahoo is that we have a wide range of web applications from simple article viewers to rich interactive fantasy sports experiences. These types of applications have different needs: articles need to be served extremely quickly but have relatively small amounts of user interaction.
