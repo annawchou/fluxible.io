@@ -15,19 +15,11 @@ module.exports = [
         category: 'Guides',
         children: [
             {
-                label: 'Flux & Fluxible',
-                routeName: 'docs',
-                navParams: {
-                    type: 'guides',
-                    key: 'flux-and-fluxible'
-                }
-            },
-            {
                 label: 'Dispatcher',
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'dispatchr'
+                    key: 'dispatcher'
                 }
             },
             {
