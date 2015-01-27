@@ -110,7 +110,7 @@ iframe {
 .pure-button {
     background-color: #1f8dd6;
     color: white;
-    padding: 0.4em 1em;
+    padding: 0.5em 1.3em;
     border-radius: 5px;
 }
 
@@ -118,12 +118,18 @@ a.pure-button-primary {
     background: white;
     color: #1f8dd6;
     border-radius: 5px;
-    font-size: 150%;
+    font-size: 130%;
     font-weight: 500;
     border: 2px solid #1871ab;
     &:hover {
         text-decoration: none;
     }
+}
+
+a.pure-button-secondary {
+    margin-top: 1em;
+    font-size: 120%;
+    font-weight: 500;
 }
 
 .doc-content {
@@ -224,7 +230,7 @@ a.pure-button-primary {
 
         li {
             list-style: none;
-            
+
             a {
                 font-size: 14px;
                 color: #333;
@@ -299,6 +305,13 @@ a.pure-button-primary {
     font-size: 120%;
 }
 
+.citation {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 80%;
+    color: #eee;
+}
 
 /*
  * -- CONTENT STYLES --

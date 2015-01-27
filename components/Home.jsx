@@ -22,17 +22,20 @@ var Component = React.createClass({
                             <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{key: 'quick-start'}} context={this.props.context}>Get Started</NavLink>
                         </p>
                     </div>
+                    <div className="citation">
+                        <cite>
+                            <a href="https://www.flickr.com/photos/devinmoore/2670474853" title="Splash derived from Blue Ring Electricity Fractal by Devin Moore used under CC BY 2.0" _target="blank">Citation</a>
+                        </cite>
+                    </div>
                 </div>
+
                 <div className="content">
                     <Doc content={this.props.content} context={this.props.context} />
                 </div>
 
                 <div className="is-center">
-                    <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{key: 'quick-start'}} context={this.props.context}>Get Started</NavLink>
+                    <NavLink className="pure-button pure-button-secondary" routeName="docs" navParams={{key: 'quick-start'}} context={this.props.context}>Get Started</NavLink>
                 </div>
-                <hr/>
-
-                <div className="is-center"><cite>Splash derived from <a href="https://www.flickr.com/photos/devinmoore/2670474853" target="_blank">Blue Ring Electricity Fractal</a> by <a href="https://www.flickr.com/photos/devinmoore/" target="_blank">Devin Moore</a> used under <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></cite></div>
             </section>
         );
     }
