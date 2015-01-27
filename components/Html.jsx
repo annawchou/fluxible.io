@@ -4,7 +4,7 @@
  */
 'use strict';
 var React = require('react');
-var PageStore = require('../stores/PageStore');
+var ApplicationStore = require('../stores/ApplicationStore');
 
 var Component = React.createClass({
     render: function () {
@@ -12,7 +12,7 @@ var Component = React.createClass({
             <html>
                 <head>
                     <meta charSet="utf-8" />
-                    <title>{this.props.context.getStore(PageStore).getPageTitle()}</title>
+                    <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
                     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />

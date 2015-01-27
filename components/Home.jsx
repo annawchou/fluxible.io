@@ -5,6 +5,7 @@
 'use strict';
 var React = require('react');
 var NavLink = require('flux-router-component').NavLink;
+var Doc = require('./Doc.jsx');
 
 var Component = React.createClass({
     render: function () {
@@ -23,9 +24,7 @@ var Component = React.createClass({
                     </div>
                 </div>
                 <div className="content">
-                    <div className="speakerdeck-container">
-                        <iframe className="speakerdeck-iframe" width="100%" height="410" frameBorder="0" src="//speakerdeck.com/player/87ecaa3048750132f42542ffc18c6fcf?" allowFullScreen="true"></iframe>
-                    </div>
+                    <Doc content={this.props.content} />
                 </div>
                 <div className="is-center"><cite>Splash derived from <a href="https://www.flickr.com/photos/devinmoore/2670474853" target="_blank">Blue Ring Electricity Fractal</a> by <a href="https://www.flickr.com/photos/devinmoore/" target="_blank">Devin Moore</a> used under <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></cite></div>
             </section>

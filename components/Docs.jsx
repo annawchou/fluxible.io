@@ -4,28 +4,12 @@
  */
 'use strict';
 var React = require('react');
-var StoreMixin = require('fluxible').StoreMixin;
-var DocStore = require('../stores/DocStore');
+var Doc = require('./Doc.jsx');
 var NavLink = require('flux-router-component').NavLink;
 
 var Component = React.createClass({
-    mixins: [ StoreMixin ],
-    statics: {
-        storeListeners: {
-            _onChange: [ DocStore ]
-        }
-    },
-    getInitialState: function () {
-        var doc = this.getStore(DocStore).getCurrent() || {};
-        return doc;
-    },
-    _onChange: function() {
-        var doc = this.getStore(DocStore).getCurrent();
-        this.setState(doc);
-    },
     render: function () {
         var context = this.props.context;
-
         return (
             <section id="docs">
                 <div className="content">
@@ -39,7 +23,6 @@ var Component = React.createClass({
 
                                 <h3>Guides</h3>
                                 <ul>
-                                    <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'flux-and-fluxible'}} context={context}>Flux &amp; Fluxible</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'dispatcher'}} context={context}>Dispatcher</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'stores'}} context={context}>Stores</NavLink></li>
                                     <li><NavLink routeName="docs" navParams={{type: 'guides', key: 'actions'}} context={context}>Actions</NavLink></li>
@@ -57,7 +40,7 @@ var Component = React.createClass({
                             </div>
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
-                            <div className="doc-content" dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+                            <Doc content={this.props.content} />
                         </div>
                     </div>
                 </div>

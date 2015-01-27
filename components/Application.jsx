@@ -8,6 +8,7 @@ var React = require('react');
 var Home = require('./Home.jsx');
 var Docs = require('./Docs.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
+var DocStore = require('../stores/DocStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
 var NavLink = require('flux-router-component').NavLink;
 var StoreMixin = require('fluxible').StoreMixin;
@@ -19,11 +20,19 @@ var Application = React.createClass({
         storeListeners: [ ApplicationStore ]
     },
     getInitialState: function () {
-        return this.getStore(ApplicationStore).getState();
+        return this.getState();
+    },
+    getState: function () {
+        var appStore = this.getStore(ApplicationStore);
+        var docStore = this.getStore(DocStore);
+        return {
+            currentDoc: docStore.getCurrent() || {},
+            currentPageName: appStore.getCurrentPageName(),
+            pageTitle: appStore.getPageTitle()
+        };
     },
     onChange: function () {
-        var state = this.getStore(ApplicationStore).getState();
-        this.setState(state);
+        this.setState(this.getState());
     },
     render: function () {
         var page;
@@ -34,15 +43,12 @@ var Application = React.createClass({
             </NavLink>
         );
 
-        if (!this.props.hideLogo) {
-        }
-
         if ('home' === this.state.currentPageName) {
-            page = <Home context={this.props.context} />;
+            page = <Home context={this.props.context} content={this.state.currentDoc.content} />;
             hideLogo = true;
         }
         else if ('docs' === this.state.currentPageName) {
-            page = <Docs context={this.props.context} />;
+            page = <Docs context={this.props.context} content={this.state.currentDoc.content} />;
         }
 
         return (
@@ -50,7 +56,7 @@ var Application = React.createClass({
                 <div className="header">
                     <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal">
                         <div className="content">
-                            <TopNav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
+                            <TopNav selected={this.state.currentPageName} context={this.props.context}/>
                             {hideLogo ? '' : logo}
                         </div>
                     </div>

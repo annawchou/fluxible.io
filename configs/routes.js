@@ -14,7 +14,10 @@ module.exports = {
             context.dispatch('UPDATE_PAGE_TITLE', {
                 pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications'
             });
-            done();
+            var params = {
+                key: '/docs/home.md'
+            };
+            context.executeAction(showDoc, params, done);
         }
     },
     docs: {
