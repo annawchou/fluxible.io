@@ -12,7 +12,7 @@ module.exports = function (context, payload, done) {
     if (docFromCache) {
         context.dispatch('RECEIVE_DOC_SUCCESS', docFromCache);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: docFromCache.title + ' | Fluxible'
+            pageTitle: (payload.pageTitle || docFromCache.title) + ' | Fluxible'
         });
         return done();
     }
@@ -26,7 +26,7 @@ module.exports = function (context, payload, done) {
 
         context.dispatch('RECEIVE_DOC_SUCCESS', data);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: data.title + ' | Fluxible'
+            pageTitle: (payload.pageTitle || data.title) + ' | Fluxible'
         });
         done();
     });

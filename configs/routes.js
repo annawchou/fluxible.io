@@ -11,11 +11,9 @@ module.exports = {
         page: 'home',
         label: 'Home',
         action: function (context, payload, done) {
-            context.dispatch('UPDATE_PAGE_TITLE', {
-                pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications'
-            });
             var params = {
-                key: '/docs/home.md'
+                key: '/docs/home.md',
+                pageTitle: 'Fluxible | A Pluggable Container for Isomorphic Flux Applications'
             };
             context.executeAction(showDoc, params, done);
         }
