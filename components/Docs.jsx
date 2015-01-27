@@ -16,9 +16,7 @@ var Component = React.createClass({
                 <div className="content">
                     <div className="pure-g">
                         <div className="pure-u-1 pure-u-md-5-24">
-                            <div className="doc-menu">
-                                <Menu config={this.props.menu} context={context} />
-                            </div>
+                            <Menu config={this.props.menu} context={context} />
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
                             <Doc content={this.props.content} context={this.props.context} />

@@ -24,7 +24,7 @@ var Component = React.createClass({
                     </div>
                     <div className="citation">
                         <cite>
-                            <a href="https://www.flickr.com/photos/devinmoore/2670474853" title="Splash derived from Blue Ring Electricity Fractal by Devin Moore used under CC BY 2.0" _target="blank">Citation</a>
+                            <a href="https://www.flickr.com/photos/devinmoore/2670474853" title="Splash derived from Blue Ring Electricity Fractal by Devin Moore used under CC BY 2.0" _target="blank">&copy; Devon Moore</a>
                         </cite>
                     </div>
                 </div>

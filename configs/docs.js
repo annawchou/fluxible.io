@@ -3,13 +3,6 @@ module.exports = [
         category: '',
         children: [
             {
-                label: 'Overview',
-                routeName: 'docs',
-                navParams: {
-                    key: 'overview'
-                }
-            },
-            {
                 label: 'Quick Start',
                 routeName: 'docs',
                 navParams: {
