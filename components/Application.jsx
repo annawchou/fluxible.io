@@ -28,7 +28,8 @@ var Application = React.createClass({
         return {
             currentDoc: docStore.getCurrent() || {},
             currentPageName: appStore.getCurrentPageName(),
-            pageTitle: appStore.getPageTitle()
+            pageTitle: appStore.getPageTitle(),
+            route: appStore.getCurrentRoute()
         };
     },
     onChange: function () {

@@ -45,6 +45,9 @@ var ApplicationStore = createStore({
     getPageTitle: function () {
         return this.pageTitle;
     },
+    getCurrentRoute: function () {
+        return this.currentRoute;
+    },
     dehydrate: function () {
         return {
             currentPageName: this.currentPageName,
