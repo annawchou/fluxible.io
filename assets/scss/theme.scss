@@ -33,7 +33,7 @@ a {
         outline: none;
     }
     &:hover {
-        text-decoration: underline;
+        border-bottom: 1px solid #4183c4;
     }
 }
 
@@ -115,21 +115,25 @@ iframe {
 }
 
 a.pure-button-primary {
-    background: white;
-    color: #1f8dd6;
+    background: transparent;
+    color: #fff;
     border-radius: 5px;
-    font-size: 130%;
+    font-size: 120%;
     font-weight: 500;
-    border: 2px solid #1871ab;
+    border: 1px solid #fff;
     &:hover {
         text-decoration: none;
     }
 }
 
 a.pure-button-secondary {
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     font-size: 120%;
     font-weight: 500;
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .doc-content {
@@ -143,7 +147,6 @@ a.pure-button-secondary {
  */
 .home-menu {
     height: 50px;
-    padding: 0.5em;
     text-align: left;
 }
 
@@ -152,6 +155,9 @@ a.pure-button-secondary {
     position: static;
     visibility: visible;
     font-weight: 500;
+    li {
+        padding: 5px 10px;
+    }
 }
 
 .home-menu.pure-menu-open {
@@ -162,7 +168,7 @@ a.pure-button-secondary {
 .home-menu .pure-menu-heading {
     color: #fff;
     font-weight: 500;
-    font-size: 110%;
+    font-size: 120%;
     margin: 0;
     padding: 0;
     line-height: 33px;
@@ -183,12 +189,16 @@ a.pure-button-secondary {
     text-transform: uppercase;
 }
 
-.home-menu li a:hover,
-.home-menu li a:focus {
-    background: none;
-    border: none;
-    color: #eee;
-    text-decoration: none;
+.home-menu li a {
+    color: #fff;
+    &:hover,
+    &:active,
+    &:focus {
+        border-bottom: 1px solid #fff;
+        background: none;
+        border: none;
+        text-decoration: none;
+    }
 }
 
 .home-menu {
@@ -236,7 +246,11 @@ a.pure-button-secondary {
                 color: #333;
                 &:hover {
                     text-decoration: none;
-                    color: #1871ab;
+                    color: #4183c4;
+                    border-bottom: 1px solid transparent;
+                }
+                &:active {
+                    color: #4183c4;
                 }
             }
         }
@@ -256,13 +270,13 @@ a.pure-button-secondary {
 
 /* We want to give the content area some more padding */
 .content {
-    padding: 1em;
     margin-left: auto;
     margin-right: auto;
 }
 
 .home-menu .content {
     padding: 0;
+    line-height: 50px;
 }
 
 
@@ -356,12 +370,6 @@ a.pure-button-secondary {
     color: #aaa;
 }
 
-/* This is the class used for the footer */
-.footer {
-    margin-top: 10px;
-}
-
-
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -380,10 +388,10 @@ a.pure-button-secondary {
 
     /* Increase the link spacing */
     .home-menu li a {
-        padding: 5px 10px;
         color: #fff;
-        &:hover {
-            opacity: 0.8;
+        &:hover,
+        &:active {
+            border-bottom: 1px solid #fff;
         }
     }
 
@@ -399,8 +407,10 @@ a.pure-button-secondary {
 
     .footer {
         font-size: 80%;
-        max-width: 960px;
-        margin: 20px auto;
+        background-color: #fafafa;
+        border-top: 1px solid #e7e7e7;
+        margin-top: 50px;
+        padding: 15px 30px 15px 30px;
     }
 
     /* Right align the text on wider screens */
