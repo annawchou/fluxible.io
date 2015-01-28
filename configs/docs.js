@@ -51,7 +51,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'fetching-data'
+                    key: 'data-services'
                 }
             },
             {

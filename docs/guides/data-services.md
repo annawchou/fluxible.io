@@ -1,4 +1,4 @@
-# Fetching Data
+# Data Services
 
 Data is organized into services. Services are where you define your CRUD operations for a specific resource. A resource is a unique string that identifies the data (e.g. 'user', 'photo', 'comment').
 
