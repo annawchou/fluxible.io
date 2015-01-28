@@ -186,6 +186,7 @@ a.pure-button-secondary {
 
 .home-menu .pure-menu-selected a {
     color: #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .home-menu a {
@@ -200,7 +201,6 @@ a.pure-button-secondary {
     &:focus {
         border-bottom: 1px solid #fff;
         background: none;
-        border: none;
         text-decoration: none;
     }
 }
@@ -267,6 +267,13 @@ a.pure-button-secondary {
     .pure-menu-heading {
         padding-left: 10px;
         font-weight: 600;
+    }
+}
+.doc-menu {
+    .pure-menu-selected {
+        a {
+            color: #4183c4;
+        }
     }
 }
 
@@ -378,6 +385,14 @@ a.pure-button-secondary {
     color: #aaa;
 }
 
+.footer {
+    font-size: 80%;
+    background-color: #fafafa;
+    border-top: 1px solid #e7e7e7;
+    margin-top: 50px;
+    padding: 15px 30px 15px 30px;
+}
+
 /*
  * -- TABLET (AND BELOW) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -423,13 +438,6 @@ a.pure-button-secondary {
         border: none;
     }
 
-    .footer {
-        font-size: 80%;
-        background-color: #fafafa;
-        border-top: 1px solid #e7e7e7;
-        margin-top: 50px;
-        padding: 15px 30px 15px 30px;
-    }
 
     /* Right align the text on wider screens */
     .copyright {

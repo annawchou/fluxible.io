@@ -27,7 +27,7 @@ module.exports = {
         action: function (context, payload, done) {
             var params = {
                 resource: 'api',
-                key: 'api/' + payload.params.key,
+                key: '/apis/' + payload.params.key + '.md',
                 repo: payload.params.key
             };
             context.executeAction(showDoc, params, done);
