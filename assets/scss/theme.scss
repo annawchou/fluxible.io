@@ -29,14 +29,14 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 a {
-    color: #4183c4;
+    color: #0262aa;
 
     &:link {
         text-decoration: none;
         outline: none;
     }
     &:hover {
-        border-bottom: 1px solid #4183c4;
+        border-bottom: 1px solid #0262aa;
     }
 }
 
@@ -111,7 +111,7 @@ iframe {
  * I want my pure-button elements to look a little different
  */
 .pure-button {
-    background-color: #1f8dd6;
+    background-color: #0262aa;
     color: white;
     padding: 0.5em 1.3em;
     border-radius: 5px;
@@ -165,7 +165,7 @@ a.pure-button-secondary {
 }
 
 .home-menu.pure-menu-open {
-    background: #1871ab;
+    background: #0262aa;
 //    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -254,11 +254,11 @@ a.pure-button-secondary {
                 color: #333;
                 &:hover {
                     text-decoration: none;
-                    color: #4183c4;
+                    color: #0262aa;
                     border-bottom: 1px solid transparent;
                 }
                 &:active {
-                    color: #4183c4;
+                    color: #0262aa;
                 }
             }
         }
@@ -272,7 +272,7 @@ a.pure-button-secondary {
 .doc-menu {
     .pure-menu-selected {
         a {
-            color: #4183c4;
+            color: #0262aa;
         }
     }
 }
