@@ -22,7 +22,7 @@ var whitelistedRepos = apiConfig.reduce(function (whitelist, item) {
 var cache = {};
 
 var fetchReadme = function (repo, cb) {
-    var key = 'api/' + repo;
+    var key = '/apis/' + repo + '.md';
     var url = 'https://api.github.com/repos/yahoo/';
     url += repo;
     url += '/readme';

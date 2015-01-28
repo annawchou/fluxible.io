@@ -3,7 +3,8 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
-var React = require('react');
+var React = require('react/addons');
+var cx = React.addons.classSet;
 var NavLink = require('flux-router-component').NavLink;
 
 var Component = React.createClass({
@@ -17,7 +18,10 @@ var Component = React.createClass({
 
             var submenu = [];
             menuitem.children.forEach(function (link) {
-                submenu.push(<li key={link.label}><NavLink routeName={link.routeName} navParams={link.navParams} context={self.props.context}>{link.label}</NavLink></li>);
+                var selected = '/' + link.routeName + '/' +
+                    (link.navParams.type ? link.navParams.type + '/' : '') +
+                    link.navParams.key + '.md';
+                submenu.push(<li key={link.label} className={cx({'pure-menu-selected': self.props.selected === selected})}><NavLink routeName={link.routeName} navParams={link.navParams} context={self.props.context}>{link.label}</NavLink></li>);
             });
 
             if (submenu.length) {
