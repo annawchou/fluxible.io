@@ -11,13 +11,16 @@
  * Most of these are inherited from Base, but I want to change a few.
  */
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
     background-color: #fff;
     line-height: 1.7em;
     color: #333;
     font-size: 13px;
-    overflow: scroll;
     -webkit-font-smoothing: antialiased;
 }
 
