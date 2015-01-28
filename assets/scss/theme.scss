@@ -40,6 +40,19 @@ a {
     }
 }
 
+/*
+ * taken from htm5boilerplaye
+ * https://github.com/paulirish/html5-boilerplate/blob/ef3c095bafa9a6fa9c771f368d4b30c8ce4deded/css/style.css#L75
+ */
+hr {
+    display: block;
+    height: 1px;
+    margin: 1em 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
 iframe {
     border: 0;
 }

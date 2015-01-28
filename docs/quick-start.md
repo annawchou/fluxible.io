@@ -6,9 +6,26 @@ If you wan't to jump right into it, check out our examples:
  - [Routing](https://github.com/yahoo/flux-examples/tree/master/routing) - Simple isomorphic routing in Flux flow.
  - [ToDo MVC](https://github.com/yahoo/flux-examples/tree/master/todo) - [ToDo MVC](https://github.com/tastejs/todomvc) example using Fluxible.
 
-## Libraries
+Alternatively, if you want to start writing code, you can use our [yeoman generator](https://github.com/yahoo/generator-fluxible). Run the command below to install it:
 
-If you want to jump right in to the individual libraries check them out:
+ ```bash
+npm install -g yo generator-fluxible
+ ```
+
+To use the generator, create a directory and cd into it. Then run `yo fluxible` which will create a working Fluxible application. To start the application run `grunt`, you can view it in a browser at http://localhost:3000.
+
+```bash
+mkdir example && cd example
+yo fluxible
+grunt start
+open http://localhost:3000
+```
+
+This will generate a simple application that demonstrates the basics of using Fluxible; routing, store dehydration from server and client rehydrating. Please take a look at the guides to gain a better understanding of the core concepts of Fluxible.
+
+<hr />
+
+## Libraries
 
 - [fluxible](https://github.com/yahoo/fluxible) - Pluggable container for isomorphic Flux applications that provides interfaces that are common throughout the Flux architecture and restricts usage of these APIs to only the parts that need them to enforce the unidirectional flow.
 
@@ -17,7 +34,10 @@ If you want to jump right in to the individual libraries check them out:
 - [fluxible-plugin-fetchr](https://github.com/yahoo/fluxible-plugin-fetchr) - Provides isomorphic RESTful service access to your Fluxible application using Fetchr.
 - [fluxible-plugin-routr](https://github.com/yahoo/fluxible-plugin-routr) - Provides routing methods to your Fluxible application using Routr.
 
-### Libraries
+
+### Foundation
+
+Fluxible is constructed of smaller core libraries that can be used separately if needed.
 
 - [dispatchr](https://github.com/yahoo/dispatchr) - Dispatchr's main goal is to facilitate server-side rendering of Flux applications while also working on the client-side to encourage code reuse. In order to isolate stores between requests on the server-side, we have opted to instantiate the dispatcher and stores classes per request.
 - [fetchr](https://github.com/yahoo/fetchr) - Fetchr provides an abstraction so that you can fetch (CRUD) your data in your stores using the same exact syntax on server and client side.
