@@ -26,7 +26,17 @@ body {
 
 h1, h2, h3, h4, h5, h6, label {
     color: #333;
+    &:hover {
+        a.hash-link {
+            display: inline;
+        }
+    }
+    a.hash-link{
+        font-size: 1.1em;
+        display: none;
+    }
 }
+
 
 a {
     color: #0262aa;

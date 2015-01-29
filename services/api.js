@@ -6,6 +6,7 @@
 
 var debug = require('debug')('APIService');
 var marked = require('marked');
+var renderer = require('./../utils/renderer');
 var request = require('superagent');
 var secrets = require('./../secrets');
 var qs = require('querystring');
@@ -49,7 +50,7 @@ var fetchReadme = function (repo, cb) {
             cache[key] = {
                 key: key,
                 title: repo + ' API',
-                content: marked(apiString)
+                content: marked(apiString, {renderer: renderer})
             };
 
             cb && cb(null, cache[key]);
