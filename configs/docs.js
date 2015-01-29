@@ -15,6 +15,14 @@ module.exports = [
         category: 'Guides',
         children: [
             {
+                label: 'Isomorphic Flux',
+                routeName: 'docs',
+                navParams: {
+                    type: 'guides',
+                    key: 'bringing-flux-to-the-server'
+                }
+            },
+            {
                 label: 'Dispatcher',
                 routeName: 'docs',
                 navParams: {
