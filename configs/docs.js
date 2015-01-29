@@ -68,27 +68,11 @@ module.exports = [
         category: 'Tutorials',
         children: [
             {
-                label: 'Chat',
-                routeName: 'docs',
-                navParams: {
-                    type: 'tutorials',
-                    key: 'chat'
-                }
-            },
-            {
                 label: 'Routing',
                 routeName: 'docs',
                 navParams: {
                     type: 'tutorials',
                     key: 'routing'
-                }
-            },
-            {
-                label: 'Todo MVC',
-                routeName: 'docs',
-                navParams: {
-                    type: 'tutorials',
-                    key: 'todo-mvc'
                 }
             }
         ]
