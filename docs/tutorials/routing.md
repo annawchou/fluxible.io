@@ -45,8 +45,9 @@ server.use(function (req, res, next) {
     res.send(html);
 });
 
-server.listen(port);
-console.log('Listening on port ' + port);
+server.listen(port, function () {
+    console.log('Listening on port ' + port);
+});
 ```
 
 
@@ -88,11 +89,13 @@ module.exports = {
     home: {
         path: '/',
         method: 'get',
+        label: 'Home',
         page: 'home'
     },
     about: {
         path: '/about',
         method: 'get',
+        label: 'About',
         page: 'about'
     }
 };
@@ -210,11 +213,12 @@ var React = require('react');
 var Fluxible = require('fluxible');
 var routrPlugin = require('fluxible-plugin-routr');
 var routes = require('./configs/routes');
-var ApplicationComponent = require('./components/Application.jsx');
+var App = require('./components/Application.jsx');
+var AppComponent = React.createFactory(App);
 var ApplicationStore = require('./stores/ApplicationStore');
 
 var app = new Fluxible({
-    appComponent: React.createFactory(ApplicationComponent)
+    appComponent: AppComponent
 });
 
 app.plug(routrPlugin({
@@ -286,8 +290,8 @@ Let's run through what the request lifecycle entails.
  7. The `navigateAction` callback is executed. Inside the callback, a new
     `Application` component instance is created, and is handed the current context.
     The context contains, among other things, the updated `ApplicationStore`.
- 8. We render the `ApplicationComponent` as a string, and send the result as our
-    response. Since the `ApplicationComponent` gets its state from the
+ 8. We render the `AppComponent` as a string, and send the result as our
+    response. Since the `AppComponent` gets its state from the
     `ApplicationStore`, the correct page is rendered. _(the `getStore` method
     provided by the `StoreMixin` knows how to get stores from the provided context.)_
 
@@ -557,6 +561,10 @@ module.exports = {
 };
 ```
 
+If you run `$ webpack --config=webpack.config.js` you'll see the bundled
+`client.js` in `/build/js`, we'll need to expose this asset in the server by
+adding `server.use(express.static('build'));` to `/server.js`.
+
 At this point our client side app should be able to take over after the HTML is
 finished rendering. 
 
@@ -566,10 +574,9 @@ state, and won't update the DOM unless something has actually changed.
 
 However, if you try switching between pages, you'll notice the `NavBar` is now
 broken. Even though the `navigateAction` is being executed on click, and our
-`ApplicationStore` is being updated, our `ApplicationComponent` is not
-re-rendering.
+`ApplicationStore` is being updated, our `AppComponent` is not re-rendering.
 
-This is easy to fix. Let's add a store listener so our `ApplicationComponent`
+This is easy to fix. Let's add a store listener so our `AppComponent`
 updates whenever the `ApplicationStore` changes.
 
 File: `/components/Application.jsx`
