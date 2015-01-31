@@ -17,7 +17,7 @@ To use the generator, create a directory and cd into it. Then run `yo fluxible` 
 ```bash
 mkdir example && cd example
 yo fluxible
-grunt start
+grunt
 open http://localhost:3000
 ```
 
