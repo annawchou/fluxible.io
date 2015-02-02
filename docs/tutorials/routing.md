@@ -1,7 +1,14 @@
 # Routing
 
-In this tutorial we'll build an isomorphic website that has two pages and
-demonstrates routing.
+In this tutorial we'll cover the concepts of building an isomorphic website
+with Fluxible that demonstrates routing.
+
+This isn't a step-by-step guide. Our main goal is to highlight what we think
+are the most important concepts.
+
+You can find the most up to date code on GitHub here: [Fluxible router
+example](https://github.com/yahoo/flux-examples/tree/master/fluxible-router).
+
 
 ### Hello World
 
