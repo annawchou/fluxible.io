@@ -1,7 +1,14 @@
 # Routing
 
-In this tutorial we'll build an isomorphic website that has two pages and
-demonstrates routing.
+In this tutorial we'll cover the concepts of building an isomorphic website
+with Fluxible that demonstrates routing.
+
+This isn't a step-by-step guide. Our main goal is to highlight what we think
+are the most important concepts.
+
+You can find the most up to date code on GitHub here: [Fluxible router
+example](https://github.com/yahoo/flux-examples/tree/master/fluxible-router).
+
 
 ### Hello World
 
@@ -281,8 +288,8 @@ Let's run through what the request lifecycle entails.
     current route as a param. _(`navigateAction` is a convenient method defined on
     the `flux-router-component` library. It helps us deal with route matching)_
  4. [`navigateAction`](https://github.com/yahoo/flux-router-component/blob/master/actions/navigate.js)
-    uses the `routrPlugin` to look for a matching route. 
-    - If a match is found, a `CHANGE_ROUTE_SUCCESS` action is dispatched. 
+    uses the `routrPlugin` to look for a matching route.
+    - If a match is found, a `CHANGE_ROUTE_SUCCESS` action is dispatched.
     - If a match is not found, an error with 404 status is provided to the callback.
  5. The `CHANGE_ROUTE_SUCCESS` action is dispatched to all stores registered with the app.
  6. `ApplicationStore` hears this action and executes its `_handleNavigate`
@@ -507,12 +514,12 @@ adds an `expose` method to the Express response object. Whatever we set with
 `expose` will be available on the response object's `locals.state`.
 
 You'll see we calling `expose` on the response object, telling it to hold on to our
-dehydrated app state. 
+dehydrated app state.
 
 We're passing `res.locals.state` as a prop to our `HtmlComponent` component.
 
 Now we can create a client app that grabs the dehydrated state sent by the
-server and rehydrates itself before re-rendering and taking over. 
+server and rehydrates itself before re-rendering and taking over.
 
 File: `/client.js`
 
@@ -566,7 +573,7 @@ If you run `$ webpack --config=webpack.config.js` you'll see the bundled
 adding `server.use(express.static('build'));` to `/server.js`.
 
 At this point our client side app should be able to take over after the HTML is
-finished rendering. 
+finished rendering.
 
 Although the client app re-renders after it rehydrates, we shouldn't see any
 flashing. This is because React compares the new render with the current DOM
