@@ -19,7 +19,7 @@ var Component = React.createClass({
                             <Menu config={this.props.menu} selected={this.props.doc.key} />
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
-                            <Doc content={this.props.doc.content} context={context} />
+                            <Doc content={this.props.doc.content} />
                         </div>
                     </div>
                 </div>
