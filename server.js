@@ -46,7 +46,7 @@ server.use(function (req, res, next) {
         }
     });
 
-    context.getActionContext().executeAction(navigateAction, {
+    context.executeAction(navigateAction, {
         url: req.url
     }, function (err) {
         if (err) {
