@@ -20,7 +20,7 @@ var Component = React.createClass({
             if (isModifiedEvent(e) || !isLeftClickEvent(e)) {
                 return;
             }
-            this.props.context.executeAction(navigateAction, {
+            this.executeAction(navigateAction, {
                 url: target.getAttribute('href')
             });
             e.preventDefault();

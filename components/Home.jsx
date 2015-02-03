@@ -9,7 +9,6 @@ var Doc = require('./Doc.jsx');
 
 var Component = React.createClass({
     render: function () {
-
         return (
             <section id="home">
                 <div className="splash-container">
@@ -19,7 +18,7 @@ var Component = React.createClass({
                             Build isomorphic Flux applications
                         </p>
                         <p>
-                            <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{key: 'quick-start'}} context={this.props.context}>Get Started</NavLink>
+                            <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{key: 'quick-start'}}>Get Started</NavLink>
                         </p>
                     </div>
                     <div className="citation">
@@ -30,11 +29,11 @@ var Component = React.createClass({
                 </div>
 
                 <div className="content">
-                    <Doc content={this.props.content} context={this.props.context} />
+                    <Doc content={this.props.content} />
                 </div>
 
                 <div className="is-center">
-                    <NavLink className="pure-button pure-button-secondary" routeName="docs" navParams={{key: 'quick-start'}} context={this.props.context}>Get Started</NavLink>
+                    <NavLink className="pure-button pure-button-secondary" routeName="docs" navParams={{key: 'quick-start'}}>Get Started</NavLink>
                 </div>
             </section>
         );
