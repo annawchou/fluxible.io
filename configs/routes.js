@@ -39,7 +39,7 @@ module.exports = {
                 resource: 'api',
                 key: createKey(api),
                 slug: slug,
-                pageTitle: api.label || 'Missing API' + ' | Fluxible'
+                pageTitle: ((api && api.label) || 'Missing') + ' API'
             };
             context.executeAction(showDoc, params, done);
         }

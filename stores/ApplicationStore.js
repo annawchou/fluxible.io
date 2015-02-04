@@ -21,7 +21,7 @@ var ApplicationStore = createStore({
         this.pageTitle = '';
     },
     handleNavigate: function (route) {
-        var pageId = route.params.key;
+        var pageId = route.params.key || route.params.slug;
         var pageName = route.config.page;
         var page = this.pages[pageName];
 
