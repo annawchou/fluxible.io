@@ -27,10 +27,10 @@ module.exports = Page;
 ```
 
 ```js
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 var PageStore = require('./stores/PageStore'); // Your store
 var Component = React.createClass({
-    mixins: [StoreMixin],
+    mixins: [FluxibleMixin],
     statics: {
         storeListeners: [PageStore]
     },

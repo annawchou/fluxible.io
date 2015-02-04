@@ -8,7 +8,7 @@ var updateTime = require('../actions/updateTime');
 
 module.exports = React.createClass({
     getInitialState: function () {
-        this.store = this.props.context.getStore('TimeStore');
+        this.store = this.getStore('TimeStore');
         return this.store.getState();
     },
     componentDidMount: function() {
@@ -19,7 +19,7 @@ module.exports = React.createClass({
     },
     onReset: function (event) {
         // context property contains the executeAction method to fire an action
-        this.props.context.executeAction(updateTime);
+        this.executeAction(updateTime);
     },
     render: function() {
         return (
@@ -31,13 +31,14 @@ module.exports = React.createClass({
 
 ## Store Listeners
 
-The `storeListeners` property is defined in the `statics` property of the controller view. The Fluxible StoreMixin is a utility to automatically handle the adding and removing of store event listeners. By default, the mixin will attach an `onChange` method that gets called when a store updates. However, you can define your custom methods to attach to the store. Check out the [`StoreMixin` docs](https://github.com/yahoo/fluxible#store-mixin) for usage.
+The `storeListeners` property is defined in the `statics` property of the controller view. The Fluxible mixin is a utility to automatically handle the adding and removing of store event listeners. By default, the mixin will attach an `onChange` method that gets called when a store updates. However, you can define your custom methods to attach to the store. Check out the [`StoreMixin` docs](https://github.com/yahoo/fluxible#store-mixin) for usage.
 
-Taking our example from above, we can add the `StoreMixin` library:
+Taking our example from above, we can add the mixin:
 
 ```js
+var FluxibleMixin = require('fluxible').Mixin;
 module.exports = React.createClass({
-    mixins: [ StoreMixin ]
+    mixins: [ FluxibleMixin ]
 });
 ```
 
@@ -56,7 +57,7 @@ And finally, update the `onChange` method to update the component state:
 ```js
 module.exports = React.createClass({
     onChange: function() {
-        var state = this.store.getState();
+        var state = this.getStore(TimeStore).getState();
         this.setState(state);
     }
 });
@@ -66,26 +67,25 @@ The complete set of changes is provided below:
 
 ```js
 var React = require('react/addons');
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 var updateTime = require('../actions/updateTime');
 var TimeStore = require('../stores/TimeStore');
 
 module.exports = React.createClass({
-    mixins: [ StoreMixin ],
+    mixins: [ FluxibleMixin ],
     statics: {
         storeListeners: [ TimeStore ]
     },
     getInitialState: function () {
-        this.store = this.props.context.getStore(TimeStore);
-        return this.store.getState();
+        return this.getStore(TimeStore).getState();
     },
     onChange: function() {
-        var state = this.store.getState();
+        var state = this.getStore(TimeStore).getState();
         this.setState(state);
     },
     onReset: function (event) {
         // context property contains the executeAction method to fire an action
-        this.props.context.executeAction(updateTime);
+        this.executeAction(updateTime);
     },
     render: function() {
         return (

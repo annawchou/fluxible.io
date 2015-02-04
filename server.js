@@ -62,16 +62,16 @@ server.use(function (req, res, next) {
 
         var AppComponent = app.getAppComponent();
         var doctype = '<!DOCTYPE html>';
-        var html = React.renderToStaticMarkup(HtmlComponent({
-            state: exposed,
-            context: context.getComponentContext(),
-            markup: React.renderToString(AppComponent({
-                context: context.getComponentContext()
-            })),
-            tracking: tracking
-        }));
-
-        res.send(doctype + html);
+        React.withContext(context.getComponentContext(), function () {
+            var html = React.renderToStaticMarkup(HtmlComponent({
+                state: exposed,
+                markup: React.renderToString(AppComponent({
+                    context: context.getComponentContext()
+                })),
+                tracking: tracking
+            }));
+            res.send(doctype + html);
+        });
     });
 });
 

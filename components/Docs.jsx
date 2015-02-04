@@ -9,17 +9,15 @@ var Doc = require('./Doc.jsx');
 
 var Component = React.createClass({
     render: function () {
-        var context = this.props.context;
-
         return (
             <section id="docs">
                 <div className="content">
                     <div className="pure-g">
                         <div className="pure-u-1 pure-u-md-5-24">
-                            <Menu config={this.props.menu} selected={this.props.doc.key} context={context} />
+                            <Menu config={this.props.menu} selected={this.props.doc.key} />
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
-                            <Doc content={this.props.doc.content} context={context} />
+                            <Doc content={this.props.doc.content} />
                         </div>
                     </div>
                 </div>

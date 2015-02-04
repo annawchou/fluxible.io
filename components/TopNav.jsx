@@ -11,22 +11,21 @@ var cx = React.addons.classSet;
 var TopNav = React.createClass({
     render: function() {
         var selected = this.props.selected;
-        var context = this.props.context;
 
         return (
             <ul>
                 <li className={cx({'pure-menu-selected': selected === 'docs'})}>
-                    <NavLink routeName="docs" navParams={{key: 'quick-start'}} context={context}>
+                    <NavLink routeName="docs" navParams={{key: 'quick-start'}}>
                         Docs
                     </NavLink>
                 </li>
                 <li className={cx({'pure-menu-selected': selected === 'apis'})}>
-                    <NavLink routeName="apis" navParams={{key: 'fluxible'}} context={context}>
+                    <NavLink routeName="apis" navParams={{key: 'fluxible'}}>
                         API
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink routeName="github" context={context} target="_blank">
+                    <NavLink routeName="github" target="_blank">
                         <i className="fa fa-github"></i> GitHub
                     </NavLink>
                 </li>
