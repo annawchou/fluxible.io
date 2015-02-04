@@ -4,6 +4,15 @@
  */
 var showDoc = require('../actions/showDoc');
 
+// Generate an hash of valid api routes, from the /configs/apis.js file
+var apiConfig = require('./apis');
+var apiRoutesWhitelist = apiConfig.reduce(function (whitelist, item) {
+    item.children.forEach(function (api) {
+        whitelist[api.navParams.slug] = api;
+    });
+    return whitelist;
+}, {});
+
 module.exports = {
     home: {
         path: '/',
@@ -20,15 +29,21 @@ module.exports = {
         }
     },
     apis: {
-        path: '/api/:key.html',
+        path: '/api/:slug.html',
         method: 'get',
         page: 'apis',
         label: 'API',
         action: function (context, payload, done) {
+            var slug = payload.params.slug;
+            var api = apiRoutesWhitelist[slug] || {};
+
             var params = {
                 resource: 'api',
-                key: '/apis/' + payload.params.key + '.md',
-                repo: payload.params.key
+                key: '/apis/' +
+                    (api.repo || 'missing') + '/' +
+                    (api.path || 'missing'),
+                slug: slug,
+                pageTitle: api.label || 'Missing API' + ' | Fluxible'
             };
             context.executeAction(showDoc, params, done);
         }

@@ -21,6 +21,7 @@ var TopNav = React.createClass({
                 </li>
                 <li className={cx({'pure-menu-selected': selected === 'apis'})}>
                     <NavLink routeName="apis" navParams={{key: 'fluxible'}}>
+                    <NavLink routeName="apis" navParams={{slug: 'fluxible'}} context={context}>
                         API
                     </NavLink>
                 </li>
