@@ -61,7 +61,6 @@ var fetchAPI = function (route, cb) {
 
             cache[key] = {
                 key: key,
-                title: repo + ' API',
                 content: marked(mdString, {renderer: renderer})
             };
 
