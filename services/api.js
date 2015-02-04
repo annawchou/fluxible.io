@@ -7,27 +7,21 @@
 var debug = require('debug')('APIService');
 var marked = require('marked');
 var renderer = require('./../utils/renderer');
+var createKey = require('./../utils/createAPIKey');
 var request = require('superagent');
 var secrets = require('./../secrets');
 var qs = require('querystring');
 
 // Generate an hash of valid api routes, from the /configs/apis.js file
 var apiConfig = require('./../configs/apis');
-var apiRoutesWhitelist = apiConfig.reduce(function (whitelist, item) {
-    item.children.forEach(function (api) {
-        whitelist[api.navParams.slug] = api;
-    });
-    return whitelist;
-}, {});
+var createWhitelist = require('./../utils/createAPIWhitelist');
+var apiRoutesWhitelist = createWhitelist(apiConfig);
 
 var cache = {};
 
 var fetchAPI = function (route, cb) {
     var api = apiRoutesWhitelist[route];
-    // this key var should be the same value should match the key in /configs/routes.js file
-    var key = '/apis/' +
-            (api && api.repo || 'missing') + '/' +
-            (api && api.path || 'missing');
+    var key = createKey(api);
 
     if (!api) {
         cache[key] = {
