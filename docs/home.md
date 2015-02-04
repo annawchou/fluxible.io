@@ -15,7 +15,7 @@ If you're looking for deep dive into how we made Flux isomorphic, take a look at
 Fluxible restricts access to your Flux methods so that you can't break out of the unidirectional flow. Three contexts exist:
 
  * **Action Context**: interface accessible by action creator methods. Passed as first parameter to all action creators.
- * **Component Context**: interface accessible by React components. Should be passed as prop to top level React component and then propagated to child components that require acess to it.
+ * **Component Context**: interface accessible by React components. Should be passed as context using React or passed as prop to top level React component and then propagated to child components that require access to it.
  * **Store Context**: interface accessible by stores. Passed as first parameter to all stores. See [Dispatchr](https://github.com/yahoo/dispatchr#constructor-1) docs.
 
 ## Pluggable

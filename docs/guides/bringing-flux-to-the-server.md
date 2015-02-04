@@ -567,14 +567,14 @@ module.exports = function showMessages(actionContext, payload, done) {
 };
 ```
 
-The component now receives the component context in a `context` prop. This context has access to an `executeAction` method that will execute an action creator. There is also a `StoreMixin` to reduce some boilerplate for listening to stores:
+The component now receives the component context via React's context. This context has access to an `executeAction` method that will execute an action creator. There is also a mixin to reduce some boilerplate for listening to stores and having to pass the context around:
 
 ```js
 // components/Chat.jsx
 var readMessage = require('./action/readMessage');
 var MessagesStore = require('./stores/MessageStore');
 var MessageSection = React.createClass({
-    mixins: [require('fluxible').StoreMixin],
+    mixins: [require('fluxible').Mixin],
     statics: {
         storeListeners: [MessageStore]
     },
@@ -585,8 +585,7 @@ var MessageSection = React.createClass({
         };
     },
     onClick: function (e) {
-        var context = this.props.context;
-        context.executeAction(readMessage, {/*payload*/});
+        this.executeAction(readMessage, {/*payload*/});
     },
     onChange: function () {
         this.setState(this.getInitialState());

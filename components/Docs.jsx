@@ -9,8 +9,6 @@ var Doc = require('./Doc.jsx');
 
 var Component = React.createClass({
     render: function () {
-        var context = this.props.context;
-
         return (
             <section id="docs">
                 <div className="content">

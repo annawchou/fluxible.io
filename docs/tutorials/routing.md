@@ -176,7 +176,7 @@ should be rendered.
 
 Let's make our original application component a little smarter. We'll include
 the `ApplicationStore` we just created. We also use the
-[`StoreMixin`](/api/dispatchr.html), which adds convenient methods to interact
+[`FluxibleMixin`](/api/fluxible.html), which adds convenient methods to interact
 with stores.
 
 File: `/components/Application.jsx`
@@ -186,10 +186,10 @@ var React = require('react');
 var ApplicationStore = require('../stores/ApplicationStore');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 
 var Application = React.createClass({
-    mixins: [ StoreMixin ],
+    mixins: [ FluxibleMixin ],
     getInitialState: function () {
         return this.getStore(ApplicationStore).getState();
     },
@@ -282,9 +282,9 @@ server.use(function (req, res, next) {
 Let's run through what the request lifecycle entails.
 
  1. A new request is made by the browser and `/server.js` receives it.
- 2. Our middlware takes over and creates a new context. _(Fluxible uses
+ 2. Our middleware takes over and creates a new context. _(Fluxible uses
     contexts to encapsulate data which prevents data leaking between requests)_
- 3. The middlware executes `navigateAction` internally and passes it the
+ 3. The middleware executes `navigateAction` internally and passes it the
     current route as a param. _(`navigateAction` is a convenient method defined on
     the `flux-router-component` library. It helps us deal with route matching)_
  4. [`navigateAction`](https://github.com/yahoo/flux-router-component/blob/master/actions/navigate.js)
@@ -300,7 +300,7 @@ Let's run through what the request lifecycle entails.
  8. We render the `AppComponent` as a string, and send the result as our
     response. Since the `AppComponent` gets its state from the
     `ApplicationStore`, the correct page is rendered. _(the `getStore` method
-    provided by the `StoreMixin` knows how to get stores from the provided context.)_
+    provided by the `FluxibleMixin` knows how to get stores from the provided context.)_
 
 The application should now be working. If we visit `http://localhost:3000/` we'll
 see our Home page, and if we visit `http://localhost:3000/about` we'll see our
@@ -332,7 +332,6 @@ var Nav = React.createClass({
     render: function () {
         var selected = this.props.selected || this.state.selected;
         var links = this.props.links || this.state.links;
-        var context = this.props.context;
         var linkHTML = Object.keys(links).map(function (name) {
             var className = '';
             var link = links[name];
@@ -343,7 +342,7 @@ var Nav = React.createClass({
 
             return (
                 <li className={className} key={link.path}>
-                    <NavLink href={link.path} routeName={link.page} context={context}>
+                    <NavLink href={link.path} routeName={link.page}>
                         {link.label}
                     </NavLink>
                 </li>
@@ -370,17 +369,17 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
 var Nav = require('./Nav.jsx');
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 
 var Application = React.createClass({
-    mixins: [ StoreMixin ],
+    mixins: [ FluxibleMixin ],
     getInitialState: function () {
         return this.getStore(ApplicationStore).getState();
     },
     render: function () {
         return (
             <div>
-                <Nav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
+                <Nav selected={this.state.currentPageName} links={this.state.pages} />
                 {'home' === this.state.currentPageName ? <Home/> : <About/>}
             </div>
         );
@@ -428,11 +427,11 @@ var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 
 // ...
 
-    var html = React.renderToStaticMarkup(HtmlComponent({
-        markup: React.renderToString(AppComponent({
-            context: context.getComponentContext()
-        }))
-    }));
+    React.withContext(context.getComponentContext(), function () {
+        var html = React.renderToStaticMarkup(HtmlComponent({
+            markup: React.renderToString(AppComponent())
+        }));
+    });
 
 // ...
 ```
@@ -496,14 +495,14 @@ server.use(function (req, res, next) {
         res.expose(app.dehydrate(context), 'App');
 
         var AppComponent = app.getAppComponent();
-        var html = React.renderToStaticMarkup(HtmlComponent({
-            state: res.locals.state,
-            markup: React.renderToString(AppComponent({
-                context: context.getComponentContext()
-            }))
-        }));
+        React.withContext(context.getComponentContext(), function () {
+            var html = React.renderToStaticMarkup(HtmlComponent({
+                state: res.locals.state,
+                markup: React.renderToString(AppComponent())
+            }));
 
-        res.send(html);
+            res.send(html);
+        });
     });
 });
 ```
@@ -536,9 +535,9 @@ app.rehydrate(dehydratedState, function (err, context) {
     }
     var mountNode = document.getElementById('app');
 
-    React.render(app.getAppComponent()({
-        context: context.getComponentContext()
-    }), mountNode);
+    React.withContext(context.getComponentContext(), function () {
+        React.render(app.getAppComponent()(), mountNode);
+    });
 });
 ```
 
@@ -595,10 +594,10 @@ var About = require('./About.jsx');
 var Nav = require('./Nav.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 
 var Application = React.createClass({
-    mixins: [ RouterMixin, StoreMixin ],
+    mixins: [ RouterMixin, FluxibleMixin ],
     statics: {
             storeListeners: [ ApplicationStore ]
     },
@@ -612,7 +611,7 @@ var Application = React.createClass({
     render: function(){
         return (
             <div>
-                <Nav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
+                <Nav selected={this.state.currentPageName} links={this.state.pages} />
                 {'home' === this.state.currentPageName ? <Home/> : <About/>}
             </div>
         );
@@ -624,8 +623,7 @@ module.exports = Application;
 
 We're adding a store listener for the `ApplicationStore`. Whenever a store
 we're listening to emits a `change` event, our component's `onChange` function
-will be called (this functionality is provided by the `StoreMixin` of the
-Fluxible library).
+will be called (this functionality is provided by the `FluxibleMixin`).
 
 Our `onChange` function just gets a new state by asking the `ApplicationStore` for
 its current state.
@@ -643,10 +641,10 @@ In: `/components/Application.jsx`
 
 ```js
 var RouterMixin = require('flux-router-component').RouterMixin;
-var StoreMixin = require('fluxible').StoreMixin;
+var FluxibleMixin = require('fluxible').Mixin;
 
 var Application = React.createClass({
-    mixins: [RouterMixin, StoreMixin],
+    mixins: [RouterMixin, FluxibleMixin],
 ```
 
 
