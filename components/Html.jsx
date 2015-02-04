@@ -35,8 +35,8 @@ var Component = React.createClass({
                             &copy; 2015 Yahoo! Inc. All rights reserved.
                         </div>
                      </div>
-                    <script src="/public/js/common.js" defer></script>
-                    <script src="/public/js/main.js" defer></script>
+                    <script src={this.props.assets.common}></script>
+                    <script src={this.props.assets.main}></script>
                 </body>
             </html>
         );

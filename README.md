@@ -9,18 +9,7 @@ The doc site for [Fluxible](https://github.com/yahoo/fluxible).
 $ npm install
 ```
 
-
 ## Run the app
-
-```bash
-$ npm run build
-$ npm start
-```
-
-Open http://localhost:3000
-
-
-## Run in dev mode
 
 ```bash
 $ npm run dev
@@ -30,6 +19,12 @@ This will use `nodemon` and `webpack` to watch for changes and restart and
 rebuild as needed.
 
 Open http://localhost:3000
+
+### Production
+
+To run in production, use `NODE_ENV=production npm run dev`. This will use the production
+assets that `webpack` generates. NOTE, this may break your application if the asset hashes
+are not on CDN.
 
 
 ## License
