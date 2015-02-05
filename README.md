@@ -1,6 +1,7 @@
 # fluxible.io
 
 [![Build Status](https://travis-ci.org/yahoo/fluxible.io.svg?branch=master)](https://travis-ci.org/yahoo/fluxible.io)
+[![Coverage Status](https://img.shields.io/coveralls/yahoo/fluxible.io.svg)](https://coveralls.io/r/yahoo/fluxible.io?branch=master)
 
 The doc site for [Fluxible](https://github.com/yahoo/fluxible).
 
