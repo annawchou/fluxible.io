@@ -2,3 +2,5 @@ sudo: false
 language: node_js
 node_js:
   - "0.10"
+after_success:
+  - "cat artifacts/lcov.info | ./node_modules/.bin/coveralls"
