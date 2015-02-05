@@ -1,5 +1,7 @@
 # fluxible.io
 
+[![Build Status](https://travis-ci.org/yahoo/fluxible.io.svg?branch=master)](https://travis-ci.org/yahoo/fluxible.io)
+
 The doc site for [Fluxible](https://github.com/yahoo/fluxible).
 
 
