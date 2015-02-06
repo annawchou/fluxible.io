@@ -47,15 +47,5 @@ module.exports = {
             };
             context.executeAction(showDoc, params, done);
         }
-    },
-    github: {
-        path: 'https://github.com/yahoo/fluxible',
-        method: 'get',
-        page: 'github',
-        label: 'GitHub',
-        target: '_blank',
-        action: function (context, payload, done) {
-            done();
-        }
     }
 };
