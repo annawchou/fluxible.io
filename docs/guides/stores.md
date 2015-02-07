@@ -21,7 +21,6 @@ var Page = createStore({
     getPage: function () {
         return this.page;
     }
-}
 });
 module.exports = Page;
 ```
@@ -41,6 +40,5 @@ var Component = React.createClass({
     render: function () {
         // markup
     }
-}
 });
 ```
