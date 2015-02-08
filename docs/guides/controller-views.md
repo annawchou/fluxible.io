@@ -18,7 +18,6 @@ module.exports = React.createClass({
         }.bind(this));
     },
     onReset: function (event) {
-        // context property contains the executeAction method to fire an action
         this.executeAction(updateTime);
     },
     render: function() {
@@ -26,6 +25,24 @@ module.exports = React.createClass({
             <em onClick={this.onReset}>{this.state.time}</em>
         );
     }
+});
+```
+
+## Context
+
+The Fluxible mixin (accessible via `require('fluxible').Mixin`) uses React's context to provide access to the [component context](https://github.com/yahoo/fluxible#getcomponentcontext) from within a component. This prevents you from having to pass the context to every component via props. This requires that you pass the component context as the context to React:
+
+```js
+var FluxibleMixin = require('fluxible').Mixin;
+var Component = React.createClass({
+    mixins: [FluxibleMixin],
+    getInitialState: function () {
+        return this.getStore(FooStore).getState();
+    }
+});
+
+React.withContext(context.getComponentContext(), function () {
+    var html = React.renderToString(<Component />);
 });
 ```
 
