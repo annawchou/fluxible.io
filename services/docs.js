@@ -32,13 +32,16 @@ walker.on('file', function (root, fstats, next) {
 
         var heading = data.toString().split('\n')[0].replace('#', '').trim();
 
+        // strip heading as its outputted via the title property
+        var text = data.toString().split('\n').splice(1).join('\n');
+
         // need to strip folder path to match URL key
         key = key.replace(CWD, '');
 
         content[key] = {
             key: key,
             title: heading,
-            content: marked(data.toString())
+            content: marked(text)
         };
 
         next();
