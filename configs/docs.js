@@ -84,5 +84,26 @@ module.exports = [
                 }
             }
         ]
+    },
+    {
+        category: 'Community',
+        children: [
+            {
+                label: 'Libraries',
+                routeName: 'docs',
+                navParams: {
+                    type: 'community',
+                    key: 'libraries'
+                }
+            },
+            {
+                label: 'Presentations',
+                routeName: 'docs',
+                navParams: {
+                    type: 'community',
+                    key: 'presentations'
+                }
+            }
+        ]
     }
 ];
