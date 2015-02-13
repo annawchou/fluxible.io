@@ -6,4 +6,7 @@ deploy.json
 grasshopper.json
 node_modules
 npm-debug.log
+replicatr.js
+screwdriver
+secrets
 secrets.js
