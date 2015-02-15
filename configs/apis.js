@@ -37,7 +37,7 @@ module.exports = [
             {
                 label: 'Routr Plugin',
                 repo: 'fluxible-plugin-routr',
-                path: 'docs/fluxible-plugin-router.md',
+                path: 'docs/fluxible-plugin-routr.md',
                 routeName: 'apis',
                 navParams: {
                     slug: 'routr-plugin'
@@ -55,6 +55,15 @@ module.exports = [
                 routeName: 'apis',
                 navParams: {
                     slug: 'dispatchr'
+                }
+            },
+            {
+                label: 'Store',
+                repo: 'dispatchr',
+                path: 'docs/store.md',
+                routeName: 'apis',
+                navParams: {
+                    slug: 'store'
                 }
             },
             {

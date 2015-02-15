@@ -2,9 +2,6 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-module.exports = function createKeyFromRepoPath(api) {
-    api = api || {};
-    return '/apis/' +
-        (api.repo || 'missing') + '/' +
-        (api.path || 'missing');
+module.exports = function createKeyFromRepoPath(type, path, slug) {
+    return '/' + type + '/' + (path ? path + '/' : '') + slug + '.md';
 }

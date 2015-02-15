@@ -37,7 +37,7 @@ module.exports = {
 
             var params = {
                 resource: 'api',
-                key: createKey(api),
+                key: createKey('api', api.repo, api.navParams.slug),
                 slug: slug,
                 pageTitle: ((api && api.label) || 'Missing') + ' API'
             };
@@ -45,16 +45,14 @@ module.exports = {
         }
     },
     docs: {
-        path: '/:type(tutorials|guides|community)?/:key.html',
+        path: '/:type(tutorials|guides|community)?/:slug.html',
         method: 'get',
         page: 'docs',
         label: 'docs',
         action: function (context, payload, done) {
             var params = {
                 resource: 'docs',
-                key: '/docs/' +
-                    (payload.params.type ? payload.params.type + '/' : '') +
-                    payload.params.key + '.md'
+                key: createKey('docs', payload.params.type, payload.params.slug)
             };
             context.executeAction(showDoc, params, done);
         }

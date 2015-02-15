@@ -21,7 +21,11 @@ var cache = {};
 
 var fetchAPI = function (route, cb) {
     var api = apiRoutesWhitelist[route];
-    var key = createKey(api);
+    var key;
+
+    if (api) {
+        key = createKey('api', api.repo, api.navParams.slug);
+    }
 
     if (!api) {
         cache[key] = {
@@ -34,7 +38,7 @@ var fetchAPI = function (route, cb) {
     var url = 'https://api.github.com/repos/yahoo/';
     url += api.repo;
     url += '/contents/';
-    url += '/docs/fetchr.md';
+    url += '/' + api.path;
     url += '?' + qs.stringify({
         client_id: secrets.github.clientId,
         client_secret: secrets.github.clientSecret

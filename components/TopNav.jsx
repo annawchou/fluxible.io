@@ -15,7 +15,7 @@ var TopNav = React.createClass({
         return (
             <ul>
                 <li className={cx({'pure-menu-selected': selected === 'docs'})}>
-                    <NavLink routeName="docs" navParams={{key: 'quick-start'}}>
+                    <NavLink routeName="docs" navParams={{slug: 'quick-start'}}>
                         Docs
                     </NavLink>
                 </li>
