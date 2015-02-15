@@ -32,9 +32,15 @@ h1, h2, h3, h4, h5, h6, label {
         }
     }
     a.hash-link{
-        font-size: 1.1em;
         display: none;
     }
+}
+
+.edit-link {
+    float: right;
+    margin-top: 6px;
+    font-size: 50%;
+    font-weight: normal;
 }
 
 
@@ -324,7 +330,7 @@ a.pure-button-secondary {
  * This is the blue top section that appears on the page.
  */
 .splash-container {
-    background: url("../images/splash_background.png") no-repeat #0262aa;
+    background: url("../images/splash_background.jpg") no-repeat #0262aa;
     background-size: cover;
     overflow: hidden;
     position: relative;

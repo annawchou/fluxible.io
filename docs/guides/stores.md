@@ -1,6 +1,6 @@
 # Stores
 
-Stores contain the application state and logic. The store is registered as a unit rather than individual callbacks. Stores contain a `handlers` property that maps action names to Store methods. The Store handlers receive a payload and update its' state appropriately. Once updated, the store calls `this.emitChange()` to notify Controller Views of state changes. These views can leverage the [Store Mixin](https://github.com/yahoo/fluxible#store-mixin) to re-render themselves.
+Stores contain the application state and logic. The store is registered as a unit rather than individual callbacks. Stores contain a `handlers` property that maps action names to Store methods. The Store handlers receive a payload and update its' state appropriately. Once updated, the store calls `this.emitChange()` to notify Controller Views of state changes. These views can leverage the [Fluxible Mixin](https://github.com/yahoo/fluxible#mixin) to re-render themselves.
 
 
 ```js
@@ -21,7 +21,6 @@ var Page = createStore({
     getPage: function () {
         return this.page;
     }
-}
 });
 module.exports = Page;
 ```
@@ -41,6 +40,5 @@ var Component = React.createClass({
     render: function () {
         // markup
     }
-}
 });
 ```

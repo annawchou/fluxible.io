@@ -25,9 +25,9 @@ var TopNav = React.createClass({
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink routeName="github" target="_blank">
+                    <a href="https://github.com/yahoo/fluxible" target="_blank">
                         <i className="fa fa-github"></i> GitHub
-                    </NavLink>
+                    </a>
                 </li>
             </ul>
         );

@@ -18,6 +18,7 @@ var React = require('react');
 var app = require('./app');
 var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 var tracking = require('./configs/tracking');
+var assets = require('./utils/assets');
 
 var server = express();
 server.set('state namespace', 'App');
@@ -64,6 +65,7 @@ server.use(function (req, res, next) {
         var doctype = '<!DOCTYPE html>';
         React.withContext(context.getComponentContext(), function () {
             var html = React.renderToStaticMarkup(HtmlComponent({
+                assets: assets,
                 state: exposed,
                 markup: React.renderToString(AppComponent({
                     context: context.getComponentContext()

@@ -5,6 +5,11 @@
 'use strict';
 
 var webpack = require('webpack');
+var path = require('path');
+var fs = require('fs');
+
+// format `*.[chunkhash].min.js`
+var CHUNK_REGEX = /^([A-Za-z0-9_\-]+)\..*/;
 
 module.exports = function (grunt) {
     grunt.initConfig({
@@ -97,12 +102,9 @@ module.exports = function (grunt) {
                 entry: './client.js',
                 output: {
                     path: './build/js',
-                    // publicPath: 'https://s.yimg.com/os/flx/js/',
-                    // filename: '[name].[chunkhash].min.js',
-                    // chunkFilename: '[name].[chunkhash].min.js'
-                    publicPath: '/public/js/',
-                    filename: '[name].js',
-                    chunkFilename: '[name].[chunkhash].js'
+                    publicPath: 'http://l.yimg.com/os/flx/js/',
+                    filename: '[name].[chunkhash].min.js',
+                    chunkFilename: '[name].[chunkhash].min.js'
                 },
                 module: {
                     loaders: [
@@ -119,18 +121,47 @@ module.exports = function (grunt) {
                     }),
 
                     // These are performance optimizations for your bundles
+                    new webpack.optimize.DedupePlugin(),
+                    new webpack.optimize.OccurenceOrderPlugin(),
+                    new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', 2),
+
+                    // This ensures requires for `react` and `react/addons` normalize to the same requirement
+                    new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons')),
+
                     new webpack.optimize.UglifyJsPlugin({
                         compress: {
                             warnings: false
                         }
                     }),
-                    new webpack.optimize.OccurenceOrderPlugin(),
-                    new webpack.optimize.DedupePlugin(),
-                    // new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', undefined, 2),
-                    new webpack.optimize.CommonsChunkPlugin('common.js', undefined, 2),
 
-                    // This ensures requires for `react` and `react/addons` normalize to the same requirement
-                    new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons'))
+                    // generates webpack assets config to use hashed assets in production mode
+                    function webpackStatsPlugin() {
+                        this.plugin('done', function(stats) {
+                            var data = stats.toJson();
+                            var assets = data.assetsByChunkName;
+                            var output = {
+                                assets: {},
+                                cdnPath: this.options.output.publicPath
+                            };
+
+                            Object.keys(assets).forEach(function eachAsset(key) {
+                                var value = assets[key];
+
+                                // if `*.[chunkhash].min.js` regex matched, then use file name for key
+                                var matches = key.match(CHUNK_REGEX);
+                                if (matches) {
+                                    key = matches[1];
+                                }
+
+                                output.assets[key] = value;
+                            });
+
+                            fs.writeFileSync(
+                                path.join(process.cwd(), 'build', 'assets.json'),
+                                JSON.stringify(output, null, 4)
+                            );
+                        });
+                    }
                 ],
 
                 // removes verbosity from builds

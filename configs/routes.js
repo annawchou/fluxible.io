@@ -45,7 +45,7 @@ module.exports = {
         }
     },
     docs: {
-        path: '/:type(tutorials|guides)?/:key.html',
+        path: '/:type(tutorials|guides|community)?/:key.html',
         method: 'get',
         page: 'docs',
         label: 'docs',
@@ -57,16 +57,6 @@ module.exports = {
                     payload.params.key + '.md'
             };
             context.executeAction(showDoc, params, done);
-        }
-    },
-    github: {
-        path: 'https://github.com/yahoo/fluxible',
-        method: 'get',
-        page: 'github',
-        label: 'GitHub',
-        target: '_blank',
-        action: function (context, payload, done) {
-            done();
         }
     }
 };
