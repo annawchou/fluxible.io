@@ -17,7 +17,8 @@
   },
   "precommit": [
     "style",
-    "lint"
+    "lint",
+    "devtest"
   ],
   "yahoo": {
     "bugzilla": {

@@ -4,9 +4,20 @@ module.exports = [
         children: [
             {
                 label: 'Fluxible',
+                repo: 'fluxible',
+                path: 'docs/fluxible.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'fluxible'
+                    slug: 'fluxible'
+                }
+            },
+            {
+                label: 'Fluxible Context',
+                repo: 'fluxible',
+                path: 'docs/fluxible-context.md',
+                routeName: 'apis',
+                navParams: {
+                    slug: 'fluxible-context'
                 }
             }
         ]
@@ -16,16 +27,20 @@ module.exports = [
         children: [
             {
                 label: 'Fetchr Plugin',
+                repo: 'fluxible-plugin-fetchr',
+                path: 'docs/fluxible-plugin-fetchr.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'fluxible-plugin-fetchr'
+                    slug: 'fetchr-plugin'
                 }
             },
             {
                 label: 'Routr Plugin',
+                repo: 'fluxible-plugin-routr',
+                path: 'docs/fluxible-plugin-routr.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'fluxible-plugin-routr'
+                    slug: 'routr-plugin'
                 }
             }
         ]
@@ -35,30 +50,56 @@ module.exports = [
         children: [
             {
                 label: 'Dispatchr',
+                repo: 'dispatchr',
+                path: 'docs/dispatchr.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'dispatchr'
+                    slug: 'dispatchr'
+                }
+            },
+            {
+                label: 'Store',
+                repo: 'dispatchr',
+                path: 'docs/store.md',
+                routeName: 'apis',
+                navParams: {
+                    slug: 'store'
                 }
             },
             {
                 label: 'Fetchr',
+                repo: 'fetchr',
+                path: 'docs/fetchr.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'fetchr'
+                    slug: 'fetchr'
                 }
             },
             {
                 label: 'Routr',
+                repo: 'routr',
+                path: 'docs/routr.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'routr'
+                    slug: 'routr'
                 }
             },
             {
-                label: 'Flux Router Component',
+                label: 'NavLink',
+                repo: 'flux-router-component',
+                path: 'docs/navlink.md',
                 routeName: 'apis',
                 navParams: {
-                    key: 'flux-router-component'
+                    slug: 'navlink'
+                }
+            },
+            {
+                label: 'Routr Mixin',
+                repo: 'flux-router-component',
+                path: 'docs/router-mixin.md',
+                routeName: 'apis',
+                navParams: {
+                    slug: 'router-mixin'
                 }
             }
         ]

@@ -6,7 +6,7 @@ module.exports = [
                 label: 'Quick Start',
                 routeName: 'docs',
                 navParams: {
-                    key: 'quick-start'
+                    slug: 'quick-start'
                 }
             }
         ]
@@ -19,7 +19,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'bringing-flux-to-the-server'
+                    slug: 'bringing-flux-to-the-server'
                 }
             },
             {
@@ -27,7 +27,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'dispatcher'
+                    slug: 'dispatcher'
                 }
             },
             {
@@ -35,7 +35,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'stores'
+                    slug: 'stores'
                 }
             },
             {
@@ -43,7 +43,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'actions'
+                    slug: 'actions'
                 }
             },
             {
@@ -51,7 +51,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'controller-views'
+                    slug: 'controller-views'
                 }
             },
             {
@@ -59,7 +59,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'data-services'
+                    slug: 'data-services'
                 }
             },
             {
@@ -67,7 +67,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'guides',
-                    key: 'plugins'
+                    slug: 'plugins'
                 }
             }
         ]
@@ -80,7 +80,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'tutorials',
-                    key: 'routing'
+                    slug: 'routing'
                 }
             }
         ]
@@ -93,7 +93,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'community',
-                    key: 'libraries'
+                    slug: 'libraries'
                 }
             },
             {
@@ -101,7 +101,7 @@ module.exports = [
                 routeName: 'docs',
                 navParams: {
                     type: 'community',
-                    key: 'presentations'
+                    slug: 'presentations'
                 }
             }
         ]

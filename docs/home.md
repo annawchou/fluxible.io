@@ -16,7 +16,7 @@ Fluxible restricts access to your Flux methods so that you can't break out of th
 
  * **Action Context**: interface accessible by action creator methods. Passed as first parameter to all action creators.
  * **Component Context**: interface accessible by React components. Should be passed as context using React or passed as prop to top level React component and then propagated to child components that require access to it.
- * **Store Context**: interface accessible by stores. Passed as first parameter to all stores. See [Dispatchr](https://github.com/yahoo/dispatchr#constructor-1) docs.
+ * **Store Context**: interface accessible by stores. Passed as first parameter to all stores. See [Dispatchr](/api/dispatchr.html) docs.
 
 ## Pluggable
 

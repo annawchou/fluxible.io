@@ -10,10 +10,11 @@ var MockService = require('fluxible-plugin-fetchr/utils/MockServiceManager');
 var DocStore = require('../../../stores/DocStore');
 var routes = require('../../../configs/routes.js');
 var docResponse = require('../../fixtures/doc-response.js');
+var mockery = require('mockery');
 
 MockContext.Dispatcher.registerStore(DocStore);
 
-describe('controller actions', function () {
+describe('routes', function () {
     var context;
 
     beforeEach(function () {
@@ -33,6 +34,26 @@ describe('controller actions', function () {
 
             callback(null, docResponse);
         });
+        mockery.registerMock('./../utils/createAPIWhitelist', {
+            fluxible: {
+                label: 'Fluxible',
+                repo: 'fluxible',
+                path: 'docs/fluxible.md',
+                routeName: 'apis',
+                navParams: {
+                    slug: 'fluxible'
+                }
+            }
+        });
+        mockery.enable({
+            useCleanCache: true,
+            warnOnUnregistered: false
+        });
+    });
+
+    afterEach(function () {
+        mockery.disable();
+        mockery.deregisterAll();
     });
 
     it('should execute the home action', function (done) {
@@ -50,7 +71,7 @@ describe('controller actions', function () {
     it('should execute the apis action', function (done) {
         var payload = {
             params: {
-                key: 'something-great'
+                slug: 'fluxible'
             }
         };
 
@@ -68,7 +89,7 @@ describe('controller actions', function () {
     it('should execute the docs action (without type param)', function (done) {
         var payload = {
             params: {
-                key: 'overview'
+                slug: 'overview'
             }
         };
 
@@ -87,7 +108,7 @@ describe('controller actions', function () {
         var payload = {
             params: {
                 type: 'guides',
-                key: 'learn-stuff'
+                slug: 'learn-stuff'
             }
         };
 
