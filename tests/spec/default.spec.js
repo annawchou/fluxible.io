@@ -6,7 +6,11 @@
 
 describe('fluxible homepage', function() {
     it('should have a title', function() {
-        browser.driver.get(browser.baseUrl + '/');
+        var url = browser.baseUrl;
+        if (browser.baseUrl.slice(-1) !== '/') {
+            url += '/';
+        }
+        browser.driver.get(url);
         expect(browser.driver.getTitle()).toMatch(/Fluxible/);
     });
 });
