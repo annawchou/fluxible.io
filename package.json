@@ -9,7 +9,7 @@
     "build": "grunt build",
     "dev": "grunt dev",
     "devtest": "mocha tests/unit --recursive --reporter spec",
-    "func": "protractor --baseUrl=http://127.0.0.1:3000 ./tests/spec/protractor.conf.js",
+    "func": "protractor --baseUrl=http://127.0.0.1:3000/ ./tests/spec/protractor.conf.js",
     "lint": "grunt jshint",
     "start": "node server",
     "style": "jscs .",
