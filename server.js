@@ -67,9 +67,7 @@ server.use(function (req, res, next) {
             var html = React.renderToStaticMarkup(HtmlComponent({
                 assets: assets,
                 state: exposed,
-                markup: React.renderToString(AppComponent({
-                    context: context.getComponentContext()
-                })),
+                markup: React.renderToString(AppComponent()),
                 tracking: tracking
             }));
             res.send(doctype + html);
