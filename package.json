@@ -9,6 +9,7 @@
     "build": "grunt build",
     "dev": "grunt dev",
     "devtest": "mocha tests/unit --recursive --reporter spec",
+    "func": "protractor --baseUrl=http://127.0.0.1:3000 ./tests/spec/protractor.conf.js",
     "lint": "grunt jshint",
     "start": "node server",
     "style": "jscs .",
@@ -81,6 +82,7 @@
     "mockery": "^1.4.0",
     "nodemon": "^1.2.1",
     "precommit-hook": "^1.0.7",
+    "protractor": "^1.6.1",
     "webpack": "^1.4.12",
     "webpack-dev-server": "^1.6.5"
   }
