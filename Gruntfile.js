@@ -47,6 +47,21 @@ module.exports = function (grunt) {
                 logConcurrentOutput: true
             }
         },
+        protractor_webdriver: {
+            options: {
+                path: './node_modules/.bin/'
+            },
+            all: {}
+        },
+        protractor: {
+            options: {
+                configFile: './tests/spec/protractor.conf.js',
+                args: {
+                    baseUrl: 'http://127.0.0.1:3000/'
+                }
+            },
+            all: {}
+        },
         jshint: {
             all: [
                 '*.js',
@@ -178,9 +193,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-webpack');
+    grunt.loadNpmTasks('grunt-protractor-webdriver');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     // tasks
     grunt.registerTask('default', 'dev');
     grunt.registerTask('dev', ['clean', 'copy', 'jshint', 'concurrent:dev']);
     grunt.registerTask('build', ['clean', 'copy', 'compass:prod', 'webpack:prod']);
+    grunt.registerTask('func', ['protractor_webdriver', 'protractor']);
 };
