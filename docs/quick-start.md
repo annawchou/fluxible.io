@@ -1,6 +1,6 @@
 # Quick Start
 
-If you wan't to jump right into it, check out our examples:
+If you want to jump right into it, check out our examples:
 
  - [Chat](https://github.com/yahoo/flux-examples/tree/master/chat) - Port of [Facebook's Flux chat example](https://github.com/facebook/flux/tree/master/examples/).
  - [Routing](https://github.com/yahoo/flux-examples/tree/master/fluxible-router) - Simple isomorphic routing in Flux flow.
@@ -12,7 +12,7 @@ Alternatively, if you want to start writing code, you can use our [yeoman genera
 npm install -g yo generator-fluxible
  ```
 
-To use the generator, create a directory and cd into it. Then run `yo fluxible` which will create a working Fluxible application. To start the application run `grunt`, you can view it in a browser at http://localhost:3000.
+To use the generator, create a directory and cd into it. Then run `yo fluxible` which will create a working Fluxible application. To start the application, run `grunt`, then view it in a browser at http://localhost:3000.
 
 ```bash
 mkdir example && cd example
@@ -21,7 +21,7 @@ grunt
 open http://localhost:3000
 ```
 
-This will generate a simple application that demonstrates the basics of using Fluxible; routing, store dehydration from server and client rehydrating. Please take a look at the guides to gain a better understanding of the core concepts of Fluxible.
+This will generate a simple application that demonstrates the basics of using Fluxible: routing, store dehydration from server and client rehydrating. Please take a look at the guides to gain a better understanding of the core concepts of Fluxible.
 
 <hr />
 
