@@ -28,19 +28,27 @@ var Component = React.createClass({
         }
     },
     render: function () {
-        var editEl = '';
-
-        // only output on docs pages
+        var editEl;
         if (this.props.slug && this.props.slug.indexOf('docs') !== -1) {
-            editEl = (<a href={DOCS_URL + this.props.slug} className='edit-link' target='_blank'>Edit on Github</a>)
+            editEl = (
+                <a href={DOCS_URL + this.props.slug}
+                    className='edit-link'
+                    target='_blank'>
+
+                    Edit on Github
+                </a>
+            );
+        }
+
+        var heading;
+        if (this.props.title) {
+            heading = <h1>{this.props.title}</h1>;
         }
 
         return (
             <div className="doc-content">
-                <h1>
-                    {this.props.title}
-                    {editEl}
-                </h1>
+                {editEl}
+                {heading}
                 <div onClick={this.onClick} dangerouslySetInnerHTML={{__html: this.props.content}}></div>
             </div>
         );
