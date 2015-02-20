@@ -1,7 +1,7 @@
 {
   "name": "fluxible.io",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "fluxible.io site",
   "main": "server.js",
   "author": "Seth Bertalotto <sbertal@yahoo-inc.com>",
