@@ -422,7 +422,7 @@ server.get('/', function (req, res, next) {
             dispatcher: dispatcher
         }));
         // use express-state to expose the app state on window.App
-        res.expose(dispatcher.dehdyrate(), 'App');
+        res.expose(dispatcher.dehydrate(), 'App');
         res.write('<div id="app">' + html + '</div>');
         res.send('<script>' + res.locals.state + '</script>');
     });
