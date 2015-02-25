@@ -32,7 +32,7 @@ var Component = React.createClass({
                             unless otherwise stated.
                         </div>
                         <div className="pure-u-1 pure-u-md-1-2 copyright">
-                            &copy; 2015 Yahoo! Inc. All rights reserved.
+                            &copy; 2015 Yahoo Inc. All rights reserved.
                         </div>
                      </div>
                     <script src={this.props.assets.common}></script>
