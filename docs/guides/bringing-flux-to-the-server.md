@@ -522,7 +522,7 @@ We'll start by creating an `app.js` file that will contain all of the common app
 // app.js
 var Fluxible = require('fluxible');
 var app = new Fluxible({
-    appComponent: ChatComponent
+    component: ChatComponent
 });
 app.registerStore(MessageStore);
 module.exports = app;
