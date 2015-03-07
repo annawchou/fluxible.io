@@ -25,12 +25,12 @@ So why do server rendering at all? Some would say that you can reduce this compl
  * **Search Engine Optimization** - Search engines are getting better at running JavaScript, but the reality is that a plain old HTML document will be the most robust
  * **Legacy Browser Support** - When you're supporting older browsers where JavaScript execution is brittle, it can be easier to just disable JavaScript completely and let HTTP work as it's intended.
  * **User Perceived Performance** - Getting markup on to the page immediately on the server response gives the users what they want quickly. You may need to do additional loading of JavaScript, but metrics show that user-perceived performance is critical.
- 
+
 Performance is our primary concern here. Single page apps that need round trips for fetching JavaScript and data before rendering markup have a theoretical minimum amount of time before a user can see the page. Metrics are pretty clear that the faster you can respond and display information to a user, the more likely they are to stick around and view more pages. Guillermo Rauch talks about this in a great blog post about the ["7 Principles of Rich Web Applications"](http://rauchg.com/2014/7-principles-of-rich-web-applications/).
 
 ## React and Flux?
 
-React gives us exactly what we needed for both of these use cases. It allows us to render individual components in both environments. The question remained about the rest of the architecture. 
+React gives us exactly what we needed for both of these use cases. It allows us to render individual components in both environments. The question remained about the rest of the architecture.
 
 Flux makes great strides in reducing complexity for single page apps and we loved the unidirectional flow that it enforces. Our concern was whether this architecture would work on the server. After experimenting with different methods, we have found that the Flux philosophy can be extended to support both server and client application workflows.
 
@@ -87,9 +87,12 @@ module.exports = function showMessages() {
 
 ```js
 // lib/dispatcher.js
-var Dispatcher = require('flux').Dispatcher;
+var Dispatcher = require('dispatchr')();
+var MessageStore = require('../stores/MessageStore');
 
-module.exports = new Dispatcher();
+Dispatcher.registerStore(MessageStore);
+
+module.exports = Dispatcher;
 ```
 
 ```js
@@ -150,7 +153,7 @@ var server = express();
 
 server.get('/', function (req, res, next) {
     showMessages({});
-    
+
     var html = React.renderToString(ChatComponent());
     res.send(html);
 });
@@ -182,7 +185,7 @@ module.exports = function showMessages(payload) {
 ```
 
 Now we need the middleware to wait until the data is ready before rendering the application component:
- 
+
 ```js
 // server.js
 var express = require('express');
@@ -274,7 +277,7 @@ var dispatcher = require('./dispatcher');
 dispatcher.register('RECEIVE_MESSAGES', MessageStore.onReceiveMessages);
 ```
 
-There's an issue here, the `onReceiveMessages` function needs to be bound to the store instance which is created per request. We can no longer statically register the store instance to the dispatcher. 
+There's an issue here, the `onReceiveMessages` function needs to be bound to the store instance which is created per request. We can no longer statically register the store instance to the dispatcher.
 
 You also don't want several instances of the `MessageStore` listening for the same actions either otherwise the data will be sent to all of them. The dispatcher itself needs to isolate its actions as well so that it's not emitting to all of the stores across all of the requests. So, the dispatcher itself needs to be isolated per request.
 
@@ -302,7 +305,7 @@ var Dispatcher = require('./lib/dispatcher');
 
 server.get('/', function (req, res, next) {
     var dispatcher = new Dispatchr();
-    
+
     // Now the action needs access to the dispatcher too
     showMessages(dispatcher, {}, function () {
         var html = React.renderToString(ChatComponent());
@@ -415,7 +418,7 @@ So now on the server, we can use a library like “express-state” to send the 
 //...
 server.get('/', function (req, res, next) {
     var dispatcher = new Dispatchr();
-    
+
     // Now the action needs access to the dispatcher too
     showMessages(dispatcher, {}, function () {
         var html = React.renderToString(ChatComponent({
@@ -538,7 +541,7 @@ var app = require('./app');
 server.get('/', function (req, res, next) {
     // create a request context
     var context = app.createContext();
-    
+
     context.executeAction(showMessages, {}, function () {
         var html = React.renderToString(ChatComponent({
             // give components a component interface into the context
