@@ -10,7 +10,7 @@ var routrPlugin = require('fluxible-plugin-routr');
 var routes = require('./configs/routes');
 
 var app = new FluxibleApp({
-    appComponent: React.createFactory(require('./components/Application.jsx'))
+    component: React.createFactory(require('./components/Application.jsx'))
 });
 
 app.plug(fetchrPlugin({ xhrPath: '/_api' }));

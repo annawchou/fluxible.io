@@ -41,13 +41,13 @@ var React = require('react');
 var App = require('./components/Application.jsx');
 var express = require('express');
 
-var AppComponent = React.createFactory(App);
+var Component = React.createFactory(App);
 var server = express();
 var port = process.env.PORT || 3000;
 
 // all requests to the server return the html
 server.use(function (req, res, next) {
-    var component = AppComponent();
+    var component = Component();
     var html = React.renderToString(component);
     res.send(html);
 });
@@ -221,11 +221,11 @@ var Fluxible = require('fluxible');
 var routrPlugin = require('fluxible-plugin-routr');
 var routes = require('./configs/routes');
 var App = require('./components/Application.jsx');
-var AppComponent = React.createFactory(App);
+var Component = React.createFactory(App);
 var ApplicationStore = require('./stores/ApplicationStore');
 
 var app = new Fluxible({
-    appComponent: AppComponent
+    component: Component
 });
 
 app.plug(routrPlugin({
@@ -268,8 +268,8 @@ server.use(function (req, res, next) {
             return;
         }
 
-        var AppComponent = app.getAppComponent();
-        var component = AppComponent({
+        var Component = app.getComponent();
+        var component = Component({
             context: context.getComponentContext()
         });
         var html = React.renderToString(component);
@@ -297,8 +297,8 @@ Let's run through what the request lifecycle entails.
  7. The `navigateAction` callback is executed. Inside the callback, a new
     `Application` component instance is created, and is handed the current context.
     The context contains, among other things, the updated `ApplicationStore`.
- 8. We render the `AppComponent` as a string, and send the result as our
-    response. Since the `AppComponent` gets its state from the
+ 8. We render the `Component` as a string, and send the result as our
+    response. Since the `Component` gets its state from the
     `ApplicationStore`, the correct page is rendered. _(the `getStore` method
     provided by the `FluxibleMixin` knows how to get stores from the provided context.)_
 
@@ -429,7 +429,7 @@ var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 
     React.withContext(context.getComponentContext(), function () {
         var html = React.renderToStaticMarkup(HtmlComponent({
-            markup: React.renderToString(AppComponent())
+            markup: React.renderToString(Component())
         }));
     });
 
@@ -494,11 +494,11 @@ server.use(function (req, res, next) {
 
         res.expose(app.dehydrate(context), 'App');
 
-        var AppComponent = app.getAppComponent();
+        var Component = app.getComponent();
         React.withContext(context.getComponentContext(), function () {
             var html = React.renderToStaticMarkup(HtmlComponent({
                 state: res.locals.state,
-                markup: React.renderToString(AppComponent())
+                markup: React.renderToString(Component())
             }));
 
             res.send(html);
@@ -536,7 +536,7 @@ app.rehydrate(dehydratedState, function (err, context) {
     var mountNode = document.getElementById('app');
 
     React.withContext(context.getComponentContext(), function () {
-        React.render(app.getAppComponent()(), mountNode);
+        React.render(app.getComponent()(), mountNode);
     });
 });
 ```
@@ -580,9 +580,9 @@ state, and won't update the DOM unless something has actually changed.
 
 However, if you try switching between pages, you'll notice the `NavBar` is now
 broken. Even though the `navigateAction` is being executed on click, and our
-`ApplicationStore` is being updated, our `AppComponent` is not re-rendering.
+`ApplicationStore` is being updated, our `Component` is not re-rendering.
 
-This is easy to fix. Let's add a store listener so our `AppComponent`
+This is easy to fix. Let's add a store listener so our `Component`
 updates whenever the `ApplicationStore` changes.
 
 File: `/components/Application.jsx`
