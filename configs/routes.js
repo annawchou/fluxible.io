@@ -37,7 +37,7 @@ module.exports = {
 
             var params = {
                 resource: 'api',
-                key: createKey('api', api.repo, api.navParams.slug),
+                key: createKey('api', api.repo, api.navParams && api.navParams.slug),
                 slug: slug,
                 pageTitle: ((api && api.label) || 'Missing') + ' API'
             };

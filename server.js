@@ -19,6 +19,8 @@ var app = require('./app');
 var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 var tracking = require('./configs/tracking');
 var assets = require('./utils/assets');
+var show404 = require('./actions/show404');
+var show500 = require('./actions/show500');
 
 var server = express();
 server.set('state namespace', 'App');
@@ -38,6 +40,24 @@ fetchrPlugin.registerService(require('./services/api'));
 // Set up the fetchr middleware
 server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
 
+// Render the app
+function renderApp(res, context) {
+    var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
+    var Component = app.getComponent();
+    var doctype = '<!DOCTYPE html>';
+    var componentContext = context.getComponentContext();
+    var html = React.renderToStaticMarkup(HtmlComponent({
+        assets: assets,
+        context: componentContext,
+        state: exposed,
+        markup: React.renderToString(Component({
+            context: componentContext
+        })),
+        tracking: tracking
+    }));
+    res.send(doctype + html);
+}
+
 // Every other request gets the app bootstrap
 server.use(function (req, res, next) {
     var context = app.createContext({
@@ -47,33 +67,25 @@ server.use(function (req, res, next) {
         }
     });
 
-    context.executeAction(navigateAction, {
-        url: req.url
-    }, function (err) {
+    context.executeAction(navigateAction, { url: req.url }, function (err) {
         if (err) {
-            if (err.status && err.status === 404) {
-                next();
-            } else {
-                next(err);
+            if (err.statusCode && err.statusCode === 404) {
+                res.status(404);
+                context.executeAction(show404, { err: err }, function () {
+                    renderApp(res, context);
+                });
             }
+            else {
+                res.status(500);
+                context.executeAction(show500, { err: err }, function () {
+                    renderApp(res, context);
+                });
+            }
+
             return;
         }
 
-        var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
-
-        var Component = app.getComponent();
-        var doctype = '<!DOCTYPE html>';
-        var componentContext = context.getComponentContext();
-        var html = React.renderToStaticMarkup(HtmlComponent({
-            assets: assets,
-            context: componentContext,
-            state: exposed,
-            markup: React.renderToString(Component({
-                context: componentContext
-            })),
-            tracking: tracking
-        }));
-        res.send(doctype + html);
+        renderApp(res, context);
     });
 });
 

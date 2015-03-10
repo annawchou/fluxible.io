@@ -7,6 +7,8 @@
 var React = require('react');
 var Home = require('./Home.jsx');
 var Docs = require('./Docs.jsx');
+var Status500 = require('./Status500.jsx');
+var Status404 = require('./Status404.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var DocStore = require('../stores/DocStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
@@ -55,6 +57,12 @@ var Application = React.createClass({
         else if ('apis' === this.state.currentPageName) {
             var apisConfig = require('./../configs/apis');
             page = <Docs menu={apisConfig} doc={this.state.currentDoc} />;
+        }
+        else if ('500' === this.state.currentPageName) {
+            page = <Status500 />;
+        }
+        else if ('404' === this.state.currentPageName) {
+            page = <Status404 />;
         }
 
         return (
