@@ -9,8 +9,11 @@ var routesConfig = require('../configs/routes');
 var ApplicationStore = createStore({
     storeName: 'ApplicationStore',
     handlers: {
+        'CHANGE_ROUTE_START': 'changeRoute',
         'CHANGE_ROUTE_SUCCESS': 'handleNavigate',
-        'UPDATE_PAGE_TITLE': 'updatePageTitle'
+        'UPDATE_PAGE_TITLE': 'updatePageTitle',
+        'STATUS_500': 'status500',
+        'STATUS_404': 'status404'
     },
     initialize: function (dispatcher) {
         this.currentPageId = null;
@@ -19,6 +22,10 @@ var ApplicationStore = createStore({
         this.currentRoute = null;
         this.pages = routesConfig;
         this.pageTitle = '';
+    },
+    changeRoute: function (route) {
+        this.currentRoute = route;
+        this.emitChange();
     },
     handleNavigate: function (route) {
         var pageId = route.params.key || route.params.slug;
@@ -32,11 +39,18 @@ var ApplicationStore = createStore({
         this.currentPageId = pageId;
         this.currentPageName = pageName;
         this.currentPage = page;
-        this.currentRoute = route;
         this.emitChange();
     },
     updatePageTitle: function (title) {
         this.pageTitle = title.pageTitle;
+        this.emitChange();
+    },
+    status500: function () {
+        this.currentPageName = '500';
+        this.emitChange();
+    },
+    status404: function () {
+        this.currentPageName = '404';
         this.emitChange();
     },
     getCurrentPageName: function () {

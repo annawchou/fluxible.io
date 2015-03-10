@@ -31,6 +31,7 @@ describe('application store', function () {
     });
 
     it('should handle navigate', function (done) {
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
 
         expect(storeInstance.currentPageId).to.equal(homeRoute.params.key);
@@ -39,8 +40,10 @@ describe('application store', function () {
 
     it('should return early during handle navigate, when navigating to the same page', function (done) {
         // initial call
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
         // subsequent call
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
 
         expect(storeInstance.currentPageId).to.equal(homeRoute.params.key);
@@ -56,6 +59,7 @@ describe('application store', function () {
     });
 
     it('should get current page name', function (done) {
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
 
         expect(storeInstance.getCurrentPageName()).to.equal(homeRoute.config.page);
@@ -71,6 +75,7 @@ describe('application store', function () {
     });
 
     it('should get current route', function (done) {
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
 
         expect(storeInstance.getCurrentRoute()).to.equal(homeRoute);
@@ -78,6 +83,7 @@ describe('application store', function () {
     });
 
     it('should dehydrate', function (done) {
+        storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
         var title = { pageTitle: 'Fluxible Rocks' };
         storeInstance.updatePageTitle(title);

@@ -19,9 +19,14 @@ module.exports = function (context, payload, done) {
 
     // get content from service
     context.service.read(payload.resource, payload, {}, function (err, data) {
-        if (err || !data) {
-            context.dispatch('RECEIVE_DOC_FAILURE', payload);
+        if (err) {
             return done(err);
+        }
+
+        if (!data) {
+            var err404 = new Error('Document not found');
+            err404.statusCode = 404;
+            return done(err404);
         }
 
         context.dispatch('RECEIVE_DOC_SUCCESS', data);
