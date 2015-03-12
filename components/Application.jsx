@@ -13,7 +13,7 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var DocStore = require('../stores/DocStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
 var NavLink = require('flux-router-component').NavLink;
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 var TopNav = require('./TopNav');
 
 var Application = React.createClass({
