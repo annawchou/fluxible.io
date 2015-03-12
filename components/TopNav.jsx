@@ -3,10 +3,9 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 'use strict';
-var React = require('react/addons');
+var React = require('react');
 var NavLink = require('flux-router-component').NavLink;
-
-var cx = React.addons.classSet;
+var cx = require('classnames');
 
 var TopNav = React.createClass({
     render: function() {
