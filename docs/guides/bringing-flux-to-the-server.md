@@ -40,7 +40,7 @@ Let's jump into some code. I'm making the assumption that you have looked at [Fl
 
 ### Client Side Application ([Full Code](https://github.com/mridgway/isomorphic-chat/tree/2107667ef0020fa63fc27d25deeee1be73f56f19))
 
-Let's first look at what a Flux application looks like when it's client-side only:
+Let's first look at what a Flux application looks like when it's client-side only using Facebook's dispatcher:
 
 ```html
 // index.html
@@ -87,12 +87,9 @@ module.exports = function showMessages() {
 
 ```js
 // lib/dispatcher.js
-var Dispatcher = require('dispatchr')();
-var MessageStore = require('../stores/MessageStore');
+var Dispatcher = require('flux').Dispatcher;
 
-Dispatcher.registerStore(MessageStore);
-
-module.exports = Dispatcher;
+module.exports = new Dispatcher();
 ```
 
 ```js
