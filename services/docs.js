@@ -57,7 +57,6 @@ walker.on('end', function () {
 module.exports = {
     name: 'docs',
     read: function (req, resource, params, config, callback) {
-        console.log(params.key, Object.keys(content));
         callback(null, content[params.key]);
     }
 };
