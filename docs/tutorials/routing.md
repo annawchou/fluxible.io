@@ -186,7 +186,7 @@ var React = require('react');
 var ApplicationStore = require('../stores/ApplicationStore');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 
 var Application = React.createClass({
     mixins: [ FluxibleMixin ],
@@ -369,7 +369,7 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
 var Nav = require('./Nav.jsx');
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 
 var Application = React.createClass({
     mixins: [ FluxibleMixin ],
@@ -594,7 +594,7 @@ var About = require('./About.jsx');
 var Nav = require('./Nav.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var RouterMixin = require('flux-router-component').RouterMixin;
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 
 var Application = React.createClass({
     mixins: [ RouterMixin, FluxibleMixin ],
@@ -641,7 +641,7 @@ In: `/components/Application.jsx`
 
 ```js
 var RouterMixin = require('flux-router-component').RouterMixin;
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 
 var Application = React.createClass({
     mixins: [RouterMixin, FluxibleMixin],

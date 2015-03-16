@@ -577,7 +577,7 @@ The component now receives the component context via React's context. This conte
 var readMessage = require('./action/readMessage');
 var MessagesStore = require('./stores/MessageStore');
 var MessageSection = React.createClass({
-    mixins: [require('fluxible').Mixin],
+    mixins: [require('fluxible').FluxibleMixin],
     statics: {
         storeListeners: [MessageStore]
     },
