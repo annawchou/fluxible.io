@@ -26,7 +26,7 @@ module.exports = Page;
 ```
 
 ```js
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 var PageStore = require('./stores/PageStore'); // Your store
 var Component = React.createClass({
     mixins: [FluxibleMixin],

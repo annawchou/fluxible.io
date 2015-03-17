@@ -23,7 +23,7 @@ marked.setOptions({
 });
 
 walker.on('file', function (root, fstats, next) {
-    var key = root + '/' + fstats.name;
+    var key = path.join(root, fstats.name);
 
     fs.readFile(key, function (err, data) {
         if (err) {
@@ -36,7 +36,8 @@ walker.on('file', function (root, fstats, next) {
         var text = data.toString().split('\n').splice(1).join('\n');
 
         // need to strip folder path to match URL key
-        key = key.replace(CWD, '');
+        // also replace windows paths with forward slashes
+        key = key.replace(CWD, '').replace(/\\/g, '/');
 
         content[key] = {
             key: key,

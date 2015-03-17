@@ -4,7 +4,7 @@
  */
 'use strict';
 var React = require('react/addons');
-var cx = React.addons.classSet;
+var cx = require('classnames');
 var NavLink = require('flux-router-component').NavLink;
 
 var Component = React.createClass({

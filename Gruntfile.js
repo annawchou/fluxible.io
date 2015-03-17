@@ -95,7 +95,7 @@ module.exports = function (grunt) {
                 module: {
                     loaders: [
                         { test: /\.css$/, loader: 'style!css' },
-                        { test: /\.jsx$/, loader: 'jsx-loader' },
+                        { test: /\.jsx?$/, exclude: /node_modules/, loader: require.resolve('babel-loader') },
                         { test: /\.json$/, loader: 'json-loader'}
                     ]
                 },
@@ -124,7 +124,7 @@ module.exports = function (grunt) {
                 module: {
                     loaders: [
                         { test: /\.css$/, loader: 'style!css' },
-                        { test: /\.jsx$/, loader: 'jsx-loader' },
+                        { test: /\.jsx?$/, exclude: /node_modules/, loader: require.resolve('babel-loader') },
                         { test: /\.json$/, loader: 'json-loader'}
                     ]
                 },

@@ -30,10 +30,10 @@ module.exports = React.createClass({
 
 ## Context
 
-The Fluxible mixin (accessible via `require('fluxible').Mixin`) uses React's context to provide access to the [component context](https://github.com/yahoo/fluxible#getcomponentcontext) from within a component. This prevents you from having to pass the context to every component via props. This requires that you pass the component context as the context to React:
+The Fluxible mixin (accessible via `require('fluxible').FluxibleMixin`) uses React's context to provide access to the [component context](https://github.com/yahoo/fluxible#getcomponentcontext) from within a component. This prevents you from having to pass the context to every component via props. This requires that you pass the component context as the context to React:
 
 ```js
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 var Component = React.createClass({
     mixins: [FluxibleMixin],
     getInitialState: function () {
@@ -53,7 +53,7 @@ The `storeListeners` property is defined in the `statics` property of the contro
 Taking our example from above, we can add the mixin:
 
 ```js
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 module.exports = React.createClass({
     mixins: [ FluxibleMixin ]
 });
@@ -84,7 +84,7 @@ The complete set of changes is provided below:
 
 ```js
 var React = require('react/addons');
-var FluxibleMixin = require('fluxible').Mixin;
+var FluxibleMixin = require('fluxible').FluxibleMixin;
 var updateTime = require('../actions/updateTime');
 var TimeStore = require('../stores/TimeStore');
 
