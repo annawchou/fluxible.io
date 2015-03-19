@@ -21,7 +21,7 @@ $ npm run dev
 This will use `nodemon` and `webpack` to watch for changes and restart and
 rebuild as needed.
 
-Open http://localhost:3000
+Open [http://localhost:3000](http://localhost:3000)
 
 ### Production
 
