@@ -35,24 +35,21 @@ var fetchrPlugin = app.getPlugin('FetchrPlugin');
 
 // Register our services
 fetchrPlugin.registerService(require('./services/docs'));
-fetchrPlugin.registerService(require('./services/api'));
 
 // Set up the fetchr middleware
 server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
 
 // Render the app
 function renderApp(res, context) {
+    var renderedApp = React.renderToString(context.createElement());
     var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
-    var Component = app.getComponent();
     var doctype = '<!DOCTYPE html>';
     var componentContext = context.getComponentContext();
     var html = React.renderToStaticMarkup(HtmlComponent({
         assets: assets,
         context: componentContext,
         state: exposed,
-        markup: React.renderToString(Component({
-            context: componentContext
-        })),
+        markup: renderedApp,
         tracking: tracking
     }));
     res.send(doctype + html);
@@ -69,7 +66,7 @@ server.use(function (req, res, next) {
 
     context.executeAction(navigateAction, { url: req.url }, function (err) {
         if (err) {
-            if (err.statusCode && err.statusCode === 404) {
+            if (err.status === 404 || err.statusCode === 404) {
                 res.status(404);
                 context.executeAction(show404, { err: err }, function () {
                     renderApp(res, context);
@@ -78,6 +75,7 @@ server.use(function (req, res, next) {
             else {
                 res.status(500);
                 context.executeAction(show500, { err: err }, function () {
+                    console.log(err.stack || err);
                     renderApp(res, context);
                 });
             }

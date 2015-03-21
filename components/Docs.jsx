@@ -14,10 +14,10 @@ var Component = React.createClass({
                 <div className="content">
                     <div className="pure-g">
                         <div className="pure-u-1 pure-u-md-5-24">
-                            <Menu config={this.props.menu} selected={this.props.doc.key} />
+                            <Menu selected={this.props.currentRoute.name} />
                         </div>
                         <div className="pure-u-1 pure-u-md-19-24">
-                            <Doc content={this.props.doc.content} title={this.props.doc.title} slug={this.props.doc.key} />
+                            <Doc content={this.props.doc.content} currentRoute={this.props.currentRoute} />
                         </div>
                     </div>
                 </div>

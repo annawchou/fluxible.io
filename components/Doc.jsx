@@ -15,13 +15,16 @@ function isModifiedEvent (e) {
 }
 
 var Component = React.createClass({
+    contextTypes: {
+        executeAction: React.PropTypes.func
+    },
     onClick: function (e) {
         var target = e.target;
         if ('A' === target.nodeName && '/' === target.getAttribute('href').substr(0, 1)) {
             if (isModifiedEvent(e) || !isLeftClickEvent(e)) {
                 return;
             }
-            this.executeAction(navigateAction, {
+            this.context.executeAction(navigateAction, {
                 url: target.getAttribute('href')
             });
             e.preventDefault();
@@ -29,9 +32,9 @@ var Component = React.createClass({
     },
     render: function () {
         var editEl;
-        if (this.props.slug && this.props.slug.indexOf('docs') !== -1) {
+        if (this.props.currentRoute && this.props.currentRoute.githubPath !== -1) {
             editEl = (
-                <a href={DOCS_URL + this.props.slug}
+                <a href={DOCS_URL + this.props.currentRoute.githubPath}
                     className='edit-link'
                     target='_blank'>
 

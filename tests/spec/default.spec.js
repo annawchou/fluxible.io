@@ -54,15 +54,15 @@ describe('fluxible', function () {
             menuLinks.get(2).click().then(function () {
                 menuLinks = browser.$$('.doc-menu ul a');
                 h1 = browser.$('h1');
-                expect(h1.getText()).to.eventually.match(/Dispatcher/);
-                expect(browser.getCurrentUrl()).to.eventually.match(/guides\/dispatcher.html/);
-                expect(browser.getTitle()).to.eventually.match(/Dispatcher/);
+                expect(h1.getText()).to.eventually.match(/TestUtils/);
+                expect(browser.getCurrentUrl()).to.eventually.match(/guides\/test-utils.html/);
+                expect(browser.getTitle()).to.eventually.match(/TestUtils/);
             }).then(function () {
                 menuLinks.get(3).click().then(function () {
                     menuLinks = browser.$$('.doc-menu ul a');
                     h1 = browser.$('h1');
                     expect(h1.getText()).to.eventually.match(/Stores/);
-                    expect(browser.getCurrentUrl()).to.eventually.match(/guides\/stores.html/);
+                    expect(browser.getCurrentUrl()).to.eventually.match(/api\/stores.html/);
                     expect(browser.getTitle()).to.eventually.match(/Stores/);
                 });
             }).then(function () {
@@ -70,7 +70,7 @@ describe('fluxible', function () {
                     menuLinks = browser.$$('.doc-menu ul a');
                     h1 = browser.$('h1');
                     expect(h1.getText()).to.eventually.match(/Actions/);
-                    expect(browser.getCurrentUrl()).to.eventually.match(/guides\/actions.html/);
+                    expect(browser.getCurrentUrl()).to.eventually.match(/api\/actions.html/);
                     expect(browser.getTitle()).to.eventually.match(/Actions/);
                 });
             });

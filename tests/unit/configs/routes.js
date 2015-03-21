@@ -34,17 +34,6 @@ describe('routes', function () {
 
             callback(null, docResponse);
         });
-        mockery.registerMock('./../utils/createAPIWhitelist', {
-            fluxible: {
-                label: 'Fluxible',
-                repo: 'fluxible',
-                path: 'docs/fluxible.md',
-                routeName: 'apis',
-                navParams: {
-                    slug: 'fluxible'
-                }
-            }
-        });
         mockery.enable({
             useCleanCache: true,
             warnOnUnregistered: false
@@ -68,51 +57,12 @@ describe('routes', function () {
         });
     });
 
-    it('should execute the apis action', function (done) {
-        var payload = {
-            params: {
-                slug: 'fluxible'
-            }
-        };
-
-        context.executeAction(routes.apis.action, payload, function (err) {
-            if (err) {
-                return done(err);
-            }
-
-            var docs = context.getStore(DocStore).getAll();
-            expect(docs).to.be.an('object');
-            done();
-        });
-    });
-
     it('should execute the docs action (without type param)', function (done) {
         var payload = {
-            params: {
-                slug: 'overview'
-            }
+            githubPath: 'foo/bar.md'
         };
 
-        context.executeAction(routes.docs.action, payload, function (err) {
-            if (err) {
-                return done(err);
-            }
-
-            var docs = context.getStore(DocStore).getAll();
-            expect(docs).to.be.an('object');
-            done();
-        });
-    });
-
-    it('should execute the docs action (with type param)', function (done) {
-        var payload = {
-            params: {
-                type: 'guides',
-                slug: 'learn-stuff'
-            }
-        };
-
-        context.executeAction(routes.docs.action, payload, function (err) {
+        context.executeAction(routes.quickStart.action, payload, function (err) {
             if (err) {
                 return done(err);
             }

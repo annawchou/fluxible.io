@@ -6,22 +6,22 @@
 var React = require('react/addons');
 var cx = require('classnames');
 var NavLink = require('flux-router-component').NavLink;
+var docsConfig = require('./../configs/menu');
 
 var Component = React.createClass({
     render: function () {
         var self = this;
         var menu = [];
-        this.props.config.forEach(function (menuitem) {
+        docsConfig.forEach(function (menuitem) {
             if (menuitem.category) {
                 menu.push(<h3 key={menuitem.category}>{menuitem.category}</h3>);
             }
-
             var submenu = [];
             menuitem.children.forEach(function (link) {
-                var selected = '/' + link.routeName + '/' +
-                    (link.navParams.type ? link.navParams.type + '/' : '') +
-                    link.navParams.key + '.md';
-                submenu.push(<li key={link.label} className={cx({'pure-menu-selected': self.props.selected === selected})}><NavLink routeName={link.routeName} navParams={link.navParams}>{link.label}</NavLink></li>);
+                var classList = cx({
+                    'pure-menu-selected': self.props.selected === link.routeName
+                });
+                submenu.push(<li key={link.label} className={classList}><NavLink routeName={link.routeName}>{link.label}</NavLink></li>);
             });
 
             if (submenu.length) {
