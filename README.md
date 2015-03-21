@@ -12,6 +12,7 @@ The doc site for [Fluxible](https://github.com/yahoo/fluxible).
 $ npm install
 ```
 
+
 ## Run the app
 
 ```bash
@@ -28,6 +29,12 @@ Open [http://localhost:3000](http://localhost:3000)
 To run in production, use `NODE_ENV=production npm run dev`. This will use the production
 assets that `webpack` generates. NOTE, this may break your application if the asset hashes
 are not on CDN.
+
+
+## Contributing
+If you want to update the documentation on the site, you can submit a pull request to the
+[fluxible](https://github.com/yahoo/fluxible) repository. The docs are pulled in from
+the [yahoo/fluxible/docs](https://github.com/yahoo/fluxible/tree/master/docs) repo.
 
 
 ## License
