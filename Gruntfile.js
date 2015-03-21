@@ -143,7 +143,7 @@ module.exports = function (grunt) {
                     // These are performance optimizations for your bundles
                     new webpack.optimize.DedupePlugin(),
                     new webpack.optimize.OccurenceOrderPlugin(),
-                    new webpack.optimize.CommonsChunkPlugin('common.[chunkhash].min.js', 2),
+                    new webpack.optimize.CommonsChunkPlugin('common.[hash].min.js', 2),
 
                     // This ensures requires for `react` and `react/addons` normalize to the same requirement
                     new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons')),
