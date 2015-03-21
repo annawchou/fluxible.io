@@ -5,7 +5,7 @@
 'use strict';
 var React = require('react');
 var navigateAction = require('flux-router-component').navigateAction;
-var DOCS_URL = 'https://github.com/yahoo/fluxible.io/tree/master';
+var DOCS_URL = 'https://github.com/yahoo/fluxible/tree/master';
 
 function isLeftClickEvent (e) {
     return e.button === 0;
@@ -32,9 +32,9 @@ var Component = React.createClass({
     },
     render: function () {
         var editEl;
-        if (this.props.currentRoute && this.props.currentRoute.githubPath !== -1) {
+        if (this.props.currentRoute && this.props.currentRoute.config.githubPath !== -1) {
             editEl = (
-                <a href={DOCS_URL + this.props.currentRoute.githubPath}
+                <a href={DOCS_URL + this.props.currentRoute.config.githubPath}
                     className='edit-link'
                     target='_blank'>
 
