@@ -6,7 +6,7 @@
 // some environments run the app from a different directory
 process.chdir(__dirname);
 
-require('node-jsx').install({ extension: '.jsx' });
+require('babel/register');
 var express = require('express');
 var favicon = require('serve-favicon');
 var serialize = require('serialize-javascript');
