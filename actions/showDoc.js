@@ -6,19 +6,19 @@
 var DocStore = require('../stores/DocStore');
 
 module.exports = function (context, payload, done) {
-    var docFromCache = context.getStore(DocStore).get(payload.key);
+    var docFromCache = context.getStore(DocStore).get(payload.name);
 
     // is the content already in the store?
     if (docFromCache) {
         context.dispatch('RECEIVE_DOC_SUCCESS', docFromCache);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: (payload.pageTitle || docFromCache.title) + ' | Fluxible'
+            pageTitle: payload.config && (payload.config.pageTitle || payload.config.pageTitlePrefix + ' | Fluxible')
         });
         return done();
     }
 
     // get content from service
-    context.service.read(payload.resource, payload, {}, function (err, data) {
+    context.service.read('docs', payload, {}, function (err, data) {
         if (err) {
             return done(err);
         }
@@ -31,7 +31,7 @@ module.exports = function (context, payload, done) {
 
         context.dispatch('RECEIVE_DOC_SUCCESS', data);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: (payload.pageTitle || data.title) + ' | Fluxible'
+            pageTitle: payload.config && (payload.config.pageTitle || payload.config.pageTitlePrefix + ' | Fluxible')
         });
         done();
     });

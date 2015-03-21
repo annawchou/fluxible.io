@@ -19,6 +19,7 @@ var app = new FluxibleApp({
                 context.executeAction(show404, payload, done);
             }
             else {
+                console.log(payload.err.stack || payload.err);
                 context.executeAction(show500, payload, done);
             }
             return;

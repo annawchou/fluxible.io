@@ -4,7 +4,7 @@
  */
 'use strict';
 var createStore = require('fluxible/addons').createStore;
-var routesConfig = require('../configs/routes');
+var routes = require('../configs/routes');
 
 var ApplicationStore = createStore({
     storeName: 'ApplicationStore',
@@ -16,11 +16,8 @@ var ApplicationStore = createStore({
         'STATUS_404': 'status404'
     },
     initialize: function (dispatcher) {
-        this.currentPageId = null;
         this.currentPageName = null;
-        this.currentPage = null;
         this.currentRoute = null;
-        this.pages = routesConfig;
         this.pageTitle = '';
     },
     changeRoute: function (route) {
@@ -28,17 +25,7 @@ var ApplicationStore = createStore({
         this.emitChange();
     },
     handleNavigate: function (route) {
-        var pageId = route.params.key || route.params.slug;
-        var pageName = route.config.page;
-        var page = this.pages[pageName];
-
-        if (pageName === this.currentPageName && pageId === this.currentPageId) {
-            return;
-        }
-
-        this.currentPageId = pageId;
-        this.currentPageName = pageName;
-        this.currentPage = page;
+        this.currentPageName = null;
         this.emitChange();
     },
     updatePageTitle: function (title) {
@@ -63,19 +50,21 @@ var ApplicationStore = createStore({
         return this.currentRoute;
     },
     dehydrate: function () {
+        if (this.currentRoute) {
+            delete this.currentRoute.config;
+        }
         return {
             currentPageName: this.currentPageName,
-            currentPage: this.currentPage,
-            pages: this.pages,
             route: this.currentRoute,
             pageTitle: this.pageTitle
         };
     },
     rehydrate: function (state) {
         this.currentPageName = state.currentPageName;
-        this.currentPage = state.currentPage;
-        this.pages = state.pages;
         this.currentRoute = state.route;
+        if (state.route) {
+            this.currentRoute.config = routes[this.currentRoute.name];
+        }
         this.pageTitle = state.pageTitle;
     }
 });

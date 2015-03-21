@@ -21,11 +21,8 @@ describe('application store', function () {
 
     it('should instantiate correctly', function (done) {
         expect(storeInstance).to.be.an('object');
-        expect(storeInstance.currentPageId).to.equal(null);
         expect(storeInstance.currentPageName).to.equal(null);
-        expect(storeInstance.currentPage).to.equal(null);
         expect(storeInstance.currentRoute).to.equal(null);
-        expect(storeInstance.pages).to.equal(routesConfig);
         expect(storeInstance.pageTitle).to.equal('');
         done();
     });
@@ -34,19 +31,7 @@ describe('application store', function () {
         storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
 
-        expect(storeInstance.currentPageId).to.equal(homeRoute.params.key);
-        done();
-    });
-
-    it('should return early during handle navigate, when navigating to the same page', function (done) {
-        // initial call
-        storeInstance.changeRoute(homeRoute);
-        storeInstance.handleNavigate(homeRoute);
-        // subsequent call
-        storeInstance.changeRoute(homeRoute);
-        storeInstance.handleNavigate(homeRoute);
-
-        expect(storeInstance.currentPageId).to.equal(homeRoute.params.key);
+        expect(storeInstance.getCurrentRoute()).to.equal(homeRoute);
         done();
     });
 
@@ -55,14 +40,6 @@ describe('application store', function () {
         storeInstance.updatePageTitle(title);
 
         expect(storeInstance.pageTitle).to.equal(title.pageTitle);
-        done();
-    });
-
-    it('should get current page name', function (done) {
-        storeInstance.changeRoute(homeRoute);
-        storeInstance.handleNavigate(homeRoute);
-
-        expect(storeInstance.getCurrentPageName()).to.equal(homeRoute.config.page);
         done();
     });
 
@@ -89,9 +66,7 @@ describe('application store', function () {
         storeInstance.updatePageTitle(title);
 
         var state = storeInstance.dehydrate();
-        expect(state.currentPageName).to.equal(homeRoute.config.page);
-        expect(state.currentPage).to.equal(routesConfig[homeRoute.config.page]);
-        expect(state.pages).to.equal(routesConfig);
+        expect(state.currentPageName).to.equal(null);
         expect(state.route).to.equal(homeRoute);
         expect(state.pageTitle).to.equal(title.pageTitle);
         done();
@@ -100,18 +75,14 @@ describe('application store', function () {
     it('should rehydrate', function (done) {
         var title = { pageTitle: 'Fluxible Rocks' };
         var state = {
-            currentPageName: homeRoute.config.page,
-            currentPage: routesConfig[homeRoute.config.page],
-            pages: routesConfig,
+            currentPageName: null,
             route: homeRoute,
             pageTitle: title.pageTitle
         };
 
         storeInstance.rehydrate(state);
 
-        expect(storeInstance.currentPageName).to.equal(homeRoute.config.page);
-        expect(storeInstance.currentPage).to.equal(routesConfig[homeRoute.config.page]);
-        expect(storeInstance.pages).to.equal(routesConfig);
+        expect(storeInstance.currentPageName).to.equal(null);
         expect(storeInstance.currentRoute).to.equal(homeRoute);
         expect(storeInstance.pageTitle).to.equal(title.pageTitle);
         done();

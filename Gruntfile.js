@@ -100,6 +100,11 @@ module.exports = function (grunt) {
                     ]
                 },
                 plugins: [
+                    new webpack.DefinePlugin({
+                        'process.env': {
+                            NODE_ENV: JSON.stringify('development')
+                        }
+                    }),
                     new webpack.optimize.CommonsChunkPlugin('common.js', undefined, 2),
                     new webpack.NormalModuleReplacementPlugin(/^react(\/addons)?$/, require.resolve('react/addons'))
                 ],

@@ -31,7 +31,7 @@ var Application = React.createClass({
             currentDoc: docStore.getCurrent() || {},
             currentPageName: appStore.getCurrentPageName(),
             pageTitle: appStore.getPageTitle(),
-            route: appStore.getCurrentRoute()
+            route: appStore.getCurrentRoute() || {}
         };
     },
     onChange: function () {
@@ -45,24 +45,16 @@ var Application = React.createClass({
                 Fluxible
             </NavLink>
         );
+        var Component = this.state.route && this.state.route.config && this.state.route.config.component;
 
-        if ('home' === this.state.currentPageName) {
-            page = <Home content={this.state.currentDoc.content} />;
+        if (this.state.route && 'home' === this.state.route.name) {
             hideLogo = true;
         }
-        else if ('docs' === this.state.currentPageName) {
-            var docsConfig = require('./../configs/docs');
-            page = <Docs menu={docsConfig} doc={this.state.currentDoc} />;
-        }
-        else if ('apis' === this.state.currentPageName) {
-            var apisConfig = require('./../configs/apis');
-            page = <Docs menu={apisConfig} doc={this.state.currentDoc} />;
-        }
-        else if ('500' === this.state.currentPageName) {
-            page = <Status500 />;
+        if ('500' === this.state.currentPageName) {
+            Component = Status500;
         }
         else if ('404' === this.state.currentPageName) {
-            page = <Status404 />;
+            Component = Status404;
         }
 
         return (
@@ -70,12 +62,12 @@ var Application = React.createClass({
                 <div className="header">
                     <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal">
                         <div className="content">
-                            <TopNav selected={this.state.currentPageName} />
+                            <TopNav selected={this.state.route.name} />
                             {hideLogo ? '' : logo}
                         </div>
                     </div>
                 </div>
-                {page}
+                <Component doc={this.state.currentDoc} currentRoute={this.state.route} />
             </div>
         );
     },

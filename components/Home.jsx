@@ -18,7 +18,7 @@ var Component = React.createClass({
                             Build isomorphic Flux applications
                         </p>
                         <p>
-                            <NavLink className="pure-button pure-button-primary" routeName="docs" navParams={{slug: 'quick-start'}}>Get Started</NavLink>
+                            <NavLink className="pure-button pure-button-primary" routeName="quickStart">Get Started</NavLink>
                         </p>
                     </div>
                     <div className="citation">
@@ -29,11 +29,11 @@ var Component = React.createClass({
                 </div>
 
                 <div className="content">
-                    <Doc content={this.props.content} />
+                    <Doc content={this.props.doc.content} />
                 </div>
 
                 <div className="is-center">
-                    <NavLink className="pure-button pure-button-secondary" routeName="docs" navParams={{slug: 'quick-start'}}>Get Started</NavLink>
+                    <NavLink className="pure-button pure-button-secondary" routeName="quickStart">Get Started</NavLink>
                 </div>
             </section>
         );
