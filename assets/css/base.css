@@ -338,7 +338,6 @@ pre,
 textarea,
 .textarea,
 input[type=search] {
-    box-shadow: inset 0 0 3px rgba(2, 128, 174, .3);
     border-radius: 3px;
     border: 0;
 }
