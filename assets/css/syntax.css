@@ -10,10 +10,10 @@ pre {
     line-height: 1.45;
     background-color: #f7f7f7;
     border-radius: 3px;
+    border: 1px solid #eee;
 }
 
 code {
-
     padding-top: 0.2em;
     padding-bottom: 0.2em;
     background-color: #f7f7f7;
