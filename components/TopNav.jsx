@@ -12,15 +12,15 @@ var TopNav = React.createClass({
         var selected = this.props.selected;
 
         return (
-            <ul>
-                <li className={cx({'pure-menu-selected': selected !== 'home'})}>
-                    <NavLink routeName="quickStart">
+            <ul id="navigation" role="navigation" className="Va-m reset">
+                <li className={cx({'selected': selected !== 'home', 'D-ib Va-m Pos-r Tt-u Fw-400': true})}>
+                    <NavLink routeName="quickStart" className="D-b C-fff Td-n:h">
                         Docs
                     </NavLink>
                 </li>
-                <li>
-                    <a href="https://github.com/yahoo/fluxible" target="_blank">
-                        <i className="fa fa-github"></i> GitHub
+                <li className="D-ib Va-m Mstart-20px Pos-r Tt-u Fw-400">
+                    <a href="https://github.com/yahoo/fluxible" className="D-b C-fff Td-n:h" target="_blank">
+                        <i className="Va-m Pos-r fa fa-github"></i> GitHub
                     </a>
                 </li>
             </ul>

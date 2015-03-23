@@ -15,6 +15,7 @@ var RouterMixin = require('flux-router-component').RouterMixin;
 var NavLink = require('flux-router-component').NavLink;
 var FluxibleMixin = require('fluxible').FluxibleMixin;
 var TopNav = require('./TopNav');
+var cx = require('classnames')
 
 var Application = React.createClass({
     mixins: [ RouterMixin, FluxibleMixin ],
@@ -38,13 +39,7 @@ var Application = React.createClass({
         this.setState(this.getState());
     },
     render: function () {
-        var page;
         var hideLogo = false;
-        var logo = (
-            <NavLink className="pure-menu-heading" routeName="home">
-                Fluxible
-            </NavLink>
-        );
         var Component = this.state.route && this.state.route.config && this.state.route.config.component;
 
         if (this.state.route && 'home' === this.state.route.name) {
@@ -57,17 +52,28 @@ var Application = React.createClass({
             Component = Status404;
         }
 
+        var logoClasses = cx({
+            'V-h': hideLogo,
+            'Va-m Fz-20px Lh-1.2 C-fff Td-n:h': true
+        });
+
         return (
-            <div>
-                <div className="header">
-                    <div className="home-menu pure-menu pure-menu-open pure-menu-horizontal">
-                        <div className="content">
-                            <TopNav selected={this.state.route.name} />
-                            {hideLogo ? '' : logo}
+            <div className="H-100%">
+                <div className="wrapper Bxz-bb Mih-100%">
+                    <div id="header" role="header" className="P-10px Ov-h Z-7 Pos-r Bgc-logo optLegibility">
+                        <div className="innerwrapper spaceBetween Mx-a--sm W-90%--sm W-a--sm">
+                            <NavLink className={logoClasses} routeName="home">
+                                Fluxible
+                            </NavLink> <TopNav selected={this.state.route.name} />
                         </div>
                     </div>
+                    <Component doc={this.state.currentDoc} currentRoute={this.state.route} />
                 </div>
-                <Component doc={this.state.currentDoc} currentRoute={this.state.route} />
+                <div id="footer" className="P-20px Bdt-1" role="footer">
+                    <div className="innerwrapper spaceBetween Mx-a--sm W-90%--sm W-a--sm">
+                        <small>All code on this site is licensed under the <a href="https://github.com/yahoo/fluxible.io/blob/master/LICENSE.md">Yahoo BSD License</a>, unless otherwise stated.</small> <small>&copy; 2015 Yahoo! Inc. All rights reserved.</small>
+                    </div>
+                </div>
             </div>
         );
     },
