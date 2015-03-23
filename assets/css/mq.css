@@ -11,7 +11,8 @@
         width: 100% !important;
     }
 
-    #navigation {
+    #navigation,
+    .edit-github {
         display: none;
     }
 

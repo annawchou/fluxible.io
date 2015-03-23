@@ -9,7 +9,7 @@ var Doc = require('./Doc.jsx');
 var cx = require('classnames');
 
 var Component = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             isMenuVisible: false
         };
@@ -17,6 +17,11 @@ var Component = React.createClass({
     handleMenuToggle: function () {
         this.setState({
             isMenuVisible: !this.state.isMenuVisible
+        });
+    },
+    hideMenu: function () {
+        this.setState({
+            isMenuVisible: false
         });
     },
     render: function () {
@@ -31,7 +36,7 @@ var Component = React.createClass({
                     <i className="fa fa-bars"></i>
                     <b className="hidden">Toggle the menu</b>
                 </button>
-                <Menu selected={this.props.currentRoute.name} />
+                <Menu selected={this.props.currentRoute.name} onClickEvent={this.hideMenu} />
                 <Doc content={this.props.doc.content} currentRoute={this.props.currentRoute} />
                 <div id="overlay" className="D-n Z-3 Pos-f T-0 Start-0 W-100% H-100%"></div>
             </div>

@@ -29,10 +29,13 @@ var Component = React.createClass({
             }
         });
         return (
-            <div id="aside" className="D-tbc Va-t W-150px--sm End-0 Pt-20px Pb-40px Pstart-10px Pend-50px--sm Z-5 End-a--sm Z-0 Start-0" role="aside">
+            <div id="aside" className="D-tbc Va-t W-150px--sm End-0 Pt-20px Pb-40px Pstart-10px Pend-50px--sm Z-5 End-a--sm Z-0 Start-0" role="aside" onClick={self.handleClick}>
                 {menu}
             </div>
         );
+    },
+    handleClick: function () {
+        this.props.onClickEvent();
     }
 });
 

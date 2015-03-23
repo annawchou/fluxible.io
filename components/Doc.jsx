@@ -35,7 +35,7 @@ var Component = React.createClass({
         if (this.props.currentRoute && this.props.currentRoute.config.githubPath !== -1) {
             editEl = (
                 <a href={DOCS_URL + this.props.currentRoute.config.githubPath}
-                    className="Pos-a End-10px"
+                    className="edit-github Pos-a End-10px"
                     target="_blank">
                     Edit on Github
                 </a>
