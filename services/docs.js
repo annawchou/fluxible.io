@@ -6,12 +6,19 @@
 
 var debug = require('debug')('APIService');
 var marked = require('marked');
+var highlight = require('highlight.js');
 var renderer = require('./../utils/renderer');
 var request = require('superagent');
 var secrets = require('./../secrets');
 var qs = require('querystring');
 var url = require('url');
 var routes = require('../configs/routes');
+
+marked.setOptions({
+    highlight: function (code) {
+        return highlight.highlightAuto(code).value;
+    }
+});
 
 // Generate an hash of valid api routes, from the /configs/apis.js file
 var cache = {};

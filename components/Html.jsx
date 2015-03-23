@@ -11,30 +11,18 @@ var Component = React.createClass({
     mixins: [ FluxibleMixin ],
     render: function () {
         return (
-            <html>
+            <html id="atomic" className="atomic">
                 <head>
                     <meta charSet="utf-8" />
                     <title>{this.getStore(ApplicationStore).getPageTitle()}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
-                    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css" />
                     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
-                    <link rel="stylesheet" href="/public/css/theme.css" />
+                    <link rel="stylesheet" href="/public/css/bundle.css" />
                     <script dangerouslySetInnerHTML={{__html: this.props.tracking}}></script>
                 </head>
-                <body>
-                    <section id="docsapp" dangerouslySetInnerHTML={{__html: this.props.markup}}></section>
+                <body className="Mih-100%">
+                    <div id="docsapp" className="H-100%" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
                     <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-                     <div className="footer l-box pure-g">
-                        <div className="pure-u-1 pure-u-md-1-2">
-                            All code on this site is licensed
-                            under the <a href="https://github.com/yahoo/fluxible.io/blob/master/LICENSE.md">Yahoo BSD License</a>,
-                            unless otherwise stated.
-                        </div>
-                        <div className="pure-u-1 pure-u-md-1-2 copyright">
-                            &copy; 2015 Yahoo Inc. All rights reserved.
-                        </div>
-                     </div>
                     <script src={this.props.assets.common}></script>
                     <script src={this.props.assets.main}></script>
                 </body>

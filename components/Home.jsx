@@ -10,32 +10,30 @@ var Doc = require('./Doc.jsx');
 var Component = React.createClass({
     render: function () {
         return (
-            <section id="home">
-                <div className="splash-container">
-                    <div className="splash">
-                        <h1 className="splash-head">Fluxible</h1>
-                        <p className="splash-subhead">
-                            Build isomorphic Flux applications
-                        </p>
+            <div className="home-page">
+                <div id="splash" className="D-tb W-100% Bdb-1 Pos-r">
+                    <div className="D-tbc Ta-c Va-m Bgz-cv Ov-h Pos-r W-100% Start-0 Pb-30px Bg-splash">
+                        <h1 className="Mx-a W-50% Pos-r Ov-h C-fff Fw-300 Tsh-1 Fz-450%">Fluxible</h1>
+                        <p className="Mt-0 C-fff Tsh-1 Fz-120%">Build isomorphic Flux applications</p>
                         <p>
-                            <NavLink className="pure-button pure-button-primary" routeName="quickStart">Get Started</NavLink>
+                            <NavLink className="D-ib Mb-10px Px-20px Py-10px C-fff Bdrs-5px Td-n:h Bg-t Fw-b Bd-2" routeName="quickStart">Get Started</NavLink>
                         </p>
                     </div>
-                    <div className="citation">
+                    <div className="Pos-a End-10px B-5px C-eee Fz-80%">
                         <cite>
                             <a href="https://www.flickr.com/photos/devinmoore/2670474853" title="Splash derived from Blue Ring Electricity Fractal by Devin Moore used under CC BY 2.0" _target="blank">&copy; Devon Moore</a>
                         </cite>
                     </div>
                 </div>
 
-                <div className="content">
+                <div className="features innerwrapper Bxz-bb Pt-20px Px-10px Mb-20px Mx-a--sm W-90%--sm W-a">
                     <Doc content={this.props.doc.content} />
-                </div>
 
-                <div className="is-center">
-                    <NavLink className="pure-button pure-button-secondary" routeName="quickStart">Get Started</NavLink>
+                    <div className="Ta-c">
+                        <NavLink className="D-ib Mt-20px Mb-10px Px-20px Py-10px C-fff Bgc-logo Bdrs-5px Td-n:h" routeName="quickStart">Get Started</NavLink>
+                    </div>
                 </div>
-            </section>
+            </div>
         );
     }
 });

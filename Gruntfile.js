@@ -13,40 +13,124 @@ var CHUNK_REGEX = /^([A-Za-z0-9_\-]+)\..*/;
 
 module.exports = function (grunt) {
     grunt.initConfig({
+        // project variables
+        project: {
+            build: './build',
+            public: '/public',
+            cdnPath: 'http://l.yimg.com/os/flx/'
+        },
+
+        // clean build
         clean: ['build'],
+
+        // ------------------------------------------------------------------------------
+        // DEV TASKS --------------------------------------------------------------------
+        // ------------------------------------------------------------------------------
+
+        jshint: {
+            all: [
+                '*.js',
+                '{actions,components,services,stores}/**/*.js'
+            ],
+            options: {
+                jshintrc: true
+            }
+        },
+
         copy: {
             images: {
                 files: [{
                     expand: true,
                     cwd: 'assets/',
-                    src: ['images/**'], dest: 'build/'
+                    src: ['images/**'],
+                    dest: '<%= project.build %>/'
                 }]
             }
         },
-        compass: {
-            options: {
-                sassDir: 'assets/scss',
-                cssDir: 'build/css',
-                imagesDir: 'build/images',
-                environment: 'production',
-                httpPath: '/',
-                outputStyle: 'compressed',
-                noLineComments: true,
-                httpGeneratedImagesPath: '/public/images/'
-            },
-            dev: {
-                options: {
-                    watch: true
-                }
-            },
-            prod: {}
-        },
+
+        // run nodemon and watch concurrently
         concurrent: {
-            dev: ['compass:dev', 'nodemon:app', 'webpack:dev'],
+            dev: ['nodemon:app', 'watch', 'webpack:dev'],
             options: {
                 logConcurrentOutput: true
             }
         },
+
+        // watch for changes in static files (does not require a server restart) run tasks then reload
+        // .rebooted is written by the nodemon task, it's written to force a browser reload
+        watch: {
+            atomizer: {
+                files: ['configs/atomic.js', '.rebooted', './assets/css/*.css', './components/*.jsx'],
+                tasks: ['atomizer', 'cssmin:dev'],
+                options: {
+                    interrupt: true,
+                    livereload: false
+                }
+            }
+        },
+
+        // atomizer: initial task to generate the config
+        atomizer: {
+            app: {
+                options: {
+                    configFile: './configs/atomic.js'
+                },
+                files: [
+                    {
+                        src: ['./components/*.jsx'],
+                        dest: '<%= project.build %>/css/atomic.css'
+                    }
+                ]
+            }
+        },
+
+        // cssmin for production (atomizer needs to run first)
+        cssmin: {
+            dev: {
+                options: {
+                    report: 'gzip',
+                    compatibility: 'ie8',
+                    sourceMap: true
+                },
+                files: [{
+                    src: [
+                        '<%= project.build %>/css/atomic.css',
+                        './assets/css/base.css',
+                        './assets/css/helpers.css',
+                        './assets/css/custom.css',
+                        './assets/css/mq.css',
+                        './assets/css/syntax.css'
+                    ],
+                    dest: '<%= project.build %>/css/bundle.css'
+                }, {
+                    src: [ './assets/css/ie.css'],
+                    dest: '<%= project.build %>/css/ie.css'
+                }]
+            },
+            prod: {
+                options: {
+                    report: 'gzip',
+                    compatibility: 'ie8',
+                    sourceMap: false
+                },
+                files: [{
+                    src: [
+                        '<%= project.build %>/css/atomic.css',
+                        './assets/css/base.css',
+                        './assets/css/helpers.css',
+                        './assets/css/custom.css',
+                        './assets/css/mq.css',
+                        './assets/css/syntax.css'
+                    ],
+                    dest: '<%= project.build %>/css/bundle.css'
+                }, {
+                    src: [ './assets/css/ie.css'],
+                    dest: '<%= project.build %>/css/ie.css'
+                }]
+            }
+        },
+
+        // functional testing
         protractor_webdriver: {
             options: {
                 path: './node_modules/.bin/'
@@ -62,24 +146,19 @@ module.exports = function (grunt) {
             },
             all: {}
         },
-        jshint: {
-            all: [
-                '*.js',
-                '{actions,components,services,stores}/**/*.js'
-            ],
-            options: {
-                jshintrc: true
-            }
-        },
+
+        // restart server on changes
         nodemon: {
             app: {
                 script: './server.js',
                 options: {
-                    ignore: ['build/**'],
+                    ignore: ['<%= project.build %>/**'],
                     ext: 'js,jsx,md'
                 }
             }
         },
+
+        // webpack bundling
         webpack: {
             dev: {
                 resolve: {
@@ -87,7 +166,7 @@ module.exports = function (grunt) {
                 },
                 entry: './client.js',
                 output: {
-                    path: './build/js',
+                    path: '<%= project.build %>/js',
                     publicPath: '/public/js/',
                     filename: '[name].js',
                     chunkFilename: '[name].[chunkhash].js'
@@ -121,8 +200,8 @@ module.exports = function (grunt) {
                 },
                 entry: './client.js',
                 output: {
-                    path: './build/js',
-                    publicPath: 'http://l.yimg.com/os/flx/js/',
+                    path: '<%= project.build %>/js',
+                    publicPath: '<%= project.cdnPath %>',
                     filename: '[name].[chunkhash].min.js',
                     chunkFilename: '[name].[chunkhash].min.js'
                 },
@@ -191,19 +270,21 @@ module.exports = function (grunt) {
     });
 
     // libs
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-atomizer');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-protractor-webdriver');
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-webpack');
 
     // tasks
     grunt.registerTask('default', 'dev');
-    grunt.registerTask('dev', ['clean', 'copy', 'jshint', 'concurrent:dev']);
-    grunt.registerTask('build', ['clean', 'copy', 'compass:prod', 'webpack:prod']);
+    grunt.registerTask('dev', ['clean', 'copy', 'jshint', 'atomizer:app', 'cssmin:dev', 'concurrent:dev']);
+    grunt.registerTask('build', ['clean', 'copy', 'atomizer:app', 'cssmin:prod', 'webpack:prod']);
     grunt.registerTask('func', ['protractor_webdriver', 'protractor']);
 };

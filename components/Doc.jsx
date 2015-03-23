@@ -35,23 +35,15 @@ var Component = React.createClass({
         if (this.props.currentRoute && this.props.currentRoute.config.githubPath !== -1) {
             editEl = (
                 <a href={DOCS_URL + this.props.currentRoute.config.githubPath}
-                    className='edit-link'
-                    target='_blank'>
-
+                    className="edit-github Pos-a End-10px"
+                    target="_blank">
                     Edit on Github
                 </a>
             );
         }
-
-        var heading;
-        if (this.props.title) {
-            heading = <h1>{this.props.title}</h1>;
-        }
-
         return (
-            <div className="doc-content">
+            <div id="main" role="main" className="D-tbc--sm Px-10px Pos-r">
                 {editEl}
-                {heading}
                 <div onClick={this.onClick} dangerouslySetInnerHTML={{__html: this.props.content}}></div>
             </div>
         );
