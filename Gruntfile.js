@@ -201,7 +201,7 @@ module.exports = function (grunt) {
                 entry: './client.js',
                 output: {
                     path: '<%= project.build %>/js',
-                    publicPath: '<%= project.cdnPath %>/js/',
+                    publicPath: '<%= project.cdnPath %>js/',
                     filename: '[name].[chunkhash].min.js',
                     chunkFilename: '[name].[chunkhash].min.js'
                 },
