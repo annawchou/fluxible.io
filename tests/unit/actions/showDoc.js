@@ -30,8 +30,9 @@ describe('controller actions', function () {
 
     it('should load data from the service', function (done) {
         var params = {
-            resource: 'docs',
-            key: '/docs/quick-start.md'
+            config: {
+                githubPath: '/docs/quick-start.md'
+            }
         };
 
         context.executeAction(showDoc, params, function (err) {
@@ -48,8 +49,9 @@ describe('controller actions', function () {
 
     it('should load data from the cache', function (done) {
         var params = {
-            resource: 'docs',
-            key: '/docs/quick-start.md'
+            config: {
+                githubPath: '/docs/quick-start.md'
+            }
         };
 
         context.executeAction(showDoc, params, function (err) {

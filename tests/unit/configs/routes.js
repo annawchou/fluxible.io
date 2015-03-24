@@ -46,7 +46,11 @@ describe('routes', function () {
     });
 
     it('should execute the home action', function (done) {
-        context.executeAction(routes.home.action, {}, function (err) {
+        context.executeAction(routes.home.action, {
+            config: {
+                githubPath: 'foo/bar.md'
+            }
+        }, function (err) {
             if (err) {
                 return done(err);
             }
@@ -59,7 +63,9 @@ describe('routes', function () {
 
     it('should execute the docs action (without type param)', function (done) {
         var payload = {
-            githubPath: 'foo/bar.md'
+            config: {
+                githubPath: 'foo/bar.md'
+            }
         };
 
         context.executeAction(routes.quickStart.action, payload, function (err) {

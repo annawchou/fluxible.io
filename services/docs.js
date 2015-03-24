@@ -23,18 +23,10 @@ marked.setOptions({
 // Generate an hash of valid api routes, from the /configs/apis.js file
 var cache = {};
 
-var fetchAPI = function (route, cb) {
-    var githubPath = route.githubPath;
-    if (!githubPath) {
-        debug('Doc not found for', route);
-        cache[githubPath] = {
-            key: githubPath,
-            content: marked('# Doc Not Found: ' + githubPath, {renderer: renderer})
-        };
-
-        cb && cb(null, cache[githubPath]);
-    }
-    var githubUrl = 'https://api.github.com/repos/yahoo/fluxible/contents/';
+var fetchAPI = function (docParams, cb) {
+    var githubRepo = docParams.repo || 'yahoo/fluxible';
+    var githubPath = docParams.path;
+    var githubUrl = 'https://api.github.com/repos/' + githubRepo + '/contents/';
     githubUrl += githubPath;
     githubUrl += '?' + qs.stringify({
         client_id: secrets.github.clientId,
@@ -105,7 +97,12 @@ var fetchAPI = function (route, cb) {
 
 (function refreshCacheFromGithub() {
     Object.keys(routes).forEach(function (routeName) {
-        fetchAPI(routes[routeName]);
+        var githubPath = routes[routeName].githubPath;
+        if (githubPath) {
+            fetchAPI({
+                path: githubPath
+            });
+        }
     });
 
     setTimeout(refreshCacheFromGithub, 60 * 60 * 1000); // refresh cache every hour
@@ -114,14 +111,11 @@ var fetchAPI = function (route, cb) {
 module.exports = {
     name: 'docs',
     read: function (req, resource, params, config, callback) {
-        var routeName = params.name;
-        var route = routes[routeName];
-
         // Return immediately if repo's readme is in cache
-        if (cache[route.githubPath]) {
-            return callback(null, cache[route.githubPath]);
+        if (cache[params.path]) {
+            return callback(null, cache[params.path]);
         } else {
-            return fetchAPI(route);
+            return fetchAPI(params.path);
         }
     }
 };
