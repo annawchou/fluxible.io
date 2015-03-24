@@ -19,11 +19,7 @@ app.rehydrate(dehydratedState, function (err, context) {
 
     window.context = context;
 
-    var Component = app.getComponent();
-    React.render(
-        Component({
-            context: context.getComponentContext()
-        }),
+    React.render(context.createElement(),
         document.getElementById('docsapp')
     );
 });

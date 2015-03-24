@@ -5,20 +5,32 @@
 'use strict';
 var DocStore = require('../stores/DocStore');
 
-module.exports = function (context, payload, done) {
-    var docFromCache = context.getStore(DocStore).get(payload.name);
+module.exports = function (context, route, done) {
+    var routeConfig = route.config || {};
+    var githubPath = routeConfig.githubPath;
+
+    if (!githubPath) {
+        var err404 = new Error('Document not found');
+        err404.statusCode = 404;
+        return done(err404);
+    }
+
+    var pageTitle = routeConfig.pageTitle || (routeConfig.pageTitlePrefix + ' | Fluxible');
+
+    // Load from cache
+    var docFromCache = context.getStore(DocStore).get(githubPath);
 
     // is the content already in the store?
     if (docFromCache) {
         context.dispatch('RECEIVE_DOC_SUCCESS', docFromCache);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: payload.config && (payload.config.pageTitle || payload.config.pageTitlePrefix + ' | Fluxible')
+            pageTitle: pageTitle
         });
         return done();
     }
 
-    // get content from service
-    context.service.read('docs', payload, {}, function (err, data) {
+    // Load from service
+    context.service.read('docs', {path: githubPath}, {}, function (err, data) {
         if (err) {
             return done(err);
         }
@@ -31,7 +43,7 @@ module.exports = function (context, payload, done) {
 
         context.dispatch('RECEIVE_DOC_SUCCESS', data);
         context.dispatch('UPDATE_PAGE_TITLE', {
-            pageTitle: payload.config && (payload.config.pageTitle || payload.config.pageTitlePrefix + ' | Fluxible')
+            pageTitle: pageTitle
         });
         done();
     });
