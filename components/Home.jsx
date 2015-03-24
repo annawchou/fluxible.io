@@ -12,7 +12,7 @@ var Component = React.createClass({
         return (
             <div className="home-page">
                 <div id="splash" className="D-tb W-100% Bdb-1 Pos-r">
-                    <div className="D-tbc Ta-c Va-m Bgz-cv Ov-h Pos-r W-100% Start-0 Pb-30px Bg-splash">
+                    <div className="Ta-c Va-m Bgz-cv Ov-h Pos-r W-100% Start-0 Pb-30px Bg-splash">
                         <h1 className="Mx-a W-50% Pos-r Ov-h C-fff Fw-300 Tsh-1 Fz-450%">Fluxible</h1>
                         <p className="Mt-0 C-fff Tsh-1 Fz-120%">Build isomorphic Flux applications</p>
                         <p>

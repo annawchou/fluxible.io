@@ -124,7 +124,8 @@ li.selected a {
  * Foreground
  */
 #aside li.selected a {
-    color: #555 !important;
+    font-weight: bold;
+    color: #0262AA !important;
 }
 
 #aside li.selected a:after {
