@@ -21,7 +21,7 @@ var Component = React.createClass({
                 var classList = cx({
                     'selected': self.props.selected === link.routeName
                 });
-                submenu.push(<li key={link.label} className={classList}><NavLink className="D-b Td-n:h Py-5px" routeName={link.routeName}>{link.label}</NavLink></li>);
+                submenu.push(<li key={link.label} className={classList}><NavLink className={link.label + ' D-b Td-n:h Py-5px'} routeName={link.routeName}>{link.label}</NavLink></li>);
             });
 
             if (submenu.length) {

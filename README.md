@@ -24,6 +24,8 @@ rebuild as needed.
 
 Open [http://localhost:3000](http://localhost:3000)
 
+
+
 ### Production
 
 To run in production, use `NODE_ENV=production npm run dev`. This will use the production
@@ -31,10 +33,26 @@ assets that `webpack` generates. NOTE, this may break your application if the as
 are not on CDN.
 
 
+
+## Testing
+
+Unit tests can be run via `npm test`.
+
+To run functional tests, ensure you have `webdriver` updated:
+
+```bash
+$ ./node_modules/.bin/webdriver-manager update --standalone
+```
+
+Then run `npm run func` to run protractor to execute the functional tests.
+
+
+
 ## Contributing
 If you want to update the documentation on the site, you can submit a pull request to the
 [fluxible](https://github.com/yahoo/fluxible) repository. The docs are pulled in from
 the [yahoo/fluxible/docs](https://github.com/yahoo/fluxible/tree/master/docs) repo.
+
 
 
 ## License
