@@ -73,6 +73,7 @@ module.exports = function (grunt) {
         atomizer: {
             app: {
                 options: {
+                    namespace: '#atomic',
                     configFile: './configs/atomic.js'
                 },
                 files: [
