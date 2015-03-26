@@ -54,7 +54,7 @@ var Application = React.createClass({
 
         var logoClasses = cx({
             'V-h': hideLogo,
-            'Va-m Fz-20px Lh-1.2 C-fff Td-n:h': true
+            'Va-m Fz-20px Lh-1.2 C-#fff Td-n:h': true
         });
 
         return (

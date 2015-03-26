@@ -13,10 +13,10 @@ var Component = React.createClass({
             <div className="home-page">
                 <div id="splash" className="D-tb W-100% Bdb-1 Pos-r">
                     <div className="Ta-c Va-m Bgz-cv Ov-h Pos-r W-100% Start-0 Pb-30px Bg-splash">
-                        <h1 className="Mx-a W-50% Pos-r Ov-h C-fff Fw-300 Tsh-1 Fz-450%">Fluxible</h1>
-                        <p className="Mt-0 C-fff Tsh-1 Fz-120%">Build isomorphic Flux applications</p>
+                        <h1 className="Mx-a W-50% Pos-r Ov-h C-#fff Fw-300 Tsh-1 Fz-450%">Fluxible</h1>
+                        <p className="Mt-0 C-#fff Tsh-1 Fz-120%">Build isomorphic Flux applications</p>
                         <p>
-                            <NavLink className="D-ib Mb-10px Px-20px Py-10px C-fff Bdrs-5px Td-n:h Bg-t Fw-b Bd-2" routeName="quickStart">Get Started</NavLink>
+                            <NavLink className="D-ib Mb-10px Px-20px Py-10px C-#fff Bdrs-5px Td-n:h Bg-t Fw-b Bd-2" routeName="quickStart">Get Started</NavLink>
                         </p>
                     </div>
                     <div className="Pos-a End-10px B-5px C-eee Fz-80%">
@@ -30,7 +30,7 @@ var Component = React.createClass({
                     <Doc content={this.props.doc.content} />
 
                     <div className="Ta-c">
-                        <NavLink className="D-ib Mt-20px Mb-10px Px-20px Py-10px C-fff Bgc-logo Bdrs-5px Td-n:h" routeName="quickStart">Get Started</NavLink>
+                        <NavLink className="D-ib Mt-20px Mb-10px Px-20px Py-10px C-#fff Bgc-logo Bdrs-5px Td-n:h" routeName="quickStart">Get Started</NavLink>
                     </div>
                 </div>
             </div>
