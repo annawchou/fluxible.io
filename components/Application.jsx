@@ -60,7 +60,7 @@ var Application = React.createClass({
         return (
             <div className="H-100%">
                 <div className="wrapper Bxz-bb Mih-100%">
-                    <div id="header" role="header" className="P-10px Ov-h Z-7 Pos-r Bgc-logo optLegibility">
+                    <div id="header" role="header" className="Px-10px Py-13px Ov-h Z-7 Pos-r Bgc-logo optLegibility">
                         <div className="innerwrapper spaceBetween Mx-a--sm W-90%--sm W-a--sm">
                             <NavLink className={logoClasses} routeName="home">
                                 Fluxible
