@@ -5,6 +5,10 @@ module.exports = [
             {
                 label: 'Quick Start',
                 routeName: 'quickStart'
+            },
+            {
+                label: 'FAQ',
+                routeName: 'faq'
             }
         ]
     },
@@ -34,10 +38,6 @@ module.exports = [
             {
                 label: 'Stores',
                 routeName: 'stores'
-            },
-            {
-                label: 'TestUtils',
-                routeName: 'testUtils'
             }
         ]
     },

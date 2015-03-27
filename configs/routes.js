@@ -23,6 +23,14 @@ module.exports = {
         action: showDoc,
         pageTitlePrefix: 'Quick Start'
     },
+    faq: {
+        path: '/faq.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/faq.md',
+        action: showDoc,
+        pageTitlePrefix: 'FAQ'
+    },
     actions: {
         path: '/api/actions.html',
         method: 'get',
@@ -70,14 +78,6 @@ module.exports = {
         githubPath: '/docs/api/Stores.md',
         action: showDoc,
         pageTitlePrefix: 'API: Stores'
-    },
-    testUtils: {
-        path: '/api/test-utils.html',
-        method: 'get',
-        component: Docs,
-        githubPath: '/docs/api/TestUtils.md',
-        action: showDoc,
-        pageTitlePrefix: 'API: TestUtils'
     },
     routing: {
         path: '/tutorials/routing.html',
