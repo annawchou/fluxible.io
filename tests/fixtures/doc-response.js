@@ -3,7 +3,7 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 
-module.exports = {
+export default {
     'content': '<h1 id="quick-start">Quick Start</h1>',
     'key': '/docs/quick-start.md',
     'title': 'Quick Start'

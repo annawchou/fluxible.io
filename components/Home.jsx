@@ -2,13 +2,13 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var React = require('react');
-var NavLink = require('flux-router-component').NavLink;
-var Doc = require('./Doc.jsx');
 
-var Component = React.createClass({
-    render: function () {
+import React from 'react';
+import {NavLink} from 'flux-router-component';
+import Doc from './Doc.jsx';
+
+class Home extends React.Component {
+    render() {
         return (
             <div className="home-page">
                 <div id="splash" className="D-tb W-100% Bdb-1 Pos-r">
@@ -36,6 +36,6 @@ var Component = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = Component;
+export default Home;

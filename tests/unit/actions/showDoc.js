@@ -4,17 +4,18 @@
  */
 /* global describe, it, beforeEach */
 'use strict';
-var expect = require('chai').expect;
-var MockContext = require('fluxible/utils/MockActionContext')();
-var MockService = require('fluxible-plugin-fetchr/utils/MockServiceManager');
-var DocStore = require('../../../stores/DocStore');
-var showDoc = require('../../../actions/showDoc');
-var docResponse = require('../../fixtures/doc-response.js');
+import {expect} from 'chai';
+import MockContextLib from 'fluxible/utils/MockActionContext';
+import MockService from 'fluxible-plugin-fetchr/utils/MockServiceManager';
+import DocStore from '../../../stores/DocStore';
+import showDoc from '../../../actions/showDoc';
+import docResponse from '../../fixtures/doc-response.js';
 
+let MockContext = MockContextLib();
 MockContext.Dispatcher.registerStore(DocStore);
 
 describe('controller actions', function () {
-    var context;
+    let context;
 
     beforeEach(function () {
         context = new MockContext();
@@ -29,7 +30,7 @@ describe('controller actions', function () {
     });
 
     it('should load data from the service', function (done) {
-        var params = {
+        let params = {
             config: {
                 githubPath: '/docs/quick-start.md'
             }
@@ -40,7 +41,7 @@ describe('controller actions', function () {
                 return done(err);
             }
 
-            var docs = context.getStore(DocStore).getAll();
+            let docs = context.getStore(DocStore).getAll();
             expect(docs).to.be.an('object');
 
             done();
@@ -48,7 +49,7 @@ describe('controller actions', function () {
     });
 
     it('should load data from the cache', function (done) {
-        var params = {
+        let params = {
             config: {
                 githubPath: '/docs/quick-start.md'
             }
@@ -59,7 +60,7 @@ describe('controller actions', function () {
                 return done(err);
             }
 
-            var doc = context.getStore(DocStore).getCurrent();
+            let doc = context.getStore(DocStore).getCurrent();
             expect(doc).to.be.an('object');
 
             // execute again
@@ -74,7 +75,7 @@ describe('controller actions', function () {
     });
 
     it('should handle a service error', function (done) {
-        var params = {
+        let params = {
             resource: 'docs',
             key: '/docs/slow-start.md',
             emulateError: true

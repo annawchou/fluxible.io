@@ -2,23 +2,23 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var DocStore = require('../stores/DocStore');
 
-module.exports = function (context, route, done) {
-    var routeConfig = route.config || {};
-    var githubPath = routeConfig.githubPath;
+import DocStore from '../stores/DocStore';
+
+export default function (context, route, done) {
+    let routeConfig = route.config || {};
+    let githubPath = routeConfig.githubPath;
 
     if (!githubPath) {
-        var err404 = new Error('Document not found');
+        let err404 = new Error('Document not found');
         err404.statusCode = 404;
         return done(err404);
     }
 
-    var pageTitle = routeConfig.pageTitle || (routeConfig.pageTitlePrefix + ' | Fluxible');
+    let pageTitle = routeConfig.pageTitle || (routeConfig.pageTitlePrefix + ' | Fluxible');
 
     // Load from cache
-    var docFromCache = context.getStore(DocStore).get(githubPath);
+    let docFromCache = context.getStore(DocStore).get(githubPath);
 
     // is the content already in the store?
     if (docFromCache) {
@@ -36,7 +36,7 @@ module.exports = function (context, route, done) {
         }
 
         if (!data) {
-            var err404 = new Error('Document not found');
+            let err404 = new Error('Document not found');
             err404.statusCode = 404;
             return done(err404);
         }
@@ -47,4 +47,4 @@ module.exports = function (context, route, done) {
         });
         done();
     });
-};
+}

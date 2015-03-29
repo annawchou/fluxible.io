@@ -3,11 +3,10 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 /*global document, window */
-'use strict';
 
-var React = require('react');
-var app = require('./app');
-var dehydratedState = window.App; // sent from the server
+import React from 'react';
+import app from './app';
+const dehydratedState = window.App; // sent from the server
 
 // for chrome dev tool support
 window.React = React;

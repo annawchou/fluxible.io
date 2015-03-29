@@ -2,11 +2,12 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-var marked = require('marked');
-var renderer = new marked.Renderer();
+
+import marked from 'marked';
+const renderer = new marked.Renderer();
 
 renderer.heading = function (text, level) {
-    var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+    let escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 
     return (
         '<h' + level + '>' +
@@ -17,4 +18,4 @@ renderer.heading = function (text, level) {
     );
 };
 
-module.exports = renderer;
+export default renderer;

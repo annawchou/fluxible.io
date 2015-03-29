@@ -5,7 +5,7 @@ build
 deploy.json
 grasshopper.json
 node_modules
-npm-debug.log
+*.log
 replicatr.js
 screwdriver
 secrets

@@ -2,16 +2,16 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var React = require('react');
-var FluxibleApp = require('fluxible');
-var fetchrPlugin = require('fluxible-plugin-fetchr');
-var routrPlugin = require('fluxible-plugin-routr');
-var routes = require('./configs/routes');
-var show500 = require('./actions/show500');
-var show404 = require('./actions/show404');
 
-var app = new FluxibleApp({
+import React from 'react';
+import FluxibleApp from 'fluxible';
+import fetchrPlugin from 'fluxible-plugin-fetchr';
+import routrPlugin from 'fluxible-plugin-routr';
+import routes from './configs/routes';
+import show500 from './actions/show500';
+import show404 from './actions/show404';
+
+const app = new FluxibleApp({
     component: React.createFactory(require('./components/Application.jsx')),
     componentActionHandler: function (context, payload, done) {
         if (payload.err) {
@@ -34,4 +34,4 @@ app.plug(routrPlugin({ routes: routes }));
 app.registerStore(require('./stores/DocStore'));
 app.registerStore(require('./stores/ApplicationStore'));
 
-module.exports = app;
+export default app;

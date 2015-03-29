@@ -2,12 +2,12 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var React = require('react');
-var NavLink = require('flux-router-component').NavLink;
 
-var Component = React.createClass({
-    render: function () {
+import React from 'react';
+import {NavLink} from 'flux-router-component';
+
+class Status404 extends React.Component {
+    render() {
         return (
             <div id="404" className="D-tb W-100% Pos-r">
                 <div className="D-tbc Va-m Bgz-cv Ov-h Pos-r W-100% Start-0">
@@ -20,6 +20,6 @@ var Component = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = Component;
+export default Status404;

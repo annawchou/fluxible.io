@@ -151,7 +151,7 @@ module.exports = function (grunt) {
         // restart server on changes
         nodemon: {
             app: {
-                script: './server.js',
+                script: './start.js',
                 options: {
                     ignore: ['<%= project.build %>/**'],
                     ext: 'js,jsx,md'

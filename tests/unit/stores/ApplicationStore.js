@@ -4,13 +4,13 @@
  */
 /* global describe, it, beforeEach */
 'use strict';
-var expect = require('chai').expect;
-var ApplicationStore = require('../../../stores/ApplicationStore');
-var routesConfig = require('../../../configs/routes');
+import {expect} from 'chai';
+import ApplicationStore from '../../../stores/ApplicationStore';
+import routesConfig from '../../../configs/routes';
 
 describe('application store', function () {
-    var storeInstance;
-    var homeRoute = {
+    let storeInstance;
+    let homeRoute = {
         params: { key: 'home' },
         config: { page: 'Home' }
     };
@@ -36,7 +36,7 @@ describe('application store', function () {
     });
 
     it('should update page title', function (done) {
-        var title = { pageTitle: 'Fluxible Rocks' };
+        let title = { pageTitle: 'Fluxible Rocks' };
         storeInstance.updatePageTitle(title);
 
         expect(storeInstance.pageTitle).to.equal(title.pageTitle);
@@ -44,7 +44,7 @@ describe('application store', function () {
     });
 
     it('should get current page title', function (done) {
-        var title = { pageTitle: 'Fluxible Rocks' };
+        let title = { pageTitle: 'Fluxible Rocks' };
         storeInstance.updatePageTitle(title);
 
         expect(storeInstance.getPageTitle()).to.equal(title.pageTitle);
@@ -62,10 +62,10 @@ describe('application store', function () {
     it('should dehydrate', function (done) {
         storeInstance.changeRoute(homeRoute);
         storeInstance.handleNavigate(homeRoute);
-        var title = { pageTitle: 'Fluxible Rocks' };
+        let title = { pageTitle: 'Fluxible Rocks' };
         storeInstance.updatePageTitle(title);
 
-        var state = storeInstance.dehydrate();
+        let state = storeInstance.dehydrate();
         expect(state.currentPageName).to.equal(null);
         expect(state.route).to.equal(homeRoute);
         expect(state.pageTitle).to.equal(title.pageTitle);
@@ -73,8 +73,8 @@ describe('application store', function () {
     });
 
     it('should rehydrate', function (done) {
-        var title = { pageTitle: 'Fluxible Rocks' };
-        var state = {
+        let title = { pageTitle: 'Fluxible Rocks' };
+        let state = {
             currentPageName: null,
             route: homeRoute,
             pageTitle: title.pageTitle

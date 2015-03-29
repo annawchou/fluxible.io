@@ -2,31 +2,32 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
 
-var debug = require('debug')('APIService');
-var marked = require('marked');
-var highlight = require('highlight.js');
-var renderer = require('./../utils/renderer');
-var request = require('superagent');
-var secrets = require('./../secrets');
-var qs = require('querystring');
-var url = require('url');
-var routes = require('../configs/routes');
+import debugLib from 'debug';
+import marked from 'marked';
+import highlight from 'highlight.js';
+import renderer from './../utils/renderer';
+import request from 'superagent';
+import secrets from './../secrets';
+import qs from 'querystring';
+import url from 'url';
+import routes from '../configs/routes';
+
+const debug = debugLib('APIService');
 
 marked.setOptions({
-    highlight: function (code) {
+    highlight: (code) => {
         return highlight.highlightAuto(code).value;
     }
 });
 
 // Generate an hash of valid api routes, from the /configs/apis.js file
-var cache = {};
+let cache = {};
 
-var fetchAPI = function (docParams, cb) {
-    var githubRepo = docParams.repo || 'yahoo/fluxible';
-    var githubPath = docParams.path;
-    var githubUrl = 'https://api.github.com/repos/' + githubRepo + '/contents/';
+let fetchAPI = function (docParams, cb) {
+    let githubRepo = docParams.repo || 'yahoo/fluxible';
+    let githubPath = docParams.path;
+    let githubUrl = 'https://api.github.com/repos/' + githubRepo + '/contents/';
     githubUrl += githubPath;
     githubUrl += '?' + qs.stringify({
         client_id: secrets.github.clientId,
@@ -41,35 +42,39 @@ var fetchAPI = function (docParams, cb) {
             cb && cb(err);
         }
 
-        var md = res.body && res.body.content; // base64 encoded string of the markdown file
+        let md = res.body && res.body.content; // base64 encoded string of the markdown file
 
         if (md) {
-            var mdString = new Buffer(md, 'base64').toString(); // base64 decode
+            let mdString = new Buffer(md, 'base64').toString(); // base64 decode
 
-            var output = marked(mdString, {renderer: renderer});
+            let output = marked(mdString, {renderer: renderer});
 
             // Replace links
-            var internalLinkRegex = /href="([a-zA-Z\/\-]*\.md)/g;
-            var replacements = [];
-            var result;
+            let internalLinkRegex = /href="([a-zA-Z\/\-]*\.md)/g;
+            let replacements = [];
+            let result;
+
             while ((result = internalLinkRegex.exec(output)) !== null) {
                 // Get the relative github path to link
-                var fixedRelativePath = url.resolve(githubPath, result[1]);
-                var matchedDoc;
+                let fixedRelativePath = url.resolve(githubPath, result[1]);
+                let matchedDoc;
+
                 // Find the relative github path in routes
                 /*jshint ignore:start */
-                Object.keys(routes).forEach(function (routeName) {
-                    var routeConfig = routes[routeName];
+                Object.keys(routes).forEach((routeName) => {
+                    let routeConfig = routes[routeName];
                     if (fixedRelativePath === routeConfig.githubPath) {
                         matchedDoc = routeConfig;
                         return;
                     }
                 });
+
                 /*jshint ignore:end*/
                 if (!matchedDoc) {
                     console.log(githubPath + ' has a broken link to ' + fixedRelativePath);
                     continue;
                 }
+
                 replacements.push([result[1], matchedDoc.path]);
                 matchedDoc = null;
             }
@@ -85,6 +90,7 @@ var fetchAPI = function (docParams, cb) {
             cb && cb(null, cache[githubPath]);
         } else {
             debug('Doc not found for', githubPath, res.body);
+
             cache[githubPath] = {
                 key: githubPath,
                 content: marked('# Doc Not Found: ' + githubPath, {renderer: renderer})
@@ -108,7 +114,7 @@ var fetchAPI = function (docParams, cb) {
     setTimeout(refreshCacheFromGithub, 60 * 60 * 1000); // refresh cache every hour
 })();
 
-module.exports = {
+export default {
     name: 'docs',
     read: function (req, resource, params, config, callback) {
         // Return immediately if repo's readme is in cache

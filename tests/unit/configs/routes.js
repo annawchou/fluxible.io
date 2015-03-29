@@ -4,18 +4,19 @@
  */
 /* global describe, it, beforeEach */
 'use strict';
-var expect = require('chai').expect;
-var MockContext = require('fluxible/utils/MockActionContext')();
-var MockService = require('fluxible-plugin-fetchr/utils/MockServiceManager');
-var DocStore = require('../../../stores/DocStore');
-var routes = require('../../../configs/routes.js');
-var docResponse = require('../../fixtures/doc-response.js');
-var mockery = require('mockery');
+import {expect} from 'chai';
+import MockContextLib from 'fluxible/utils/MockActionContext';
+import MockService from 'fluxible-plugin-fetchr/utils/MockServiceManager';
+import DocStore from '../../../stores/DocStore';
+import routes from '../../../configs/routes.js';
+import docResponse from '../../fixtures/doc-response.js';
+import mockery from 'mockery';
 
+let MockContext = MockContextLib();
 MockContext.Dispatcher.registerStore(DocStore);
 
 describe('routes', function () {
-    var context;
+    let context;
 
     beforeEach(function () {
         context = new MockContext();
@@ -55,14 +56,14 @@ describe('routes', function () {
                 return done(err);
             }
 
-            var docs = context.getStore(DocStore).getAll();
+            let docs = context.getStore(DocStore).getAll();
             expect(docs).to.be.an('object');
             done();
         });
     });
 
     it('should execute the docs action (without type param)', function (done) {
-        var payload = {
+        let payload = {
             config: {
                 githubPath: 'foo/bar.md'
             }
@@ -73,7 +74,7 @@ describe('routes', function () {
                 return done(err);
             }
 
-            var docs = context.getStore(DocStore).getAll();
+            let docs = context.getStore(DocStore).getAll();
             expect(docs).to.be.an('object');
             done();
         });

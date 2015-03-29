@@ -4,17 +4,17 @@
  */
 /* global describe, it, beforeEach */
 'use strict';
-var expect = require('chai').expect;
-var DocStore = require('../../../stores/DocStore');
+import {expect} from 'chai';
+import DocStore from '../../../stores/DocStore';
 
 describe('doc store', function () {
-    var storeInstance;
-    var doc1 = {
+    let storeInstance;
+    let doc1 = {
         key: '/docs/quick-start.md',
         content: '<h1>Quick Start</h1>',
         title: 'Quick Start'
     };
-    var doc2 = {
+    let doc2 = {
         key: '/docs/slow-start.md',
         content: '<h1>Slow Start</h1>',
         title: 'Slow Start'
@@ -39,7 +39,7 @@ describe('doc store', function () {
     });
 
     it('should skip receiving a malformatted doc', function (done) {
-        var badDoc = {
+        let badDoc = {
             foo: 'bar'
         };
 
@@ -70,7 +70,7 @@ describe('doc store', function () {
 
     it('should dehydrate', function (done) {
         storeInstance._receiveDoc(doc1);
-        var state = storeInstance.dehydrate();
+        let state = storeInstance.dehydrate();
 
         expect(state.docs).to.be.an('object');
         expect(state.current).to.be.an('object');
@@ -78,7 +78,7 @@ describe('doc store', function () {
     });
 
     it('should rehydrate', function (done) {
-        var state = {
+        let state = {
             docs: {},
             current: undefined
         };

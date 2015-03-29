@@ -3,28 +3,31 @@
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
 /* global document */
-'use strict';
-var React = require('react');
-var Home = require('./Home.jsx');
-var Docs = require('./Docs.jsx');
-var Status500 = require('./Status500.jsx');
-var Status404 = require('./Status404.jsx');
-var ApplicationStore = require('../stores/ApplicationStore');
-var DocStore = require('../stores/DocStore');
-var RouterMixin = require('flux-router-component').RouterMixin;
-var NavLink = require('flux-router-component').NavLink;
-var FluxibleMixin = require('fluxible').FluxibleMixin;
-var TopNav = require('./TopNav');
-var cx = require('classnames')
+
+import React from 'react';
+import Home from './Home.jsx';
+import Docs from './Docs.jsx';
+import Status500 from './Status500.jsx';
+import Status404 from './Status404.jsx';
+import ApplicationStore from '../stores/ApplicationStore';
+import DocStore from '../stores/DocStore';
+import {RouterMixin} from 'flux-router-component';
+import {NavLink} from 'flux-router-component';
+import {FluxibleMixin} from 'fluxible';
+import TopNav from './TopNav';
+import cx from 'classnames';
 
 var Application = React.createClass({
     mixins: [ RouterMixin, FluxibleMixin ],
+
     statics: {
         storeListeners: [ ApplicationStore ]
     },
+
     getInitialState: function () {
         return this.getState();
     },
+
     getState: function () {
         var appStore = this.getStore(ApplicationStore);
         var docStore = this.getStore(DocStore);
@@ -35,9 +38,11 @@ var Application = React.createClass({
             route: appStore.getCurrentRoute() || {}
         };
     },
+
     onChange: function () {
         this.setState(this.getState());
     },
+
     render: function () {
         var hideLogo = false;
         var Component = this.state.route && this.state.route.config && this.state.route.config.component;
@@ -45,10 +50,10 @@ var Application = React.createClass({
         if (this.state.route && 'home' === this.state.route.name) {
             hideLogo = true;
         }
+
         if ('500' === this.state.currentPageName) {
             Component = Status500;
-        }
-        else if ('404' === this.state.currentPageName) {
+        } else if ('404' === this.state.currentPageName) {
             Component = Status404;
         }
 
@@ -98,4 +103,4 @@ var Application = React.createClass({
     }
 });
 
-module.exports = Application;
+export default Application;

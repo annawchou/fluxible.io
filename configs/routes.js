@@ -2,11 +2,12 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-var showDoc = require('../actions/showDoc');
-var Home = require('../components/Home.jsx');
-var Docs = require('../components/Docs.jsx');
 
-module.exports = {
+import showDoc from '../actions/showDoc';
+import Home from '../components/Home.jsx';
+import Docs from '../components/Docs.jsx';
+
+export default {
     home: {
         path: '/',
         method: 'get',

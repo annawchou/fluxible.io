@@ -2,14 +2,14 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var React = require('react');
-var NavLink = require('flux-router-component').NavLink;
-var cx = require('classnames');
 
-var TopNav = React.createClass({
-    render: function() {
-        var selected = this.props.selected;
+import React from 'react';
+import {NavLink} from 'flux-router-component';
+import cx from 'classnames';
+
+class TopNav extends React.Component {
+    render() {
+        let selected = this.props.selected;
 
         return (
             <ul id="navigation" role="navigation" className="Va-m reset">
@@ -26,6 +26,6 @@ var TopNav = React.createClass({
             </ul>
         );
     }
-});
+}
 
-module.exports = TopNav;
+export default TopNav;

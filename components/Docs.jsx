@@ -2,30 +2,34 @@
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-'use strict';
-var React = require('react');
-var Menu = require('./Menu.jsx');
-var Doc = require('./Doc.jsx');
-var cx = require('classnames');
 
-var Component = React.createClass({
-    getInitialState: function () {
-        return {
+import React from 'react';
+import Menu from './Menu.jsx';
+import Doc from './Doc.jsx';
+import cx from 'classnames';
+
+class Docs extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
             isMenuVisible: false
         };
-    },
-    handleMenuToggle: function () {
+    }
+
+    handleMenuToggle() {
         this.setState({
             isMenuVisible: !this.state.isMenuVisible
         });
-    },
-    hideMenu: function () {
+    }
+
+    hideMenu() {
         this.setState({
             isMenuVisible: false
         });
-    },
-    render: function () {
-        var wrapperClasses = cx({
+    }
+
+    render() {
+        let wrapperClasses = cx({
             'menu-on': this.state.isMenuVisible,
             'docs-page innerwrapper D-tb--sm Tbl-f Pt-20px Mb-50px Mx-a--sm W-90%--sm': true
         });
@@ -42,6 +46,6 @@ var Component = React.createClass({
             </div>
         );
     }
-});
+}
 
-module.exports = Component;
+export default Docs;

@@ -1,12 +1,11 @@
-'use strict';
-
 /**
  * In production, we use the webpack stats plugin to collect the asset hash names
  * and replace the local paths with the production ones.
  */
 
-var path = require('path');
-var assets = {
+import path from 'path';
+
+let assets = {
     common: '/public/js/common.js',
     main: '/public/js/main.js'
 };
@@ -21,4 +20,4 @@ if ('production' === process.env.NODE_ENV) {
     assets.main = webpackAssets.cdnPath + webpackAssets.assets.main;
 }
 
-module.exports = assets;
+export default assets;
