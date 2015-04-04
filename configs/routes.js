@@ -32,6 +32,8 @@ export default {
         action: showDoc,
         pageTitlePrefix: 'FAQ'
     },
+
+    // API
     actions: {
         path: '/api/actions.html',
         method: 'get',
@@ -80,6 +82,58 @@ export default {
         action: showDoc,
         pageTitlePrefix: 'API: Stores'
     },
+
+    // Addons
+    baseStore: {
+        path: '/api/addons/BaseStore.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/BaseStore.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/BaseStore'
+    },
+    fluxibleComponent: {
+        path: '/api/addons/FluxibleComponent.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/FluxibleComponent.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/FluxibleComponent'
+    },
+    fluxibleMixin: {
+        path: '/api/addons/FluxibleMixin.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/FluxibleMixin.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/FluxibleMixin'
+    },
+    connectToStores: {
+        path: '/api/addons/connectToStores.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/connectToStores.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/connectToStores'
+    },
+    createStore: {
+        path: '/api/addons/createStore.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/createStore.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/createStore'
+    },
+    provideContext: {
+        path: '/api/addons/provideContext.html',
+        method: 'get',
+        component: Docs,
+        githubPath: '/docs/api/addons/provideContext.md',
+        action: showDoc,
+        pageTitlePrefix: 'API: addons/provideContext'
+    },
+
+    // Tutorials
     routing: {
         path: '/tutorials/routing.html',
         method: 'get',
@@ -96,6 +150,8 @@ export default {
         action: showDoc,
         pageTitlePrefix: 'Bringing Flux to the Server'
     },
+
+    // Guides
     dataServices: {
         path: '/guides/data-services.html',
         method: 'get',
@@ -104,6 +160,8 @@ export default {
         action: showDoc,
         pageTitlePrefix: 'Data Services Guide'
     },
+
+    // Community
     libraries: {
         path: '/community/libraries.html',
         method: 'get',

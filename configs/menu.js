@@ -42,6 +42,35 @@ export default [
         ]
     },
     {
+        category: 'Addons',
+        children: [
+            {
+                label: 'BaseStore',
+                routeName: 'baseStore'
+            },
+            {
+                label: 'FluxibleComponent',
+                routeName: 'fluxibleComponent'
+            },
+            {
+                label: 'FluxibleMixin',
+                routeName: 'fluxibleMixin'
+            },
+            {
+                label: 'connectToStores',
+                routeName: 'connectToStores'
+            },
+            {
+                label: 'createStore',
+                routeName: 'createStore'
+            },
+            {
+                label: 'provideContext',
+                routeName: 'provideContext'
+            }
+        ]
+    },
+    {
         category: 'Guides',
         children: [
             {
