@@ -26,8 +26,65 @@ class Home extends React.Component {
                     </div>
                 </div>
 
-                <div className="features innerwrapper Bxz-bb Pt-20px Px-10px Mb-20px Mx-a--sm W-90%--sm W-a">
-                    <Doc content={this.props.doc.content} />
+                <div className="innerwrapper Bxz-bb Pt-20px Px-10px Mb-20px Mx-a--sm W-90%--sm W-a">
+                    <div className="Bxz-bb D-ib Va-t W-100% Pend-20px--sm W-50%--sm">
+                        <h2>Singleton-free for server rendering</h2>
+                        <p><NavLink routeName="stores">Stores</NavLink> are classes that are instantiated per
+                        request or client session. This ensures that the stores are isolated and do not bleed
+                        information between requests.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pstart-20px--sm W-50%--sm">
+                        <h2>Dehydration/Rehydration</h2>
+                        <p><NavLink routeName="stores">Stores</NavLink> can provide `dehydrate` and `rehydrate` so
+                        that you can propagate the initial server state to the client.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pend-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>Stateless async actions</h2>
+                        <p><NavLink routeName="actions">Actions</NavLink> are stateless functions that can
+                        handle promises or callbacks.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pstart-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>Higher order components</h2>
+                        <p>Intuitive way to access state from stores or set component child context.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pend-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>React Integration</h2>
+                        <p>Helper utilities for integrating your Fluxible app into
+                        React <NavLink routeName="components">Components</NavLink> with less boilerplate.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pstart-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>Flow Regulation</h2>
+                        <p><NavLink routeName="fluxibleContext">FluxibleContext</NavLink> restricts access to your
+                        Flux methods so that you can't break out of the unidirectional flow.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pend-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>Pluggable</h2>
+                        <p>Want to add your own interfaces to the Flux
+                        flow? <NavLink routeName="plugins">Plugins</NavLink> allow you to add methods to any of
+                        the contexts.</p>
+                    </div>
+
+                    <div className="Bxz-bb D-ib Va-t W-100% Pstart-20px--sm W-50%--sm Bdt-1--sm Mt-2em--sm">
+                        <h2>Updated for React 0.13</h2>
+                        <p>Updated to follow React 0.13's changes and the deprecations coming in the next version of React.</p>
+                    </div>
+
+                    <p className="Ta-c Mt-2em--sm">
+                        <a href="https://gitter.im/yahoo/fluxible">
+                            <img src="https://camo.githubusercontent.com/20d7543bc8280bf8134b686c46c7b7e2c0a467fd/68747470733a2f2f6261646765732e6769747465722e696d2f67697474657248512f6769747465722e706e67"
+                                alt="Gitter chat"
+                                data-canonical-src="https://badges.gitter.im/gitterHQ/gitter.png"
+                                style={{maxWidth: "100%"}}
+                                className="Va-m" />
+                        </a> or
+                        #fluxible channel of the <a href="http://reactiflux.com/">Reactiflux</a> Slack community.
+                    </p>
 
                     <div className="Ta-c">
                         <NavLink className="D-ib Mt-20px Mb-10px Px-20px Py-10px C-#fff Bgc-logo Bdrs-5px Td-n:h" routeName="quickStart">Get Started</NavLink>
