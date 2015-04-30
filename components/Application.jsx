@@ -67,8 +67,8 @@ var Application = React.createClass({
                 <div className="wrapper Bxz-bb Mih-100%">
                     <div id="header" role="header" className="Px-10px Py-13px Ov-h Z-7 Pos-r Bgc-logo optLegibility">
                         <div className="innerwrapper spaceBetween Mx-a--sm W-90%--sm W-a--sm">
-                            <NavLink className={logoClasses} routeName="home">
-                                Fluxible
+                            <NavLink className={logoClasses} routeName="home" style={{ fontFamily: 'Montserrat' }}>
+                                <img src="/public/images/logo_small.svg" width="16" height="16" alt="Fluxible" style={{verticalAlign: 'baseline'}} /> Fluxible
                             </NavLink> <TopNav selected={this.state.route.name} />
                         </div>
                     </div>
