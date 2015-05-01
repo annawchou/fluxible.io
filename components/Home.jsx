@@ -14,7 +14,7 @@ class Home extends React.Component {
                 <div id="splash" className="D-tb W-100% Bdb-1 Pos-r">
                     <div className="Ta-c Va-m Bgz-cv Ov-h Pos-r W-100% Start-0 Pb-30px Bg-splash">
                         <h1 className="Mx-a W-50% Pos-r Ov-h C-#fff Fw-300 Tsh-1 Fz-450%" style={{ fontFamily: 'Montserrat' }}>
-                            <img src="/public/images/logo_big.svg" width="60" height="60" alt="Fluxible" style={{ verticalAlign: 'inherit' }} /> Fluxible
+                            <img src="/public/images/logo_small.svg" width="60" height="60" alt="Fluxible" style={{ verticalAlign: 'inherit' }} /> Fluxible
                         </h1>
                         <p className="Mt-0 C-#fff Tsh-1 Fz-120%">Build isomorphic Flux applications</p>
                         <p>
